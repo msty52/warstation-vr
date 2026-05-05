@@ -40,10 +40,9 @@ export default function Home() {
     gap: isMobile ? '8px' : '0'
   };
 
-  // Общий стиль для всех полей ввода, чтобы текст БЫЛ БЕЛЫМ
   const inputBaseStyle = {
     backgroundColor: '#1a1a1a',
-    color: '#ffffff', // ПРИНУДИТЕЛЬНО БЕЛЫЙ ЦВЕТ
+    color: '#ffffff', 
     border: '1px solid #444',
     borderRadius: '12px',
     padding: '16px',
@@ -111,7 +110,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ФОРМА БРОНИРОВАНИЯ - ФИКС ВИДИМОСТИ ТЕКСТА */}
+      {/* ФОРМА БРОНИРОВАНИЯ */}
       <section id="booking" className="py-16 md:py-24 px-4">
         <div className="max-w-2xl mx-auto bg-[#0a0a0a] rounded-[30px] md:rounded-[40px] border border-white/20 shadow-2xl" 
              style={{ padding: isMobile ? '30px 20px' : '50px' }}>
@@ -128,18 +127,18 @@ export default function Home() {
               <input name="date" type="date" required 
                 style={inputBaseStyle} className="focus:border-[#ff007a] [color-scheme:dark]" />
               
-              <select name="guests" required 
+              <select name="guests" required defaultValue=""
                 style={inputBaseStyle} className="focus:border-[#ff007a] appearance-none">
-                <option value="" disabled selected style={{color: '#888'}}>Кол-во человек</option>
+                <option value="" disabled style={{color: '#888'}}>Кол-во человек</option>
                 <option value="1-4" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>1-4 чел</option>
                 <option value="5-8" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>5-8 чел</option>
                 <option value="9+" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>9+ чел</option>
               </select>
             </div>
 
-            <select name="tarif" required
+            <select name="tarif" required defaultValue=""
               style={inputBaseStyle} className="focus:border-[#ff007a] appearance-none">
-              <option value="" disabled selected style={{color: '#888'}}>Выберите программу</option>
+              <option value="" disabled style={{color: '#888'}}>Выберите программу</option>
               <option value="Программа 2ч 45мин" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>Программа (2ч 45мин)</option>
               <option value="Игра компанией" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>Игра компанией (1 час)</option>
             </select>
