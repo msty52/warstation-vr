@@ -45,16 +45,17 @@ export default function Home() {
     color: '#ffffff', 
     border: '1px solid #444',
     borderRadius: '12px',
-    padding: '16px',
+    padding: '0 16px', // Отступы только по бокам, высоту задаем жестко
     outline: 'none',
     width: '100%',
-    fontSize: '16px'
+    fontSize: '16px',
+    height: '56px' // Фиксированная высота, чтобы поля не «плющились»
   };
 
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans scroll-smooth">
       
-      {/* HERO */}
+      {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-center text-center px-6">
         <div className="z-10 w-full">
           <img src="/logo.jpg" alt="WARSTATION VR" className="w-full max-w-[300px] md:max-w-[500px] mb-6 mx-auto" />
@@ -123,12 +124,12 @@ export default function Home() {
             <input name="phone" type="tel" placeholder="Телефон" required 
               style={inputBaseStyle} className="focus:border-[#ff007a] placeholder:text-gray-500" />
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-2'} gap-4 w-full`}>
               <input name="date" type="date" required 
                 style={inputBaseStyle} className="focus:border-[#ff007a] [color-scheme:dark]" />
               
               <select name="guests" required defaultValue=""
-                style={inputBaseStyle} className="focus:border-[#ff007a] appearance-none">
+                style={inputBaseStyle} className="focus:border-[#ff007a] bg-[#1a1a1a]">
                 <option value="" disabled style={{color: '#888'}}>Кол-во человек</option>
                 <option value="1-4" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>1-4 чел</option>
                 <option value="5-8" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>5-8 чел</option>
@@ -137,13 +138,13 @@ export default function Home() {
             </div>
 
             <select name="tarif" required defaultValue=""
-              style={inputBaseStyle} className="focus:border-[#ff007a] appearance-none">
+              style={inputBaseStyle} className="focus:border-[#ff007a] bg-[#1a1a1a]">
               <option value="" disabled style={{color: '#888'}}>Выберите программу</option>
               <option value="Программа 2ч 45мин" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>Программа (2ч 45мин)</option>
               <option value="Игра компанией" style={{backgroundColor: '#1a1a1a', color: '#fff'}}>Игра компанией (1 час)</option>
             </select>
 
-            <button type="submit" className="bg-[#ff007a] py-5 rounded-xl font-black text-lg md:text-xl uppercase hover:brightness-110 active:scale-95 transition-all text-white mt-2">
+            <button type="submit" className="bg-[#ff007a] h-[60px] w-full rounded-xl font-black text-lg md:text-xl uppercase hover:brightness-110 active:scale-95 transition-all text-white mt-2">
               ОФОРМИТЬ В ВК
             </button>
           </form>
