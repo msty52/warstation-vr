@@ -45,11 +45,11 @@ export default function Home() {
     color: '#ffffff', 
     border: '1px solid #444',
     borderRadius: '12px',
-    padding: '0 16px', // Отступы только по бокам, высоту задаем жестко
+    padding: '0 16px',
     outline: 'none',
     width: '100%',
     fontSize: '16px',
-    height: '56px' // Фиксированная высота, чтобы поля не «плющились»
+    height: '56px'
   };
 
   return (
@@ -62,7 +62,11 @@ export default function Home() {
           <p className="text-sm md:text-xl text-[#00d2ff] tracking-[0.2em] md:tracking-[0.4em] uppercase mb-12 font-bold">
             Арена виртуальной реальности
           </p>
-          <a href="#booking" className="bg-[#ff007a] text-white px-8 py-4 md:px-12 md:py-5 rounded-full font-black text-lg md:text-xl uppercase inline-block transition-transform hover:scale-105">
+          <a 
+            href="#booking" 
+            className="bg-[#ff007a] text-white px-10 py-5 rounded-full font-black text-lg md:text-xl uppercase inline-block transition-transform hover:scale-105 no-underline"
+            style={{ textDecoration: 'none' }}
+          >
             Забронировать
           </a>
         </div>
