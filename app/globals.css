@@ -15,116 +15,102 @@ body {
   padding: 0;
 }
 
-@layer components {
-
-  .cyber-bg-wrapper {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050508 100%);
-    overflow: hidden;
-  }
-
-  .cyber-grid {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    transform: perspective(500px) rotateX(60deg);
-    animation: grid-move 20s linear infinite;
-  }
-
-  @keyframes grid-move {
-    from { transform: perspective(500px) rotateX(60deg) translateY(0); }
-    to { transform: perspective(500px) rotateX(60deg) translateY(50px); }
-  }
-
-  .cyber-price-block {
-    @apply relative border rounded-2xl p-8 backdrop-blur-md overflow-hidden;
-    background: rgba(255, 255, 255, 0.02);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .cyber-price-block.program {
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15), inset 0 0 10px rgba(0, 210, 255, 0.1);
-  }
-
-  .cyber-price-block.program:hover {
-    border-color: rgba(0, 210, 255, 0.6);
-    box-shadow: 0 0 40px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0, 210, 255, 0.2);
-    transform: translateY(-5px);
-  }
-
-  .cyber-price-block.company {
-    border: 1px solid rgba(255, 0, 76, 0.3);
-    box-shadow: 0 0 20px rgba(255, 0, 76, 0.15), inset 0 0 10px rgba(255, 0, 76, 0.1);
-  }
-
-  .cyber-price-block.company:hover {
-    border-color: rgba(255, 0, 76, 0.6);
-    box-shadow: 0 0 40px rgba(255, 0, 76, 0.3), inset 0 0 20px rgba(255, 0, 76, 0.2);
-    transform: translateY(-5px);
-  }
-
-  .price-row {
-    @apply flex items-center justify-between gap-4 py-5 border-b border-white/5;
-  }
-
-  .price-row:last-child {
-    @apply border-b-0;
-  }
-
-  .price-line {
-    @apply flex-grow h-px;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
-  }
-
-  .price-tag {
-    @apply font-black italic text-3xl tracking-tighter;
-  }
-
-  .program .price-tag {
-    color: var(--neon-blue);
-    text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
-  }
-
-  .company .price-tag, .price-row .text-[#ff004c].price-tag {
-    color: var(--neon-rose);
-    text-shadow: 0 0 12px rgba(255, 0, 76, 0.6);
-  }
-
-  .cyber-price-block::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 15px;
-    height: 15px;
-    border-top: 2px solid currentColor;
-    border-left: 2px solid currentColor;
-    opacity: 0.5;
-  }
+.cyber-bg-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050508 100%);
+  overflow: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+.cyber-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg);
+  animation: grid-move 20s linear infinite;
 }
 
-::-webkit-scrollbar-track {
-  background: #050508;
+@keyframes grid-move {
+  from { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  to { transform: perspective(500px) rotateX(60deg) translateY(50px); }
 }
 
-::-webkit-scrollbar-thumb {
-  background: #1a1a2e;
-  border-radius: 10px;
+.cyber-price-block {
+  position: relative;
+  border-radius: 1rem; 
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #ff004c;
+.cyber-price-block.program {
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.15), inset 0 0 10px rgba(0, 210, 255, 0.1);
 }
+
+.cyber-price-block.program:hover {
+  border-color: rgba(0, 210, 255, 0.6);
+  box-shadow: 0 0 40px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0, 210, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.cyber-price-block.company {
+  border: 1px solid rgba(255, 0, 76, 0.3);
+  box-shadow: 0 0 20px rgba(255, 0, 76, 0.15), inset 0 0 10px rgba(255, 0, 76, 0.1);
+}
+
+.cyber-price-block.company:hover {
+  border-color: rgba(255, 0, 76, 0.6);
+  box-shadow: 0 0 40px rgba(255, 0, 76, 0.3), inset 0 0 20px rgba(255, 0, 76, 0.2);
+  transform: translateY(-5px);
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.price-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.price-tag {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.875rem;
+  letter-spacing: -0.05em;
+}
+
+.program .price-tag {
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+}
+
+.company .price-tag, .price-row .text-red-tag {
+  color: var(--neon-rose);
+  text-shadow: 0 0 12px rgba(255, 0, 76, 0.6);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #050508; }
+::-webkit-scrollbar-thumb { background: #1a1a2e; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #ff004c; }
