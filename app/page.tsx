@@ -9,7 +9,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const mapCenter = [47.310535, 39.803793]; // Координаты ул. Версальская, 4
+  const mapCenter = [47.310535, 39.803793]; 
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -33,8 +33,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#050208] text-white font-sans selection:bg-purple-500/30 overflow-x-hidden">
-      
-      {/* ФОН: Глубокий черно-фиолетовый с сеткой */}
+
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[#050208]"></div>
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 blur-[120px] rounded-full"></div>
@@ -48,7 +47,6 @@ export default function Home() {
         ></div>
       </div>
 
-      {/* Навигация */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-[#050208]/90 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"
       }`}>
@@ -59,13 +57,26 @@ export default function Home() {
           <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
             <button onClick={() => scrollToSection('games-section')} className="hover:text-[#ff004c] transition-colors">Игры</button>
             <button onClick={() => scrollToSection('pricing-section')} className="hover:text-[#ff004c] transition-colors">Тарифы</button>
-            <button onClick={() => scrollToSection('map-section')} className="hover:text-[#ff004c] transition-colors">Где мы</button>
+            <button onClick={() => scrollToSection('about-section')} className="hover:text-[#ff004c] transition-colors">О нас</button>
           </div>
         </div>
       </nav>
 
-      {/* СЕКЦИЯ ИГР (теперь идет первой после навигации) */}
-      <div id="games-section" className="max-w-7xl mx-auto px-6 pt-32 text-center">
+      <section id="about-section" className="pt-40 pb-16 flex flex-col items-center px-6 text-center">
+        <div className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-[#ff004c] rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <img 
+            src="/logo.jpg" 
+            alt="Logo" 
+            className="relative h-32 md:h-40 w-auto rounded-3xl shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-purple-500/20" 
+          />
+        </div>
+        <p className="mt-10 max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic">
+          VR-арена - Это место, где оживают любые праздники и мероприятия. День рождения, корпоратив, выпускной или просто встреча с друзьями - мы превращаем это в игру, где каждый становится героем.
+        </p>
+      </section>
+
+      <div id="games-section" className="max-w-7xl mx-auto px-6 pt-20 text-center">
         <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
           Наши <span className="text-purple-500">Игры</span>
         </h2>
@@ -97,7 +108,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ТАРИФЫ */}
       <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-20">
         <div className="space-y-10">
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#00d2ff]/40 to-[#00d2ff]/10">
@@ -141,19 +151,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* СЕКЦИЯ О НАС (перенесена сюда по вашему запросу) */}
-      <section className="pb-16 flex flex-col items-center px-6 text-center">
-        <img src="/logo.jpg" alt="Logo" className="h-32 md:h-40 w-auto rounded-3xl mb-10 shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-purple-500/20" />
-        <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic">
-          VR-арена — место, где оживают любые праздники и мероприятия.
-        </p>
-      </section>
-
-      {/* КАРТА И НАДПИСЬ */}
       <section id="map-section" className="mt-10 pb-20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
-          
-          <div className="mb-8 text-center">
+          <div className="mb-12 text-center">
             <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white">
               МЫ НАХОДИМСЯ <span className="text-purple-500">ЗДЕСЬ</span>
             </h2>
