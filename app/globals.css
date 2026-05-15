@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --neon-pink: #ff007a;
+  --neon-blue: #00d2ff;
+  --cyber-purple: #bc13fe;
+  --bg-dark: #050508;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: white;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.cyber-bg-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(188, 19, 254, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(188, 19, 254, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+}
+
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: blob-move 25s infinite alternate ease-in-out;
+}
+
+.blob-pink { background: var(--neon-pink); width: 600px; height: 600px; top: -10%; left: -5%; }
+.blob-blue { background: var(--neon-blue); width: 700px; height: 700px; bottom: 10%; right: -5%; animation-delay: -7s; }
+
+@keyframes blob-move {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(100px, 50px) scale(1.1); }
+}
+
+.cyber-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  opacity: 0.02;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
