@@ -103,7 +103,6 @@ export default function Home() {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="cyber-price-block program p-10">
-            <div className="price-neon-border"></div>
             <h3 className="text-lg font-black uppercase italic text-[#00d2ff] mb-10 tracking-widest">Программа — 2 ч 45 мин</h3>
             {programPricing.map((item, idx) => (
               <div key={idx} className="price-row">
@@ -115,7 +114,6 @@ export default function Home() {
           </div>
 
           <div className="cyber-price-block company p-10">
-            <div className="price-neon-border"></div>
             <h3 className="text-lg font-black uppercase italic text-[#ff004c] mb-10 tracking-widest">Игра компанией</h3>
             <div className="price-row">
               <span className="font-bold italic uppercase text-xs text-[#00d2ff]">ПН-ЧТ (ЗА ЧАС)</span>
@@ -140,7 +138,7 @@ export default function Home() {
                 WARSTATION <span className="text-[#ff004c]">VR КЛУБ</span>
               </h2>
               <p className="text-white/50 leading-relaxed mb-12 max-w-md font-medium">
-                Погрузитесь в мир за гранью реальности. Лучшее VR-оборудование Ростова ждет вас для командных сражений и незабываемых праздников.
+                Погрузитесь в мир за гранью реальности. Лучшее VR-оборудование Ростова ждет вас для командных сражений и праздников.
               </p>
               
               <div className="space-y-8">
@@ -155,16 +153,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative aspect-video rounded-[32px] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="relative aspect-video rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
               <YMaps query={{ lang: 'ru_RU' }}>
                 <Map 
                   defaultState={{ center: mapCenter, zoom: 16 }} 
                   width="100%" 
                   height="100%"
-                  instanceRef={(ref) => {
-
-                    if (ref) ref.container.parentElement.style.filter = "brightness(0.9) contrast(1.2)";
-                  }}
                 >
                   <Placemark 
                     geometry={mapCenter} 
@@ -179,8 +173,7 @@ export default function Home() {
                   <ZoomControl options={{ position: { right: 10, top: 10 } }} />
                 </Map>
               </YMaps>
-
-              <div className="absolute top-4 left-4 bg-[#ff004c] px-3 py-1 rounded-full shadow-lg">
+              <div className="absolute top-4 left-4 bg-[#ff004c] px-3 py-1 rounded-full">
                 <span className="text-[9px] font-black uppercase tracking-widest text-white">Мы находимся здесь</span>
               </div>
             </div>
@@ -189,20 +182,15 @@ export default function Home() {
 
           <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">© 2026 WARSTATION VR</p>
-            <div className="flex gap-6 text-[10px] font-black uppercase tracking-widest text-white/40">
-              <span className="hover:text-white cursor-pointer transition-colors">VKONTAKTE</span>
-              <span className="hover:text-white cursor-pointer transition-colors">TELEGRAM</span>
-            </div>
           </div>
         </div>
       </footer>
 
-      {/* Модальное окно видео */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#050508]/95 backdrop-blur-md" onClick={() => setActiveVideo(null)}></div>
-          <div className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-            <iframe src={`${activeVideo}&autoplay=1`} className="w-full h-full" allow="autoplay; encrypted-media; fullscreen" frameBorder="0" allowFullScreen></iframe>
+          <div className="relative w-full max-w-5xl aspect-video rounded-3xl overflow-hidden border border-white/10">
+            <iframe src={`${activeVideo}&autoplay=1`} className="w-full h-full" allowFullScreen></iframe>
           </div>
         </div>
       )}
