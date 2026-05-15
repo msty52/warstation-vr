@@ -9,7 +9,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const mapCenter = 47.310535, 39.803793]; // Координаты ул. Версальская, 4
+  const mapCenter = [47.310535, 39.803793]; // Координаты ул. Версальская, 4
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
