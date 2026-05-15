@@ -9,7 +9,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const mapCenter = [47.310535, 39.803793]; // Координаты ул. Версальская, 4
+  const mapCenter = [47.310535, 39.803793];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#050208] text-white font-sans selection:bg-purple-500/30 overflow-x-hidden">
       
-      {/* ФОН: Черно-фиолетовый градиент и киберпанк-сетка */}
+      {/* ФОН: Глубокий черно-фиолетовый с сеткой */}
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[#050208]"></div>
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 blur-[120px] rounded-full"></div>
@@ -63,11 +63,10 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ЛОГО И ОПИСАНИЕ */}
       <section className="pt-32 pb-16 flex flex-col items-center px-6 text-center">
         <img src="/logo.jpg" alt="Logo" className="h-32 md:h-40 w-auto rounded-3xl mb-10 shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-purple-500/20" />
         <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic">
-          VR-арена — место, где оживают любые праздники и мероприятия. День рождения, корпоратив, выпускной или просто встреча с друзьями — мы превращаем это в игру, где каждый становится героем.
+          VR-арена — место, где оживают любые праздники и мероприятия. День рождения, корпоратив, выпускной или просто встреча с друзьями.
         </p>
       </section>
 
@@ -104,16 +103,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* СЕКЦИЯ ТАРИФОВ (СТИЛЬ ПО СКРИНШОТУ) */}
-      <div id="pricing-section" className="max-w-7xl mx-auto px-6 pt-20 text-center">
-        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">Наши <span className="text-[#ff004c]">Тарифы</span></h2>
-        <div className="w-20 h-2 bg-[#ff004c] mt-4 rounded-full mx-auto mb-16"></div>
-      </div>
-
-      <section className="max-w-5xl mx-auto px-6 pb-20">
+      {/* ТАРИФЫ (СТИЛЬ ПО СКРИНШОТУ) */}
+      <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-20">
         <div className="space-y-10">
           
-          {/* ТАРИФ: ПРОГРАММА */}
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#00d2ff]/40 to-[#00d2ff]/10">
             <div className="relative bg-[#0a0a0f] rounded-[22px] p-8 border border-[#00d2ff]/20">
               <div className="flex items-center gap-5 mb-8 border-b border-white/5 pb-4">
@@ -122,17 +115,16 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">Программа — 2 ч 45 мин</h3>
               </div>
-
               <div className="space-y-6">
                 {programPricing.map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between group/row">
-                    <div className="flex items-center gap-4 min-w-[150px]">
-                      <span className={`text-xl font-black italic tracking-tighter ${item.color}`}>{item.label}</span>
+                  <div key={idx} className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className={`text-xl font-black italic ${item.color}`}>{item.label}</span>
                       <span className="text-white font-black text-xl italic">{item.time}</span>
                     </div>
                     <div className="flex-grow mx-6 border-b border-dotted border-white/20 h-2"></div>
                     <div className="flex items-center gap-2">
-                      <span className={`text-2xl font-black italic tracking-tighter ${item.color}`}>{item.price}</span>
+                      <span className={`text-2xl font-black italic ${item.color}`}>{item.price}</span>
                       <span className="text-white/30 text-[10px] font-bold uppercase mt-1">РУБ</span>
                     </div>
                   </div>
@@ -141,7 +133,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ТАРИФ: ИГРА КОМПАНИЕЙ */}
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#ff004c]/40 to-[#ff004c]/10">
             <div className="relative bg-[#0a0a0f] rounded-[22px] p-8 border border-[#ff004c]/20">
               <div className="flex items-center gap-5 mb-8 border-b border-white/5 pb-4">
@@ -150,21 +141,20 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">Игра компанией</h3>
               </div>
-
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-black italic tracking-tighter text-[#00d2ff]">ПН-ЧТ (ЗА ЧАС)</span>
+                  <span className="text-xl font-black italic text-[#00d2ff]">ПН-ЧТ (ЗА ЧАС)</span>
                   <div className="flex-grow mx-6 border-b border-dotted border-white/20 h-2"></div>
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl font-black italic tracking-tighter text-[#00d2ff]">6.000</span>
+                    <span className="text-2xl font-black italic text-[#00d2ff]">6.000</span>
                     <span className="text-white/30 text-[10px] font-bold uppercase mt-1">РУБ</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-black italic tracking-tighter text-[#ff004c]">ПТ-ВС (ЗА ЧАС)</span>
+                  <span className="text-xl font-black italic text-[#ff004c]">ПТ-ВС (ЗА ЧАС)</span>
                   <div className="flex-grow mx-6 border-b border-dotted border-white/20 h-2"></div>
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl font-black italic tracking-tighter text-[#ff004c]">8.000</span>
+                    <span className="text-2xl font-black italic text-[#ff004c]">8.000</span>
                     <span className="text-white/30 text-[10px] font-bold uppercase mt-1">РУБ</span>
                   </div>
                 </div>
@@ -175,21 +165,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ФУТЕР */}
       <footer id="footer-contact" className="mt-32 border-t border-purple-500/10 bg-black/60 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-6">WARSTATION <span className="text-purple-500">VR</span></h2>
-            <div className="space-y-6">
-               <div>
-                  <h4 className="text-purple-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2">Локация</h4>
-                  <p className="text-2xl font-bold italic">Ростов-на-Дону, ул. Версальская, 4</p>
-               </div>
-               <div>
-                  <h4 className="text-[#00d2ff] text-[10px] font-black uppercase tracking-[0.3em] mb-2">Связь</h4>
-                  <p className="text-3xl font-black italic text-purple-400">+7 (928) 625-50-20</p>
-               </div>
-            </div>
+            <p className="text-2xl font-bold italic mb-4">Ростов-на-Дону, ул. Версальская, 4</p>
+            <p className="text-3xl font-black italic text-purple-400">+7 (928) 625-50-20</p>
           </div>
           <div className="h-[350px] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
             <YMaps query={{ lang: 'ru_RU' }}>
