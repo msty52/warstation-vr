@@ -9,7 +9,8 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-const mapCenter = [47.310535, 39.803793]; 
+  // Координаты для ул. Версальская, 4
+  const mapCenter = [47.284564, 39.849202]; 
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -95,35 +96,52 @@ const mapCenter = [47.310535, 39.803793];
         </div>
       </section>
 
+      {/* ОБНОВЛЕННАЯ СЕКЦИЯ ТАРИФОВ */}
       <div id="pricing-section" className="max-w-7xl mx-auto px-6 pt-20 text-center">
         <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter">
-          <span className="text-[#ff004c]">Тарифы</span>
+          Наши <span className="text-[#ff004c]">Тарифы</span>
         </h2>
-        <div className="w-20 h-2 bg-[#ff004c] mt-4 rounded-full mx-auto mb-12 shadow-[0_0_15px_rgba(255,0,76,0.5)]"></div>
+        <div className="w-20 h-2 bg-[#ff004c] mt-4 rounded-full mx-auto mb-16 shadow-[0_0_15px_rgba(255,0,76,0.5)]"></div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="cyber-price-block program p-10">
-            <h3 className="text-lg font-black uppercase italic text-[#00d2ff] mb-10 tracking-widest">Программа — 2 ч 45 мин</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* КАРТОЧКА: ПРОГРАММА */}
+          <div className="cyber-price-block program flex flex-col items-start text-left">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-10 h-10 rounded-full border border-[#00d2ff]/30 flex items-center justify-center text-[#00d2ff]">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <h3 className="text-lg font-black uppercase italic text-white tracking-widest">Программа — 2 ч 45 мин</h3>
+            </div>
+            
             {programPricing.map((item, idx) => (
-              <div key={idx} className="price-row">
-                <span className={`font-bold italic uppercase text-xs ${item.isWeekend ? 'text-[#ff004c]' : 'text-white'}`}>{item.label}</span>
+              <div key={idx} className="price-row w-full">
+                <span className={`font-bold italic uppercase text-xs tracking-wider ${item.isWeekend ? 'text-[#ff004c]' : 'text-[#00d2ff]'}`}>{item.label}</span>
                 <div className="price-line"></div>
-                <span className={`price-tag ${item.isWeekend ? 'text-[#ff004c]' : 'text-[#00d2ff]'}`}>{item.price} <span className="text-[10px] text-white/30 uppercase">руб</span></span>
+                <span className={`price-tag ${item.isWeekend ? 'text-[#ff004c]' : 'text-[#00d2ff]'}`}>
+                  {item.price} <span className="text-[10px] text-white/30 uppercase ml-1">руб</span>
+                </span>
               </div>
             ))}
           </div>
 
-          <div className="cyber-price-block company p-10">
-            <h3 className="text-lg font-black uppercase italic text-[#ff004c] mb-10 tracking-widest">Игра компанией</h3>
-            <div className="price-row">
-              <span className="font-bold italic uppercase text-xs text-[#00d2ff]">ПН-ЧТ (ЗА ЧАС)</span>
-              <div className="price-line"></div>
-              <span className="price-tag text-[#00d2ff]">6.000 <span className="text-[10px] text-white/30 uppercase">руб</span></span>
+          {/* КАРТОЧКА: КОМПАНИЯ */}
+          <div className="cyber-price-block company flex flex-col items-start text-left">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-10 h-10 rounded-full border border-[#ff004c]/30 flex items-center justify-center text-[#ff004c]">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11.75 8a.75.75 0 100-1.5.75.75 0 000 1.5zM7 11.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.5 11.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.5 15a.75.75 0 10-1.5 0 .75.75 0 001.5 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M8.464 8.464a5 5 0 000 7.072m-2.828-9.9a9 9 0 000 12.728"></path></svg>
+              </div>
+              <h3 className="text-lg font-black uppercase italic text-white tracking-widest">Игра компанией</h3>
             </div>
-            <div className="price-row">
-              <span className="font-bold italic uppercase text-xs text-[#ff004c]">ПТ-ВС (ЗА ЧАС)</span>
+            
+            <div className="price-row w-full">
+              <span className="font-bold italic uppercase text-xs text-[#00d2ff] tracking-wider">ПН-ЧТ (ЗА ЧАС)</span>
               <div className="price-line"></div>
-              <span className="price-tag text-[#ff004c]">8.000 <span className="text-[10px] text-white/30 uppercase">руб</span></span>
+              <span className="price-tag text-[#00d2ff]">6.000 <span className="text-[10px] text-white/30 uppercase ml-1">руб</span></span>
+            </div>
+            <div className="price-row w-full">
+              <span className="font-bold italic uppercase text-xs text-[#ff004c] tracking-wider">ПТ-ВС (ЗА ЧАС)</span>
+              <div className="price-line"></div>
+              <span className="price-tag text-[#ff004c]">8.000 <span className="text-[10px] text-white/30 uppercase ml-1">руб</span></span>
             </div>
           </div>
         </div>
@@ -148,7 +166,7 @@ const mapCenter = [47.310535, 39.803793];
                 </div>
                 <div>
                   <h4 className="text-[#00d2ff] text-[10px] font-black uppercase tracking-[0.3em] mb-2">Связь</h4>
-                  <p className="text-2xl font-bold italic tracking-tight">+7 (9XX) XXX-XX-XX</p>
+                  <p className="text-2xl font-bold italic tracking-tight">+7 (928) 625-50-20</p>
                 </div>
               </div>
             </div>
