@@ -9,7 +9,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const mapCenter = [47.2435, 39.7850]; 
+const mapCenter = [47.284564, 39.849202]; 
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
