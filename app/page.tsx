@@ -33,8 +33,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#050208] text-white font-sans selection:bg-purple-500/30 overflow-x-hidden">
-      
-      {/* ФОН: Глубокий черно-фиолетовый с сеткой */}
+
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[#050208]"></div>
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 blur-[120px] rounded-full"></div>
@@ -56,6 +55,7 @@ export default function Home() {
             Warstation <span className="text-[#ff004c]">VR</span>
           </div>
           <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
+            <button onClick={() => scrollToSection('about-section')} className="hover:text-[#ff004c] transition-colors">О нас</button>
             <button onClick={() => scrollToSection('games-section')} className="hover:text-[#ff004c] transition-colors">Игры</button>
             <button onClick={() => scrollToSection('pricing-section')} className="hover:text-[#ff004c] transition-colors">Тарифы</button>
             <button onClick={() => scrollToSection('footer-contact')} className="hover:text-[#ff004c] transition-colors">Контакты</button>
@@ -63,14 +63,16 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-16 flex flex-col items-center px-6 text-center">
+      <section id="about-section" className="pt-32 pb-16 flex flex-col items-center px-6 text-center">
+        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 text-white">
+          О <span className="text-purple-500">НАС</span>
+        </h2>
         <img src="/logo.jpg" alt="Logo" className="h-32 md:h-40 w-auto rounded-3xl mb-10 shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-purple-500/20" />
         <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic">
-          VR-арена — место, где оживают любые праздники и мероприятия. День рождения, корпоратив, выпускной или просто встреча с друзьями.
+          VR-арена — место, где оживают любые праздники и мероприятия. День рождения, корпоратив, выпускной или просто встреча с друзьями — мы превращаем это в игру, где каждый становится героем.
         </p>
       </section>
 
-      {/* СЕКЦИЯ ИГР */}
       <div id="games-section" className="max-w-7xl mx-auto px-6 pt-10 text-center">
         <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
           Наши <span className="text-purple-500">Игры</span>
@@ -103,17 +105,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ТАРИФЫ (СТИЛЬ ПО СКРИНШОТУ) */}
-      <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-20">
+      <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-20 text-center">
+        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 text-white">
+          <span className="text-[#ff004c]">ТАРИФЫ</span>
+        </h2>
+        
         <div className="space-y-10">
-          
+
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#00d2ff]/40 to-[#00d2ff]/10">
             <div className="relative bg-[#0a0a0f] rounded-[22px] p-8 border border-[#00d2ff]/20">
-              <div className="flex items-center gap-5 mb-8 border-b border-white/5 pb-4">
+              <div className="flex items-center gap-5 mb-8 border-b border-white/5 pb-4 text-left">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#00d2ff] text-[#00d2ff] shadow-[0_0_15px_rgba(0,210,255,0.4)]">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-                <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">Программа — 2 ч 45 мин</h3>
+                <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white text-left">Программа — 2 ч 45 мин</h3>
               </div>
               <div className="space-y-6">
                 {programPricing.map((item, idx) => (
@@ -135,14 +140,14 @@ export default function Home() {
 
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#ff004c]/40 to-[#ff004c]/10">
             <div className="relative bg-[#0a0a0f] rounded-[22px] p-8 border border-[#ff004c]/20">
-              <div className="flex items-center gap-5 mb-8 border-b border-white/5 pb-4">
+              <div className="flex items-center gap-5 mb-8 border-b border-white/5 pb-4 text-left">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#ff004c] text-[#ff004c] shadow-[0_0_15px_rgba(255,0,76,0.4)]">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
                 </div>
                 <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white">Игра компанией</h3>
               </div>
               <div className="space-y-6">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between text-left">
                   <span className="text-xl font-black italic text-[#00d2ff]">ПН-ЧТ (ЗА ЧАС)</span>
                   <div className="flex-grow mx-6 border-b border-dotted border-white/20 h-2"></div>
                   <div className="flex items-center gap-2">
@@ -150,7 +155,7 @@ export default function Home() {
                     <span className="text-white/30 text-[10px] font-bold uppercase mt-1">РУБ</span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between text-left">
                   <span className="text-xl font-black italic text-[#ff004c]">ПТ-ВС (ЗА ЧАС)</span>
                   <div className="flex-grow mx-6 border-b border-dotted border-white/20 h-2"></div>
                   <div className="flex items-center gap-2">
@@ -161,24 +166,43 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
       <footer id="footer-contact" className="mt-32 border-t border-purple-500/10 bg-black/60 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-6">WARSTATION <span className="text-purple-500">VR</span></h2>
-            <p className="text-2xl font-bold italic mb-4">Ростов-на-Дону, ул. Версальская, 4</p>
-            <p className="text-3xl font-black italic text-purple-400">+7 (928) 625-50-20</p>
+        <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col items-center">
+          
+          <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 text-center text-white">
+            МЫ НАХОДИМСЯ <span className="text-purple-500">ЗДЕСЬ</span>
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+            <div>
+              <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-6">WARSTATION <span className="text-purple-500">VR</span></h2>
+              <div className="space-y-6">
+                 <div>
+                    <h4 className="text-purple-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2">Локация</h4>
+                    <p className="text-2xl font-bold italic">Ростов-на-Дону, ул. Версальская, 4</p>
+                 </div>
+                 <div>
+                    <h4 className="text-[#00d2ff] text-[10px] font-black uppercase tracking-[0.3em] mb-2">Связь</h4>
+                    <p className="text-3xl font-black italic text-purple-400">+7 (928) 625-50-20</p>
+                 </div>
+              </div>
+            </div>
+            
+            <div className="h-[400px] w-full rounded-[32px] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.2)]">
+              <YMaps query={{ lang: 'ru_RU' }}>
+                <Map defaultState={{ center: mapCenter, zoom: 16 }} width="100%" height="100%">
+                  <Placemark geometry={mapCenter} options={{ preset: 'islands#violetDotIconWithCaption', iconColor: '#8b5cf6' }} />
+                  <ZoomControl options={{ position: { right: 10, top: 10 } }} />
+                </Map>
+              </YMaps>
+            </div>
           </div>
-          <div className="h-[350px] rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
-            <YMaps query={{ lang: 'ru_RU' }}>
-              <Map defaultState={{ center: mapCenter, zoom: 16 }} width="100%" height="100%">
-                <Placemark geometry={mapCenter} options={{ preset: 'islands#violetDotIconWithCaption', iconColor: '#8b5cf6' }} />
-                <ZoomControl options={{ position: { right: 10, top: 10 } }} />
-              </Map>
-            </YMaps>
+          
+          <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 w-full">
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">© 2026 WARSTATION VR</p>
           </div>
         </div>
       </footer>
