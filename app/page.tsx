@@ -64,7 +64,6 @@ export default function Home() {
             <button onClick={() => scrollToSection('games-section')} className="hover:text-[#ff004c] transition-colors">Игры</button>
             <button onClick={() => scrollToSection('pricing-section')} className="hover:text-[#ff004c] transition-colors">Тарифы</button>
             <button onClick={() => scrollToSection('about-heading-section')} className="hover:text-[#ff004c] transition-colors">О нас</button>
-            <button onClick={() => scrollToSection('map-section')} className="hover:text-[#ff004c] transition-colors">Где мы</button>
           </div>
         </div>
       </nav>
