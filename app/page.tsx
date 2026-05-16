@@ -86,9 +86,8 @@ export default function Home() {
 
       <div id="games-section" className="max-w-7xl mx-auto px-6 pt-10 text-center">
         <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
-          Наши <span className="text-purple-500">Игры</span>
+          Наши Игры
         </h2>
-        <div className="w-20 h-2 bg-purple-600 mt-4 rounded-full mx-auto shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
       </div>
 
       <section className="max-w-7xl mx-auto px-6 py-12">
@@ -161,9 +160,8 @@ export default function Home() {
 
       <section id="about-heading-section" className="py-12 flex flex-col items-center px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white">
-          О <span className="text-purple-500">НАC</span>
+          О НАC
         </h2>
-        <div className="w-16 h-1 bg-purple-600 mt-4 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
       </section>
 
       <section id="map-section" className="pt-6 pb-20">
