@@ -57,7 +57,7 @@ export default function Home() {
             onClick={() => scrollToSection('top')} 
             className="text-sm font-black uppercase tracking-[0.3em] hover:opacity-70 transition-opacity"
           >
-            Warstation <span className="text-[#ff004c]">VR</span>
+            Warstation VR
           </button>
           
           <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
@@ -79,8 +79,8 @@ export default function Home() {
         </div>
 
         <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic space-y-4">
-          <span>VR-арена — место, где оживают любые праздники и мероприятия. </span>
-          <span className="block mt-2">День рождения, корпоратив, выпускной или просто встреча с друзьями — мы превращаем это в игру, где каждый становится героем.</span>
+          <span>VR-арена - место, где оживают любые праздники и мероприятия. </span>
+          <span className="block mt-2">День рождения, корпоратив, выпускной или просто встреча с друзьями - мы превращаем это в игру, где каждый становится героем.</span>
         </p>
       </section>
 
@@ -119,7 +119,7 @@ export default function Home() {
         <div className="space-y-10">
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#00d2ff]/40 to-[#00d2ff]/10">
             <div className="relative bg-[#0a0a0f] rounded-[22px] p-8 border border-[#00d2ff]/20">
-              <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Программа — 2 ч 45 мин</h3>
+              <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white mb-8 border-b border-white/5 pb-4">Программа - 2 ч 45 мин</h3>
               <div className="space-y-6">
                 {programPricing.map((item, idx) => (
                   <div key={idx} className="flex items-center justify-between">
@@ -170,15 +170,17 @@ export default function Home() {
             <div className="hidden lg:block"></div>
             <div className="text-center">
               <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white">
-                МЫ НАХОДИМСЯ <span className="text-purple-500">ЗДЕСЬ</span>
+                МЫ НАХОДИМСЯ ЗДЕСЬ
               </h2>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
             <div className="text-left order-2 lg:order-1">
-              <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-6">WARSTATION <span className="text-purple-500">VR</span></h2>
-              <p className="text-2xl font-bold italic mb-2 text-white">Ростов-на-Дону, ул. Версальская, 4</p>
+              <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-6">WARSTATION VR
+              </h2>
+              
+              <p className="text-2xl font-bold italic mb-2 text-white">Г.Ростов-на-Дону, ул. Версальская 4</p>
               <p className="text-3xl font-black italic text-purple-400">+7 (928) 625-50-20</p>
             </div>
             
