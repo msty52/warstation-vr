@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#050208] text-white font-sans selection:bg-purple-500/30 overflow-x-hidden">
- 
+
       <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[#050208]"></div>
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 blur-[120px] rounded-full"></div>
@@ -53,7 +53,6 @@ export default function Home() {
         isScrolled ? "bg-[#050208]/90 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-
           <button 
             onClick={() => scrollToSection('top')} 
             className="text-sm font-black uppercase tracking-[0.3em] hover:opacity-70 transition-opacity"
@@ -64,17 +63,30 @@ export default function Home() {
           <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
             <button onClick={() => scrollToSection('games-section')} className="hover:text-[#ff004c] transition-colors">Игры</button>
             <button onClick={() => scrollToSection('pricing-section')} className="hover:text-[#ff004c] transition-colors">Тарифы</button>
-            <button onClick={() => scrollToSection('about-message')} className="hover:text-[#ff004c] transition-colors">О нас</button>
+            <button onClick={() => scrollToSection('about-section')} className="hover:text-[#ff004c] transition-colors">О нас</button>
+            <button onClick={() => scrollToSection('map-section')} className="hover:text-[#ff004c] transition-colors">Где мы</button>
           </div>
         </div>
       </nav>
 
-      <section className="pt-40 pb-10 flex flex-col items-center px-6 text-center">
-        <img 
-          src="/logo.jpg" 
-          alt="Logo" 
-          className="h-32 md:h-40 w-auto rounded-3xl shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-purple-500/20" 
-        />
+      <section id="about-section" className="pt-40 pb-16 flex flex-col items-center px-6 text-center">
+        <div className="relative group mb-10">
+          <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-[#ff004c] rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <img 
+            src="/logo.jpg" 
+            alt="Logo" 
+            className="relative h-32 md:h-40 w-auto rounded-3xl shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-purple-500/20" 
+          />
+        </div>
+        
+        <h2 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter mb-6 text-white">
+          О <span className="text-purple-500">НАC</span>
+        </h2>
+        
+        <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic space-y-4">
+          <span>VR-арена — место, где оживают любые праздники и мероприятия. </span>
+          <span className="block mt-2">День рождения, корпоратив, выпускной или просто встреча с друзьями — мы превращаем это в игру, где каждый становится героем.</span>
+        </p>
       </section>
 
       <div id="games-section" className="max-w-7xl mx-auto px-6 pt-10 text-center">
@@ -152,16 +164,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about-message" className="py-20 flex flex-col items-center px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-8 text-white">
-          О <span className="text-purple-500">НАС</span>
-        </h2>
-        <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic">
-          VR-арена — место, где оживают любые праздники и мероприятия. День рождения, корпоратив, выпускной или просто встреча с друзьями — мы превращаем это в игру, где каждый становится героем.
-        </p>
-      </section>
-
-      <section id="map-section" className="pb-20">
+      <section id="map-section" className="pt-10 pb-20">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 mb-8">
             <div className="hidden lg:block"></div>
