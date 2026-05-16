@@ -9,7 +9,7 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const mapCenter = [47.310535, 39.803793]; // Координаты ул. Версальская, 4
+  const mapCenter = [47.310535, 39.803793]; 
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -65,7 +65,6 @@ export default function Home() {
             <button onClick={() => scrollToSection('games-section')} className="hover:text-[#ff004c] transition-colors">Игры</button>
             <button onClick={() => scrollToSection('pricing-section')} className="hover:text-[#ff004c] transition-colors">Тарифы</button>
             <button onClick={() => scrollToSection('about-message')} className="hover:text-[#ff004c] transition-colors">О нас</button>
-            <button onClick={() => scrollToSection('map-section')} className="hover:text-[#ff004c] transition-colors">Где мы</button>
           </div>
         </div>
       </nav>
