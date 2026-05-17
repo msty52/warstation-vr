@@ -115,6 +115,11 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-10 text-center">
+        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 text-white">
+          <span className="text-[#ff004c]">ТАРИФЫ</span>
+        </h2>
+      
       <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-10">
         <div className="space-y-10">
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#00d2ff]/40 to-[#00d2ff]/10">
