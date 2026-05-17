@@ -79,8 +79,8 @@ export default function Home() {
         </div>
 
         <p className="max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80 italic space-y-4">
-          <span>VR-арена - место, где оживают любые праздники и мероприятия. </span>
-          <span className="block mt-2">День рождения, корпоратив, выпускной или просто встреча с друзьями - мы превращаем это в игру, где каждый становится героем.</span>
+          <span>VR-арена - Это место, где оживают любые праздники и мероприятия. </span>
+          <span className="block mt-2">День рождения, корпоратив, выпускной или просто встреча with друзьями - мы превращаем это в игру, где каждый становится героем.</span>
         </p>
       </section>
 
@@ -114,13 +114,12 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-10 text-center">
-        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 text-white">
-          <span className="text-[#ff004c]">ТАРИФЫ</span>
-        </h2>
       
       <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-10">
+        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white text-center mb-10">
+          Тарифы
+        </h2>
+
         <div className="space-y-10">
           <div className="relative p-[2px] rounded-[24px] bg-gradient-to-r from-[#00d2ff]/40 to-[#00d2ff]/10">
             <div className="relative bg-[#0a0a0f] rounded-[22px] p-8 border border-[#00d2ff]/20">
