@@ -42,7 +42,7 @@ export default function GameDetail() {
             
             <div className="flex items-center gap-2">
               <span className="text-xl font-black uppercase tracking-tighter italic text-white">
-                Warstation <span className="text-[#ff004c]">VR</span>
+                Warstation VR
               </span>
             </div>
           </div>
