@@ -26,6 +26,10 @@ export default function Home() {
     }
   };
 
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
   const formatVideoUrl = (url: string) => {
     if (!url) return "";
     if (url.includes("vk.com/video")) {
@@ -33,8 +37,6 @@ export default function Home() {
       const match = url.match(/video(-?\d+)_(\d+)/);
       if (match) return `https://vk.com/video_ext.php?oid=${match[1]}&id=${match[2]}&autoplay=1`;
     }
-    let videoId = "";
-
     return url; 
   };
 
@@ -48,6 +50,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
+      {/* Задний фон с неоновыми градиентами */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[120px] mix-blend-screen" />
@@ -57,6 +60,7 @@ export default function Home() {
 
       <div className="relative z-10">
 
+        {/* Навигационная панель */}
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-6"
         }`}>
@@ -68,15 +72,17 @@ export default function Home() {
               Warstation VR
             </button>
             
-            <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
+            <div className="flex gap-4 md:gap-8 text-[11px] font-bold uppercase tracking-[0.2em] items-center">
               <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden md:block">Локация и геймплей</button>
               <button onClick={() => scrollToSection('games-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Игры</button>
               <button onClick={() => scrollToSection('pricing-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Тарифы</button>
               <button onClick={() => scrollToSection('about-heading-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">О нас</button>
+
             </div>
           </div>
         </nav>
 
+        {/* Hero Section */}
         <section className="pt-44 pb-12 flex flex-col items-center px-6 text-center">
           <div className="relative group mb-12">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
@@ -94,6 +100,7 @@ export default function Home() {
           </p>
         </section>
 
+        {/* Галерея */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Локация и геймплей
@@ -132,6 +139,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Игры */}
         <section id="games-section" className="max-w-7xl mx-auto px-6 py-12 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white text-center mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Наши Игры
@@ -160,13 +168,13 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Тарифы */}
         <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-20 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white text-center mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             ТАРИФЫ
           </h2>
 
           <div className="space-y-8">
-
             <div className="relative bg-transparent backdrop-blur-xl rounded-[32px] p-8 md:p-12 border border-[#00d2ff]/30 shadow-[0_0_40px_rgba(0,210,255,0.1)]">
               <h3 className="text-2xl font-black uppercase italic text-white mb-10 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-[#00d2ff]/10 flex items-center justify-center">
@@ -249,10 +257,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
+
+        {/* О нас и контакты */}
         <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-14">
             О НАC
@@ -318,12 +327,14 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Подвал */}
         <footer className="py-6 border-t border-white/5 text-center relative z-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION VR</p>
         </footer>
 
       </div>
 
+      {/* Модальное окно для воспроизведения видео */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
