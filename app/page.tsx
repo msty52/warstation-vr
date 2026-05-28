@@ -40,12 +40,12 @@ export default function Home() {
     return url; 
   };
 
-  const arenaVideos = [
-    { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
-    { id: 2, title: "Презентация Арены", src: "/IMG_5856.MOV" },
-    { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.MP4" },
-    { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
-  ];
+const arenaVideos = [
+  { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
+  { id: 2, title: "Презентация Арены", src: "/IMG_5856.MOV" },
+  { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.MP4" },
+  { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
+];
 
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
