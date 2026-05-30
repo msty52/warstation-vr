@@ -296,7 +296,9 @@ export default function Home() {
                     rel="noopener noreferrer" 
                     className="px-6 py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2"
                   >
-                    <svg className="w-5 h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    <svg className="w-5 h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
+                    </svg>
                     <span className="text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
                   </a>
                 </div>
