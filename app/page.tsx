@@ -26,10 +26,6 @@ export default function Home() {
     }
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
   const formatVideoUrl = (url: string) => {
     if (!url) return "";
     if (url.includes("vk.com/video")) {
@@ -40,17 +36,16 @@ export default function Home() {
     return url; 
   };
 
-const arenaVideos = [
-  { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
-  { id: 2, title: "Презентация Арены", src: "/IMG_5856.MOV" },
-  { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.MP4" },
-  { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
-];
+  const arenaVideos = [
+    { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
+    { id: 2, title: "Презентация Арены", src: "/IMG_5856.MOV" },
+    { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.MP4" },
+    { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
+  ];
 
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
-      {/* Задний фон с неоновыми градиентами */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[120px] mix-blend-screen" />
@@ -60,7 +55,6 @@ const arenaVideos = [
 
       <div className="relative z-10">
 
-        {/* Навигационная панель */}
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-6"
         }`}>
@@ -72,17 +66,15 @@ const arenaVideos = [
               Warstation VR
             </button>
             
-            <div className="flex gap-4 md:gap-8 text-[11px] font-bold uppercase tracking-[0.2em] items-center">
+            <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
               <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden md:block">Локация и геймплей</button>
               <button onClick={() => scrollToSection('games-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Игры</button>
               <button onClick={() => scrollToSection('pricing-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Тарифы</button>
               <button onClick={() => scrollToSection('about-heading-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">О нас</button>
-
             </div>
           </div>
         </nav>
 
-        {/* Hero Section */}
         <section className="pt-44 pb-12 flex flex-col items-center px-6 text-center">
           <div className="relative group mb-12">
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
@@ -100,7 +92,6 @@ const arenaVideos = [
           </p>
         </section>
 
-        {/* Галерея */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Локация и геймплей
@@ -139,7 +130,6 @@ const arenaVideos = [
           </div>
         </section>
 
-        {/* Игры */}
         <section id="games-section" className="max-w-7xl mx-auto px-6 py-12 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white text-center mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Наши Игры
@@ -168,7 +158,6 @@ const arenaVideos = [
           </div>
         </section>
 
-        {/* Тарифы */}
         <section id="pricing-section" className="max-w-5xl mx-auto px-6 py-20 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white text-center mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             ТАРИФЫ
@@ -260,8 +249,6 @@ const arenaVideos = [
           </div>
         </section>
 
-
-        {/* О нас и контакты */}
         <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-14">
             О НАC
@@ -282,7 +269,7 @@ const arenaVideos = [
                   </a>
                 </p>
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                   <a 
                     href="https://t.me/warstationrnd" 
                     target="_blank" 
@@ -301,6 +288,16 @@ const arenaVideos = [
                   >
                     <svg className="w-5 h-5 text-[#ff004c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     <span className="text-xs font-bold uppercase tracking-widest text-white/70">INSTAGRAM</span>
+                  </a>
+
+                  <a 
+                    href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="px-6 py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2"
+                  >
+                    <svg className="w-5 h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    <span className="text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
                   </a>
                 </div>
               </div>
@@ -327,14 +324,12 @@ const arenaVideos = [
           </div>
         </section>
 
-        {/* Подвал */}
         <footer className="py-6 border-t border-white/5 text-center relative z-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION VR</p>
         </footer>
 
       </div>
 
-      {/* Модальное окно для воспроизведения видео */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
