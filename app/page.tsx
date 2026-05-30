@@ -204,7 +204,7 @@ export default function Home() {
                   <h3 className="text-2xl font-black uppercase italic text-[#eab308]">ТАРИФ СТАНДАРТ +</h3>
                   <div className="flex gap-4 items-center mt-1">
                     <span className="text-white font-bold italic">3 Ч 45 МИН</span>
-                    <span className="text-white/40 text-xs font-bold uppercase tracking-widest">| В ЛЮБОЙ ДЕНЬ НЕДЕЛИ</span>
+                    <span className="text-white/40 text-xs font-bold uppercase tracking-widest"> В ЛЮБОЙ ДЕНЬ НЕДЕЛИ</span>
                   </div>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-2xl font-black italic text-[#00d2ff]">6.000</span>
-                    <span className="text-[10px] font-bold opacity-40 uppercase">РУБ / ЧАС</span>
+                    <span className="text-[10px] font-bold opacity-40 uppercase">РУБ В ЧАС</span>
                   </div>
                 </div>
 
@@ -241,7 +241,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-2xl font-black italic text-[#ff004c]">8.000</span>
-                    <span className="text-[10px] font-bold opacity-40 uppercase">РУБ / ЧАС</span>
+                    <span className="text-[10px] font-bold opacity-40 uppercase">РУБ В ЧАС</span>
                   </div>
                 </div>
               </div>
