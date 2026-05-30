@@ -174,10 +174,10 @@ export default function Home() {
               
               <div className="space-y-6">
                 {[
-                  { day: "ПН-ЧТ", time: "10-13", type: "ТАРИФ РАННИЙ БУДНИЙ", price: "15.000", color: "#00d2ff" },
-                  { day: "ПН-ЧТ", time: "13-22", type: "ТАРИФ СТАНДАРТ БУДНИЙ", price: "20.000", color: "#00d2ff" },
-                  { day: "ПТ-ВС", time: "10-13", type: "ТАРИФ РАННИЙ ВЫХОДНЫЕ", price: "20.000", color: "#ff004c" },
-                  { day: "ПТ-ВС", time: "13-22", type: "ТАРИФ СТАНДАРТ ВЫХОДНЫЕ", price: "25.000", color: "#ff004c" },
+                  { day: "ПН-ЧТ", time: "10-13", type:"ТАРИФ РАННИЙ БУДНИЙ", price: "15.000", color: "#00d2ff" },
+                  { day: "ПН-ЧТ", time: "13-22", type:"ТАРИФ СТАНДАРТ БУДНИЙ", price: "20.000", color: "#00d2ff" },
+                  { day: "ПТ-ВС", time: "10-13", type:"ТАРИФ РАННИЙ ВЫХОДНЫЕ", price: "20.000", color: "#ff004c" },
+                  { day: "ПТ-ВС", time: "13-22", type:"ТАРИФ СТАНДАРТ ВЫХОДНЫЕ", price: "25.000", color: "#ff004c" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-4 last:border-0 group">
                     <div className="flex items-center gap-4">
