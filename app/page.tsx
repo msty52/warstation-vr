@@ -69,8 +69,8 @@ export default function Home() {
 
   const arenaVideos = [
     { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
-    { id: 2, title: "Презентация Арены", src: "/videos/IMG_5856.mp4" },
-    { id: 3, title: "Динамичные Сражения", src: "/videos/IMG_6206.mp4" },
+    { id: 2, title: "Презентация Арены", src: "/IMG_5856.mp4" },
+    { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.mp4" },
     { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
   ];
 
