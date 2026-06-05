@@ -37,10 +37,10 @@ export default function Home() {
   };
 
   const arenaVideos = [
-    { id: 1, title: "Игровой процесс VR", src: "https://vrkocy2a64g2eeg4.public.blob.vercel-storage.com/IMG_5712.MP4" },
-    { id: 2, title: "Презентация Арены", src: "https://vrkocy2a64g2eeg4.public.blob.vercel-storage.com/IMG_5856.MOV" },
-    { id: 3, title: "Динамичные Сражения", src: "https://vrkocy2a64g2eeg4.public.blob.vercel-storage.com/IMG_6206.MP4" },
-    { id: 4, title: "Обзор Локации", src: "https://vrkocy2a64g2eeg4.public.blob.vercel-storage.com/IMG_6207.MP4" },
+    { id: 1, title: "Игровой процесс VR", src: "/api/videos/IMG_5712.mp4" },
+    { id: 2, title: "Презентация Арены", src: "/api/videos/IMG_5856.mp4" },
+    { id: 3, title: "Динамичные Сражения", src: "/api/videos/IMG_6206.mp4" },
+    { id: 4, title: "Обзор Локации", src: "/api/videos/IMG_6207.mp4" },
   ];
 
   return (
