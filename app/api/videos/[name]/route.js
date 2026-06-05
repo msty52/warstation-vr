@@ -4,26 +4,12 @@ export async function GET(request, { params }) {
   const { name } = params;
   const blobBaseUrl = 'https://vrkocy2a64g2eeg4.public.blob.vercel-storage.com';
 
-  let response = await fetch(`${blobBaseUrl}/${name}`);
+  let realFileName = name;
 
-  if (!response.ok && name.endsWith('.mp4')) {
-    const uppercaseName = name.replace('.mp4', '.MP4');
-    response = await fetch(`${blobBaseUrl}/${uppercaseName}`);
-  }
+  if (name === 'IMG_5856.mp4') realFileName = 'IMG_5856.mp4';
+  if (name === 'IMG_5712.mp4') realFileName = 'IMG_5712.MP4'; 
+  if (name === 'IMG_6206.mp4') realFileName = 'IMG_6206.mp4';
+  if (name === 'IMG_6207.mp4') realFileName = 'IMG_6207.MP4'; 
 
-  if (!response.ok && name.endsWith('.mp4')) {
-    const movName = name.replace('.mp4', '.MOV');
-    response = await fetch(`${blobBaseUrl}/${movName}`);
-  }
-
-  if (!response.ok) {
-    return new NextResponse('Видео не найдено в Vercel Blob', { status: 404 });
-  }
-
-  return new NextResponse(response.body, {
-    headers: {
-      'Content-Type': 'video/mp4',
-      'Cache-Control': 'public, max-age=31536000, immutable',
-    },
-  });
+  return NextResponse.redirect(`${blobBaseUrl}/${realFileName}`, 307);
 }
