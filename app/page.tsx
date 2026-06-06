@@ -28,13 +28,15 @@ export default function Home() {
 
   const formatVideoUrl = (url: string) => {
     if (!url) return "";
-    
-    // Обработка VK
+
     if (url.includes("vk.com/video") || url.includes("vkvideo.ru")) {
       if (url.includes("video_ext.php")) return url;
       const match = url.match(/(?:video|clip)(-?\d+)_(\d+)/);
       if (match) return `https://vk.com/video_ext.php?oid=${match[1]}&id=${match[2]}&autoplay=1`;
     }
+
+    return url; 
+  };
 
   const arenaVideos = [
     { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
@@ -42,7 +44,28 @@ export default function Home() {
     { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.mp4" },
     { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
   ];
-    {
+
+  const reviewsData = [
+    { 
+      id: 1, 
+      name: "Алексей М.", 
+      text: "Отмечали день рождения сына. Дети в полном восторге! VR-шлемы удобные, игры крутые, а графика просто космос. Отдельное спасибо администраторам за помощь.", 
+      rating: 5 
+    },
+    { 
+      id: 2, 
+      name: "Елена В.", 
+      text: "Отличное место для корпоратива. Побегали всей командой на арене, эмоций море! Очень динамично и необычно. Обязательно вернемся еще раз.", 
+      rating: 5 
+    },
+    { 
+      id: 3, 
+      name: "Дмитрий С.", 
+      text: "Крутая локация со свободным перемещением. Никаких проводов, ничего не лагает. Эффект полного погружения! Рекомендую брать тариф Стандарт+.", 
+      rating: 5 
+    },
+  ];
+
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
@@ -70,6 +93,7 @@ export default function Home() {
               <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden md:block">Локация и геймплей</button>
               <button onClick={() => scrollToSection('games-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Игры</button>
               <button onClick={() => scrollToSection('pricing-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Тарифы</button>
+              <button onClick={() => scrollToSection('reviews-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden lg:block">Отзывы</button>
               <button onClick={() => scrollToSection('about-heading-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">О нас</button>
             </div>
           </div>
@@ -97,50 +121,38 @@ export default function Home() {
             Локация и геймплей
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {arenaVideos.map((video) => {
-              const isYouTube = video.src.includes("youtube.com") || video.src.includes("youtu.be");
+            {arenaVideos.map((video) => (
+              <div key={video.id} className="bg-[#0b0518]/40 border border-white/5 rounded-2xl overflow-hidden flex flex-col group relative backdrop-blur-sm">
+                <div className="relative aspect-[9/16] sm:aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
+                  
+                  <video 
+                    src={video.src} 
+                    muted 
+                    loop 
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                    onMouseEnter={(e) => e.currentTarget.play()}
+                    onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                  />
 
-              return (
-                <div key={video.id} className="bg-[#0b0518]/40 border border-white/5 rounded-2xl overflow-hidden flex flex-col group relative backdrop-blur-sm">
-                  <div className="relative aspect-[9/16] sm:aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
-                    
-                    {isYouTube ? (
-                      <img 
-                        src={getYouTubeThumbnail(video.src)} 
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
-                        alt={video.title}
-                      />
-                    ) : (
-                      <video 
-                        src={video.src} 
-                        muted 
-                        loop 
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                        onMouseEnter={(e) => e.currentTarget.play()}
-                        onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
-                      />
-                    )}
+                  <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <button 
+                      onClick={() => setActiveVideo(video.src)}
+                      className="w-14 h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_#b026ff] hover:bg-purple-500 hover:scale-105 transition-all transform cursor-pointer"
+                    >
+                      <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
+                    </button>
+                  </div>
 
-                    <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                      <button 
-                        onClick={() => setActiveVideo(video.src)}
-                        className="w-14 h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_#b026ff] hover:bg-purple-500 hover:scale-105 transition-all transform cursor-pointer"
-                      >
-                        <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
-                      </button>
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-[#04000e] via-[#04000e]/70 to-transparent pointer-events-none z-20">
-                      <h3 className="text-[13px] md:text-sm font-black uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] text-center">
-                        {video.title}
-                      </h3>
-                    </div>
+                  <div className="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-[#04000e] via-[#04000e]/70 to-transparent pointer-events-none z-20">
+                    <h3 className="text-[13px] md:text-sm font-black uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] text-center">
+                      {video.title}
+                    </h3>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -263,6 +275,47 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="reviews-section" className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
+          <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            ОТЗЫВЫ
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {reviewsData.map((review) => (
+              <div 
+                key={review.id} 
+                className="relative group p-8 bg-[#0b0518]/60 backdrop-blur-xl rounded-[32px] border border-white/5 hover:border-purple-500/40 transition-all duration-500 overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_rgba(176,38,255,0.15)] hover:-translate-y-1"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 via-[#00d2ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center gap-1 mb-6">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-[#eab308] drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  
+                  <p className="text-white/70 italic leading-relaxed mb-8 flex-grow font-light">
+                    "{review.text}"
+                  </p>
+                  
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#b026ff] to-[#00d2ff] flex items-center justify-center text-white font-black text-lg shadow-[0_0_15px_rgba(176,38,255,0.4)]">
+                      {review.name.charAt(0)}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-bold uppercase tracking-wider text-white">{review.name}</span>
+                      <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest mt-1">Игрок арены</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
           <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-14">
             О НАC
@@ -351,7 +404,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
           
           <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(176,38,255,0.25)] bg-black/90">
-            {activeVideo.includes('youtube') || activeVideo.includes('youtu.be') || activeVideo.includes('vk.com') || activeVideo.includes('vkvideo.ru') || activeVideo.includes('video_ext.php') ? (
+            {activeVideo.includes('vk.com') || activeVideo.includes('vkvideo.ru') || activeVideo.includes('video_ext.php') ? (
               <iframe 
                 src={formatVideoUrl(activeVideo)} 
                 className="w-full h-full border-0" 
