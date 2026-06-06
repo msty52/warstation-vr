@@ -42,7 +42,7 @@ export default function Home() {
     { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.mp4" },
     { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
   ];
-
+    {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
