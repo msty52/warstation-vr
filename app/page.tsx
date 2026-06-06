@@ -36,37 +36,6 @@ export default function Home() {
       if (match) return `https://vk.com/video_ext.php?oid=${match[1]}&id=${match[2]}&autoplay=1`;
     }
 
-    // Обработка YouTube (включая Shorts)
-    if (url.includes("youtube.com") || url.includes("youtu.be")) {
-      let videoId = "";
-      if (url.includes("youtu.be")) {
-        videoId = url.split("/").pop()?.split("?")[0] || "";
-      } else if (url.includes("/shorts/")) {
-        videoId = url.split("/shorts/")[1]?.split("?")[0] || "";
-      } else {
-        videoId = new URL(url).searchParams.get("v") || "";
-      }
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`;
-    }
-
-    return url; 
-  };
-
-  const getYouTubeThumbnail = (url: string) => {
-    if (url.includes("youtube.com") || url.includes("youtu.be")) {
-      let videoId = "";
-      if (url.includes("youtu.be")) {
-        videoId = url.split("/").pop()?.split("?")[0] || "";
-      } else if (url.includes("/shorts/")) {
-        videoId = url.split("/shorts/")[1]?.split("?")[0] || "";
-      } else {
-        videoId = new URL(url).searchParams.get("v") || "";
-      }
-      return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-    }
-    return "/noise.png"; 
-  };
-
   const arenaVideos = [
     { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
     { id: 2, title: "Презентация Арены", src: "/IMG_5856.mp4" },
