@@ -10,10 +10,7 @@
   },
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.2.5",
-<<<<<<< HEAD
     "@supabase/supabase-js": "^2.107.0",
-=======
->>>>>>> 0853982018fd8da020aef8d4f543f0bfdc9d0e67
     "@tailwindcss/postcss": "^4.3.0",
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "latest",
