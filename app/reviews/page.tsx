@@ -77,7 +77,7 @@ export default function ReviewsPage() {
   };
 
   return (
-    <main className="min-h-screen text-white bg-[#04000e] p-6 md:p-12">
+    <main className="min-h-screen text-white bg-gradient-to-br from-[#0a001a] via-[#10002b] to-[#04000e] p-6 md:p-12 animate-gradient-xy">
       <div className="max-w-3xl mx-auto">
         <button onClick={() => router.push('/')} className="text-purple-400 mb-8 font-bold uppercase text-xs hover:text-white">
           ← Назад на главную
