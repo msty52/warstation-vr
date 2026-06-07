@@ -42,8 +42,8 @@ export default function ReviewsPage() {
       }
     }
 
-    fetchReviews();
-  } [], []);
+fetchReviews();
+  }, []); 
 
   const averageRating = reviews.length > 0 
     ? (reviews.reduce((acc, rev) => acc + rev.rating, 0) / reviews.length).toFixed(1) 
