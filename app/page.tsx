@@ -39,10 +39,10 @@ export default function Home() {
   };
 
   const arenaVideos = [
-    { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4" },
-    { id: 2, title: "Презентация Арены", src: "/IMG_5856.mp4" },
-    { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.mp4" },
-    { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4" },
+    { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4", poster: "" },
+    { id: 2, title: "Презентация Арены", src: "/IMG_5856.mp4", poster: "" },
+    { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.mp4", poster: "" },
+    { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4", poster: "" },
   ];
 
   return (
@@ -67,7 +67,7 @@ export default function Home() {
             >
               Warstation VR
             </button>
-
+            
             <div className="flex gap-2.5 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
               <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">
                 <span className="md:hidden">Локация</span>
@@ -75,7 +75,7 @@ export default function Home() {
               </button>
               <button onClick={() => scrollToSection('games-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Игры</button>
               <button onClick={() => scrollToSection('pricing-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Тарифы</button>
-              <button onClick={() => router.push('/reviews')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden lg:block">Отзывы</button>
+              <button onClick={() => router.push('/reviews')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Отзывы</button>
               <button onClick={() => scrollToSection('about-heading-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">О нас</button>
             </div>
           </div>
@@ -104,7 +104,6 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {arenaVideos.map((video) => (
-      
               <div 
                 key={video.id} 
                 onClick={() => setActiveVideo(video.src)}
@@ -113,7 +112,8 @@ export default function Home() {
                 <div className="relative aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
                   
                   <video 
-                    src={video.src} 
+                    src={`${video.src}#t=0.001`}
+                    poster={video.poster ? video.poster : undefined}
                     muted 
                     loop 
                     playsInline
