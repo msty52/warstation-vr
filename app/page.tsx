@@ -67,9 +67,12 @@ export default function Home() {
             >
               Warstation VR
             </button>
-            
-            <div className="flex gap-3 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
-              <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden md:block">Локация и геймплей</button>
+
+            <div className="flex gap-2.5 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
+              <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">
+                <span className="md:hidden">Локация</span>
+                <span className="hidden md:inline">Локация и геймплей</span>
+              </button>
               <button onClick={() => scrollToSection('games-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Игры</button>
               <button onClick={() => scrollToSection('pricing-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Тарифы</button>
               <button onClick={() => router.push('/reviews')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer hidden lg:block">Отзывы</button>
@@ -101,7 +104,12 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {arenaVideos.map((video) => (
-              <div key={video.id} className="bg-[#0b0518]/40 border border-white/5 rounded-2xl overflow-hidden flex flex-col group relative backdrop-blur-sm">
+      
+              <div 
+                key={video.id} 
+                onClick={() => setActiveVideo(video.src)}
+                className="bg-[#0b0518]/40 border border-white/5 rounded-2xl overflow-hidden flex flex-col group relative backdrop-blur-sm cursor-pointer"
+              >
                 <div className="relative aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
                   
                   <video 
@@ -111,17 +119,12 @@ export default function Home() {
                     playsInline
                     preload="metadata"
                     className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                    onMouseEnter={(e) => e.currentTarget.play()}
-                    onMouseLeave={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
                   />
 
-                  <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <button 
-                      onClick={() => setActiveVideo(video.src)}
-                      className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_#b026ff] hover:bg-purple-500 hover:scale-105 transition-all transform cursor-pointer"
-                    >
+                  <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/30 md:bg-black/40 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_#b026ff] group-hover:scale-105 transition-transform">
                       <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent sm:border-t-[8px] sm:border-l-[14px] sm:border-b-[8px] ml-1"></div>
-                    </button>
+                    </div>
                   </div>
 
                   <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#04000e] via-[#04000e]/70 to-transparent pointer-events-none z-20">
