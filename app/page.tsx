@@ -68,7 +68,8 @@ export default function Home() {
               Warstation VR
             </button>
             
-            <div className="flex gap-2.5 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
+            {/* Добавлен flex-wrap для предотвращения наложения текста на маленьких экранах */}
+            <div className="flex flex-wrap justify-end gap-x-2.5 gap-y-1 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
               <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">
                 <span className="md:hidden">Локация</span>
                 <span className="hidden md:inline">Локация и геймплей</span>
@@ -111,6 +112,7 @@ export default function Home() {
               >
                 <div className="relative aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
                   
+                  {/* Добавлена принудительная инициализация для iOS */}
                   <video 
                     src={`${video.src}#t=0.001`}
                     poster={video.poster ? video.poster : undefined}
@@ -118,6 +120,7 @@ export default function Home() {
                     loop 
                     playsInline
                     preload="metadata"
+                    onLoadedMetadata={(e) => { e.currentTarget.currentTime = 0; }}
                     className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                   />
 
