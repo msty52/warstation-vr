@@ -68,7 +68,6 @@ export default function Home() {
               Warstation VR
             </button>
             
-            {/* Добавлен flex-wrap для предотвращения наложения текста на маленьких экранах */}
             <div className="flex flex-wrap justify-end gap-x-2.5 gap-y-1 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
               <button onClick={() => scrollToSection('gallery-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">
                 <span className="md:hidden">Локация</span>
@@ -111,8 +110,6 @@ export default function Home() {
                 className="bg-[#0b0518]/40 border border-white/5 rounded-2xl overflow-hidden flex flex-col group relative backdrop-blur-sm cursor-pointer"
               >
                 <div className="relative aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
-                  
-                  {/* Добавлена принудительная инициализация для iOS */}
                   <video 
                     src={`${video.src}#t=0.001`}
                     poster={video.poster ? video.poster : undefined}
@@ -312,6 +309,16 @@ export default function Home() {
                     </svg>
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
                   </a>
+                </div>
+
+                <div className="mt-5 w-full sm:w-auto flex justify-center sm:justify-start">
+                  <button 
+                    onClick={() => router.push('/reviews')}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-purple-600/15 hover:bg-purple-600/30 border border-purple-500/40 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(176,38,255,0.15)] hover:shadow-[0_0_25px_rgba(176,38,255,0.4)] group cursor-pointer"
+                  >
+                    <span className="text-white font-black text-xs uppercase tracking-[0.15em]">Отзывы о нас</span>
+                    <span className="text-purple-400 text-sm transition-transform group-hover:translate-x-1">→</span>
+                  </button>
                 </div>
               </div>
               
