@@ -89,7 +89,7 @@ export default function ReviewsPage() {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Джони Сильверхенд"
+              placeholder=""
               className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-purple-500/50 focus:shadow-[0_0_15px_rgba(176,38,255,0.15)] transition-all"
             />
           </div>
@@ -103,7 +103,7 @@ export default function ReviewsPage() {
                 rows={5}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Поделитесь своими впечатлениями от арены..."
+                placeholder=""
                 className="w-full bg-transparent px-4 py-3 text-sm focus:outline-none resize-none pb-12 sm:pb-3"
               />
 
@@ -131,7 +131,7 @@ export default function ReviewsPage() {
               <svg className="w-4 h-4 text-purple-400 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
-              <span className="text-purple-400 font-bold text-xs uppercase tracking-wider">Добавить фото / видео</span>
+              <span className="text-purple-400 font-bold text-xs uppercase tracking-wider">Добавить фото или видео</span>
             </button>
           </div>
 
