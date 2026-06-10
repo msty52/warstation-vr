@@ -13,7 +13,9 @@ export default function ReviewsPage() {
   const [file, setFile] = useState<File | null>(null);
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Новое состояние для детализированного статуса загрузки
+  const [submitStatus, setSubmitStatus] = useState<string>(""); 
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -45,13 +47,15 @@ export default function ReviewsPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (isSubmitting) return;
-    setIsSubmitting(true);
+    if (submitStatus) return; // Блокируем повторное нажатие
 
     let uploadedFileUrl = null;
 
     try {
       if (file) {
+        // Меняем текст кнопки, чтобы пользователь понимал причину задержки
+        setSubmitStatus("Загрузка медиафайла (подождите)...");
+        
         const fileExt = file.name.split('.').pop();
         const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
         
@@ -68,6 +72,9 @@ export default function ReviewsPage() {
         uploadedFileUrl = publicUrlData.publicUrl;
       }
 
+      // Переключаем статус перед записью в базу
+      setSubmitStatus("Публикация отзыва...");
+
       const { error: insertError } = await supabase
         .from("reviews")
         .insert([{ 
@@ -79,6 +86,7 @@ export default function ReviewsPage() {
 
       if (insertError) throw insertError;
 
+      // Сбрасываем форму
       setName("");
       setMessage("");
       setFile(null);
@@ -86,37 +94,41 @@ export default function ReviewsPage() {
       if (fileInputRef.current) fileInputRef.current.value = "";
       
       fetchReviews();
-      alert("Отзыв успешно опубликован!");
 
     } catch (error: any) {
       console.error("Ошибка:", error);
-      alert(`Произошла ошибка: ${error.message || "проверьте консоль"}`);
+      alert(`Произошла ошибка: ${error.message}`);
     } finally {
-      setIsSubmitting(false);
+      // Возвращаем кнопку в исходное состояние
+      setSubmitStatus("");
     }
   }
 
   const isVideo = (url: string) => {
-    return url.match(/\.(mp4|webm|ogg|mov|mov)$/i) || url.includes("video");
+    return url.match(/\.(mp4|webm|ogg|mov)$/i) || url.includes("video");
   };
 
   return (
-    <main className="min-h-screen bg-[#04000e] text-white p-4 md:p-8">
+    // ВАЖНО: Если у тебя на главной картинка, добавь сюда класс bg-[url('/название-картинки.jpg')] 
+    // Например: className="min-h-screen bg-[url('/main-bg.jpg')] bg-cover bg-center bg-fixed ..."
+    <main className="min-h-screen w-full bg-[#04000e] bg-opacity-50 text-white p-4 md:p-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase tracking-wider text-purple-500">
+        <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase tracking-wider text-purple-500 drop-shadow-lg">
           Отзывы игроков
         </h1>
-
-        <form onSubmit={handleSubmit} className="bg-[#0b0518] p-5 md:p-6 rounded-2xl border border-white/10 space-y-4 shadow-xl">
+        
+        {/* Форма с эффектом стекла (Glassmorphism) */}
+        <form onSubmit={handleSubmit} className="bg-black/60 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-purple-500/20 shadow-2xl space-y-4">
           <input 
             required 
             type="text"
             value={name} 
             onChange={e => setName(e.target.value)}
-            className="w-full bg-black/40 p-3 rounded-xl border border-white/10 focus:border-purple-500 focus:outline-none transition text-sm md:text-base" 
+            className="w-full bg-white/5 p-3 rounded-xl border border-white/10 focus:border-purple-500 focus:outline-none transition text-sm md:text-base text-white placeholder-white/40" 
             placeholder="Ваше Имя / Никнейм" 
+            disabled={!!submitStatus}
           />
-
+          
           <input 
             type="file" 
             ref={fileInputRef}
@@ -125,24 +137,24 @@ export default function ReviewsPage() {
             className="hidden" 
           />
 
-          <div className="relative flex flex-col bg-black/40 rounded-xl border border-white/10 focus-within:border-purple-500 transition overflow-hidden">
+          <div className="relative flex flex-col bg-white/5 rounded-xl border border-white/10 focus-within:border-purple-500 transition overflow-hidden">
             <textarea 
               required 
               value={message} 
               onChange={e => setMessage(e.target.value)}
-              className="w-full bg-transparent p-3 pr-12 rounded-xl resize-none focus:outline-none text-sm md:text-base min-h-[100px]" 
+              className="w-full bg-transparent p-3 pr-12 rounded-xl resize-none focus:outline-none text-sm md:text-base min-h-[100px] text-white placeholder-white/40" 
               placeholder="Поделитесь впечатлениями от игры..." 
               rows={3}
+              disabled={!!submitStatus}
             />
-
+            
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="absolute right-3 bottom-3 md:hidden p-2 bg-purple-600/20 hover:bg-purple-600/40 rounded-full border border-purple-500/30 transition text-purple-400"
-              title="Добавить фото или видео"
+              disabled={!!submitStatus}
+              className="absolute right-3 bottom-3 md:hidden p-2 bg-purple-600/30 hover:bg-purple-600/60 rounded-full transition text-purple-300 disabled:opacity-50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
               </svg>
             </button>
@@ -152,56 +164,68 @@ export default function ReviewsPage() {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 active:bg-white/20 border border-white/10 rounded-xl text-sm font-medium transition text-gray-300"
+              disabled={!!submitStatus}
+              className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-sm font-medium transition text-purple-300 border border-white/10 disabled:opacity-50"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-purple-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
               </svg>
               Прикрепить фото или видео
             </button>
-            {file && <span className="text-xs text-purple-400 max-w-[250px] truncate">Выбран: {file.name}</span>}
+            {file && <span className="text-xs text-purple-300 max-w-[250px] truncate">Выбран: {file.name}</span>}
           </div>
 
           {filePreview && (
-            <div className="relative mt-2 p-2 bg-black/60 rounded-xl border border-white/5 inline-block">
+            <div className="relative mt-2 inline-block">
               {isVideo(file?.name || "") ? (
-                <video src={filePreview} className="max-h-40 rounded-lg" controls muted />
+                <video src={filePreview} className="max-h-40 rounded-lg shadow-lg border border-white/10" controls muted />
               ) : (
-                <img src={filePreview} alt="Превью" className="max-h-40 rounded-lg object-cover" />
+                <img src={filePreview} alt="Превью" className="max-h-40 rounded-lg object-cover shadow-lg border border-white/10" />
               )}
               <button 
                 type="button" 
                 onClick={() => { setFile(null); setFilePreview(null); if (fileInputRef.current) fileInputRef.current.value = ""; }}
-                className="absolute -top-2 -right-2 bg-red-600 hover:bg-red-700 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition"
+                disabled={!!submitStatus}
+                className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-lg transition disabled:opacity-50"
               >
                 ✕
               </button>
             </div>
           )}
 
+          {/* Информативная кнопка */}
           <button 
-            disabled={isSubmitting} 
+            disabled={!!submitStatus} 
             type="submit" 
-            className="w-full py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-900/50 disabled:text-white/40 rounded-xl font-bold uppercase tracking-wider transition text-sm shadow-lg shadow-purple-600/20"
+            className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-800 disabled:text-white/70 rounded-xl font-bold uppercase tracking-wider transition text-sm shadow-[0_0_15px_rgba(147,51,234,0.3)] flex justify-center items-center gap-2"
           >
-            {isSubmitting ? "Публикация..." : "Опубликовать отзыв"}
+            {submitStatus ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                {submitStatus}
+              </>
+            ) : "Опубликовать отзыв"}
           </button>
         </form>
 
-        <div className="mt-10 space-y-4">
+        {/* Список отзывов */}
+        <div className="mt-12 space-y-5">
           {reviews.length === 0 ? (
             <p className="text-center text-white/40 py-8 text-sm">Отзывов пока нет. Будьте первым!</p>
           ) : (
             reviews.map((rev) => (
-              <div key={rev.id} className="bg-[#0b0518]/40 p-5 rounded-2xl border border-white/5 backdrop-blur-sm space-y-3">
+              <div key={rev.id} className="bg-black/40 backdrop-blur-md p-5 rounded-2xl border border-white/5 shadow-lg space-y-3">
                 <div className="flex justify-between items-center text-xs md:text-sm text-white/40 border-b border-white/5 pb-2">
                   <span className="font-semibold text-purple-400">{rev.name}</span>
                   <span>{rev.date || "Неизвестно"}</span>
                 </div>
                 <p className="text-white/90 text-sm md:text-base leading-relaxed break-words">{rev.message}</p>
-
+                
                 {rev.file_url && (
-                  <div className="pt-2">
+                  <div className="pt-3">
                     {isVideo(rev.file_url) ? (
                       <video 
                         src={rev.file_url} 
