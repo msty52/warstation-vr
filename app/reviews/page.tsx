@@ -13,8 +13,6 @@ export default function ReviewsPage() {
   const [file, setFile] = useState<File | null>(null);
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [reviews, setReviews] = useState<any[]>([]);
-  
-  // Новое состояние для детализированного статуса загрузки
   const [submitStatus, setSubmitStatus] = useState<string>(""); 
   
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -47,32 +45,33 @@ export default function ReviewsPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (submitStatus) return; // Блокируем повторное нажатие
+    if (submitStatus) return;
 
     let uploadedFileUrl = null;
 
     try {
       if (file) {
-        // Меняем текст кнопки, чтобы пользователь понимал причину задержки
         setSubmitStatus("Загрузка медиафайла (подождите)...");
-        
+
         const fileExt = file.name.split('.').pop();
-        const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+        const safeName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
         
         const { data, error: uploadError } = await supabase.storage
           .from("reviews-media")
-          .upload(fileName, file);
+          .upload(safeName, file, {
+            cacheControl: '3600',
+            upsert: false
+          });
 
         if (uploadError) throw uploadError;
 
         const { data: publicUrlData } = supabase.storage
           .from("reviews-media")
-          .getPublicUrl(fileName);
+          .getPublicUrl(safeName);
           
         uploadedFileUrl = publicUrlData.publicUrl;
       }
 
-      // Переключаем статус перед записью в базу
       setSubmitStatus("Публикация отзыва...");
 
       const { error: insertError } = await supabase
@@ -86,38 +85,36 @@ export default function ReviewsPage() {
 
       if (insertError) throw insertError;
 
-      // Сбрасываем форму
       setName("");
       setMessage("");
       setFile(null);
       setFilePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
       
-      fetchReviews();
+      await fetchReviews();
+      alert("Отзыв успешно добавлен!");
 
     } catch (error: any) {
-      console.error("Ошибка:", error);
-      alert(`Произошла ошибка: ${error.message}`);
+      console.error("Детальная ошибка:", error);
+      alert(`Не удалось отправить: ${error.message || "Проверьте настройки Storage в Supabase"}`);
     } finally {
-      // Возвращаем кнопку в исходное состояние
       setSubmitStatus("");
     }
   }
 
   const isVideo = (url: string) => {
+    if (!url) return false;
     return url.match(/\.(mp4|webm|ogg|mov)$/i) || url.includes("video");
   };
 
   return (
-    // ВАЖНО: Если у тебя на главной картинка, добавь сюда класс bg-[url('/название-картинки.jpg')] 
-    // Например: className="min-h-screen bg-[url('/main-bg.jpg')] bg-cover bg-center bg-fixed ..."
-    <main className="min-h-screen w-full bg-[#04000e] bg-opacity-50 text-white p-4 md:p-8">
+
+    <main className="min-h-screen w-full bg-[#04000e] text-white p-4 md:p-8 transition-all duration-300">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase tracking-wider text-purple-500 drop-shadow-lg">
           Отзывы игроков
         </h1>
         
-        {/* Форма с эффектом стекла (Glassmorphism) */}
         <form onSubmit={handleSubmit} className="bg-black/60 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-purple-500/20 shadow-2xl space-y-4">
           <input 
             required 
@@ -155,6 +152,7 @@ export default function ReviewsPage() {
               className="absolute right-3 bottom-3 md:hidden p-2 bg-purple-600/30 hover:bg-purple-600/60 rounded-full transition text-purple-300 disabled:opacity-50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
               </svg>
             </button>
@@ -193,7 +191,6 @@ export default function ReviewsPage() {
             </div>
           )}
 
-          {/* Информативная кнопка */}
           <button 
             disabled={!!submitStatus} 
             type="submit" 
@@ -211,7 +208,6 @@ export default function ReviewsPage() {
           </button>
         </form>
 
-        {/* Список отзывов */}
         <div className="mt-12 space-y-5">
           {reviews.length === 0 ? (
             <p className="text-center text-white/40 py-8 text-sm">Отзывов пока нет. Будьте первым!</p>
