@@ -92,11 +92,11 @@ export default function ReviewsPage() {
       if (fileInputRef.current) fileInputRef.current.value = "";
       
       await fetchReviews();
-      alert("Отзыв успешно добавлен!");
+      alert("Отзыв успешно добавлен");
 
     } catch (error: any) {
-      console.error("Детальная ошибка:", error);
-      alert(`Не удалось отправить: ${error.message || "Проверьте настройки Storage в Supabase"}`);
+      console.error("Детальная ошибка", error);
+      alert(`Не удалось отправить ${error.message || ""}`);
     } finally {
       setSubmitStatus("");
     }
@@ -170,7 +170,7 @@ export default function ReviewsPage() {
               </svg>
               Прикрепить фото или видео
             </button>
-            {file && <span className="text-xs text-purple-300 max-w-[250px] truncate">Выбран: {file.name}</span>}
+            {file && <span className="text-xs text-purple-300 max-w-[250px] truncate">Выбран {file.name}</span>}
           </div>
 
           {filePreview && (
@@ -210,7 +210,7 @@ export default function ReviewsPage() {
 
         <div className="mt-12 space-y-5">
           {reviews.length === 0 ? (
-            <p className="text-center text-white/40 py-8 text-sm">Отзывов пока нет. Будьте первым!</p>
+            <p className="text-center text-white/40 py-8 text-sm">Отзывов еще нет</p>
           ) : (
             reviews.map((rev) => (
               <div key={rev.id} className="bg-black/40 backdrop-blur-md p-5 rounded-2xl border border-white/5 shadow-lg space-y-3">
