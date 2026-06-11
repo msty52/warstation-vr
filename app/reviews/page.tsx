@@ -1,11 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase } from "@/supabase"; 
 
 export default function ReviewsPage() {
   const [name, setName] = useState("");
@@ -13,7 +8,7 @@ export default function ReviewsPage() {
   const [file, setFile] = useState<File | null>(null);
   const [filePreview, setFilePreview] = useState<string | null>(null);
   const [reviews, setReviews] = useState<any[]>([]);
-  const [submitStatus, setSubmitStatus] = useState<string>(""); 
+  const [submitStatus, setSubmitStatus] = useState<string>("");  
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -24,7 +19,7 @@ export default function ReviewsPage() {
       .order("created_at", { ascending: false });
     
     if (data) setReviews(data);
-    if (error) console.error("Ошибка загрузки:", error);
+    if (error) console.error("Ошибка загрузки отзывов из базы:", error);
   }
 
   useEffect(() => {
@@ -50,6 +45,7 @@ export default function ReviewsPage() {
     let uploadedFileUrl = null;
 
     try {
+
       if (file) {
         setSubmitStatus("Загрузка медиафайла (подождите)...");
 
@@ -60,7 +56,8 @@ export default function ReviewsPage() {
           .from("reviews-media")
           .upload(safeName, file, {
             cacheControl: '3600',
-            upsert: false
+            upsert: false,
+            contentType: file.type 
           });
 
         if (uploadError) throw uploadError;
@@ -74,38 +71,44 @@ export default function ReviewsPage() {
 
       setSubmitStatus("Публикация отзыва...");
 
-      const { error: insertError } = await supabase
+      const reviewDate = new Date().toLocaleDateString("ru-RU");
+
+      const { data: insertedData, error: insertError } = await supabase
         .from("reviews")
         .insert([{ 
           name, 
           message, 
           file_url: uploadedFileUrl, 
-          date: new Date().toLocaleDateString("ru-RU") 
-        }]);
+          date: reviewDate
+        }])
+        .select(); 
 
-if (insertError) throw insertError;
+      if (insertError) throw insertError;
 
-const newReview = {
-  id: Date.now(), 
-  name,
-  message,
-  file_url: uploadedFileUrl,
-  date: new Date().toLocaleDateString("ru-RU")
-};
+      if (insertedData && insertedData[0]) {
+        setReviews(prev => [insertedData[0], ...prev]);
+      } else {
 
-setReviews(prev => [newReview, ...prev]);
+        setReviews(prev => [{
+          id: Date.now(),
+          name,
+          message,
+          file_url: uploadedFileUrl,
+          date: reviewDate
+        }, ...prev]);
+      }
 
-setName("");
-setMessage("");
-setFile(null);
-setFilePreview(null);
-if (fileInputRef.current) fileInputRef.current.value = "";
-
-alert("Отзыв успешно добавлен");
+      setName("");
+      setMessage("");
+      setFile(null);
+      setFilePreview(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      
+      alert("Отзыв успешно добавлен");
 
     } catch (error: any) {
-      console.error("Детальная ошибка", error);
-      alert(`Не удалось отправить ${error.message || ""}`);
+      console.error("Детальная ошибка при отправке:", error);
+      alert(`Не удалось отправить: ${error.message || "Неизвестная ошибка сервера"}`);
     } finally {
       setSubmitStatus("");
     }
@@ -117,7 +120,6 @@ alert("Отзыв успешно добавлен");
   };
 
   return (
-
     <main className="min-h-screen w-full bg-[#04000e] text-white p-4 md:p-8 transition-all duration-300">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl md:text-4xl font-black text-center mb-8 uppercase tracking-wider text-purple-500 drop-shadow-lg">
@@ -149,7 +151,7 @@ alert("Отзыв успешно добавлен");
               value={message} 
               onChange={e => setMessage(e.target.value)}
               className="w-full bg-transparent p-3 pr-12 rounded-xl resize-none focus:outline-none text-sm md:text-base min-h-[100px] text-white placeholder-white/40" 
-              placeholder="" 
+              placeholder="Ваш отзыв..." 
               rows={3}
               disabled={!!submitStatus}
             />
@@ -222,7 +224,7 @@ alert("Отзыв успешно добавлен");
             <p className="text-center text-white/40 py-8 text-sm">Отзывов еще нет</p>
           ) : (
             reviews.map((rev) => (
-              <div key={rev.id} className="bg-black/40 backdrop-blur-md p-5 rounded-2xl border border-white/5 shadow-lg space-y-3">
+              <div key={rev.id || Math.random()} className="bg-black/40 backdrop-blur-md p-5 rounded-2xl border border-white/5 shadow-lg space-y-3">
                 <div className="flex justify-between items-center text-xs md:text-sm text-white/40 border-b border-white/5 pb-2">
                   <span className="font-semibold text-purple-400">{rev.name}</span>
                   <span>{rev.date || "Неизвестно"}</span>
