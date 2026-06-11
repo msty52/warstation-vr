@@ -42,7 +42,7 @@ export default function ReviewsPage() {
     e.preventDefault();
     if (submitStatus) return;
 
-    let uploadedFileUrl = null;
+    let uploadedFileUrl: string | null = null;
 
     try {
 
