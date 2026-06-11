@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { supabase } from "@/app/supabase";
+import { supabase } from "@/lib/supabase";
 
 export default function ReviewsPage() {
   const [name, setName] = useState("");
