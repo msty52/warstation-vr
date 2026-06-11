@@ -122,7 +122,7 @@ export default function ReviewsPage() {
             value={name} 
             onChange={e => setName(e.target.value)}
             className="w-full bg-white/5 p-3 rounded-xl border border-white/10 focus:border-purple-500 focus:outline-none transition text-sm md:text-base text-white placeholder-white/40" 
-            placeholder="Ваше Имя / Никнейм" 
+            placeholder="Введите имя" 
             disabled={!!submitStatus}
           />
           
@@ -140,7 +140,7 @@ export default function ReviewsPage() {
               value={message} 
               onChange={e => setMessage(e.target.value)}
               className="w-full bg-transparent p-3 pr-12 rounded-xl resize-none focus:outline-none text-sm md:text-base min-h-[100px] text-white placeholder-white/40" 
-              placeholder="Поделитесь впечатлениями от игры..." 
+              placeholder="" 
               rows={3}
               disabled={!!submitStatus}
             />
