@@ -83,16 +83,25 @@ export default function ReviewsPage() {
           date: new Date().toLocaleDateString("ru-RU") 
         }]);
 
-      if (insertError) throw insertError;
+if (insertError) throw insertError;
 
-      setName("");
-      setMessage("");
-      setFile(null);
-      setFilePreview(null);
-      if (fileInputRef.current) fileInputRef.current.value = "";
-      
-      await fetchReviews();
-      alert("Отзыв успешно добавлен");
+const newReview = {
+  id: Date.now(), 
+  name,
+  message,
+  file_url: uploadedFileUrl,
+  date: new Date().toLocaleDateString("ru-RU")
+};
+
+setReviews(prev => [newReview, ...prev]);
+
+setName("");
+setMessage("");
+setFile(null);
+setFilePreview(null);
+if (fileInputRef.current) fileInputRef.current.value = "";
+
+alert("Отзыв успешно добавлен");
 
     } catch (error: any) {
       console.error("Детальная ошибка", error);
