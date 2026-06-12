@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 import { Pool } from "pg";
 
+// Создаем пул подключений к Neon
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false 
+    rejectUnauthorized: false // Важно для деплоя на Vercel!
   }
 });
 
+// GET: Получение отзывов
 export async function GET() {
   try {
     const result = await pool.query(`
@@ -22,6 +24,7 @@ export async function GET() {
   }
 }
 
+// POST: Сохранение отзыва
 export async function POST(request: Request) {
   try {
     const { name, message, rating } = await request.json();
