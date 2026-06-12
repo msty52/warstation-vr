@@ -15,7 +15,7 @@ export default function ReviewsPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [rating, setRating] = useState(5); 
+  const [rating, setRating] = useState(0); 
   const [hoverRating, setHoverRating] = useState(0); 
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -111,7 +111,7 @@ export default function ReviewsPage() {
             <form onSubmit={handleSubmit} className="relative flex flex-col gap-5 mb-16 bg-[#0b0518]/60 backdrop-blur-md p-6 sm:p-8 rounded-[24px] border border-white/5 shadow-xl">
 
               <div className="flex flex-col gap-1.5 px-1">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-white/40">Ваша оценка симуляции</label>
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/40">Оцените это место</label>
                 <div className="flex gap-2">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
