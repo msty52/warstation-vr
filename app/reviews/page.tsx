@@ -51,7 +51,6 @@ export default function ReviewsPage() {
         setMessage("");
 
         await fetchReviews(); 
-        alert("");
       } else {
         alert("Ошибка при сохранении отзыва в Neon");
       }
@@ -83,7 +82,7 @@ export default function ReviewsPage() {
           className="bg-zinc-900/80 border border-zinc-800 p-3 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-purple-500 transition disabled:opacity-50" 
         />
         <textarea 
-          placeholder="Ваш отзыв о симуляции..." 
+          placeholder="" 
           value={message} 
           onChange={(e) => setMessage(e.target.value)} 
           required 
