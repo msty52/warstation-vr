@@ -22,7 +22,7 @@ export default function ReviewsPage() {
         setReviews(data);
       }
     } catch (err) {
-      console.error("Не удалось загрузить отзывы:", err);
+      console.error("Не удалось загрузить отзыв", err);
     }
   }
 
@@ -51,12 +51,12 @@ export default function ReviewsPage() {
         setMessage("");
 
         await fetchReviews(); 
-        alert("Отзыв успешно отправлен!");
+        alert("");
       } else {
         alert("Ошибка при сохранении отзыва в Neon");
       }
     } catch (err) {
-      console.error("Не удалось отправить отзыв:", err);
+      console.error("Не удалось отправить отзыв", err);
       alert("Критическая ошибка сети");
     } finally {
       setIsSubmitting(false);
@@ -69,13 +69,13 @@ export default function ReviewsPage() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-64 bg-purple-900/10 blur-3xl pointer-events-none" />
 
       <h1 className="text-2xl font-black tracking-widest text-center text-white uppercase mb-8">
-        Бортовой журнал отзывов
+        ОТЗЫВЫ
       </h1>
 
       <form onSubmit={handleSubmit} className="relative flex flex-col gap-4 mb-12 bg-zinc-950/50 p-6 rounded-xl border border-zinc-900 backdrop-blur-sm">
         <input 
           type="text"
-          placeholder="Имя пилота" 
+          placeholder="Ведите имя" 
           value={name} 
           onChange={(e) => setName(e.target.value)} 
           required 
@@ -95,13 +95,13 @@ export default function ReviewsPage() {
           disabled={isSubmitting}
           className="bg-[#9900FF] hover:bg-[#8000de] text-white p-3.5 rounded-lg font-black tracking-wider uppercase transition active:scale-[0.99] disabled:opacity-50 shadow-[0_0_15px_rgba(153,0,255,0.3)] hover:shadow-[0_0_25px_rgba(153,0,255,0.6)]"
         >
-          {isSubmitting ? "СИНХРОНИЗАЦИЯ..." : "ОПУБЛИКОВАТЬ ОТЗЫВ"}
+          {isSubmitting ? "" : "ОПУБЛИКОВАТЬ ОТЗЫВ"}
         </button>
       </form>
 
       <div className="flex flex-col gap-4">
         {reviews.length === 0 ? (
-          <p className="text-center text-zinc-600 font-medium py-4">История отзывов пуста...</p>
+          <p className="text-center text-zinc-600 font-medium py-4">История отзывов пуста</p>
         ) : (
           reviews.map((r, i) => (
             <div key={i} className="p-5 border border-zinc-900 bg-zinc-950/40 rounded-xl hover:border-purple-900/40 transition duration-300">
