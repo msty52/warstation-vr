@@ -9,25 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@pbe/react-yandex-maps": "^1.2.5",
-    "@tailwindcss/postcss": "^4.3.0",
-    "@vercel/speed-insights": "^2.0.0",
-    "clsx": "latest",
-    "lucide-react": "latest",
-    "next": "latest",
-    "postgres": "^3.4.9",
-    "react": "latest",
-    "react-dom": "latest",
-    "tailwind-merge": "latest"
+    "@supabase/supabase-js": "^2.107.0",
+    "next": "16.2.9",
+    "pg": "^8.11.5", 
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
-    "postcss": "^8.5.14",
-    "tailwindcss": "latest",
-    "typescript": "latest"
+    "@types/node": "^20.x.x",
+    "@types/pg": "^8.11.6",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.x.x"
   }
 }
