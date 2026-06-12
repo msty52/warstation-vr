@@ -53,7 +53,7 @@ export default function ReviewsPage() {
         await fetchReviews(); 
         alert("Отзыв успешно отправлен!");
       } else {
-        alert("Ошибка при сохранении отзыва в Neon");
+        alert("Ошибка при сохранении отзыва в базе данных");
       }
     } catch (err) {
       console.error("Не удалось отправить отзыв:", err);
@@ -64,83 +64,89 @@ export default function ReviewsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-zinc-100 font-sans relative flex flex-col items-center">
+    <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-purple-900/10 blur-3xl pointer-events-none" />
+      <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
+        <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-[-20%] left-[10%] w-[100vw] sm:w-[80vw] h-[70vh] bg-pink-600/30 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay"></div>
+      </div>
 
-      <div className="w-full max-w-3xl px-4 py-8 relative z-10">
+      <div className="relative z-10 flex flex-col items-center">
+        <div className="w-full max-w-3xl px-4 py-16 sm:py-24">
 
-        <div className="mb-8">
-          <Link 
-            href="/" 
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-300 font-bold tracking-wider uppercase text-sm group"
-          >
-            <span className="text-purple-500 group-hover:-translate-x-1 transition-transform duration-300">
-              ◄
-            </span> 
-            На главную
-          </Link>
-        </div>
+          <div className="mb-8">
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white/60 hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer group"
+            >
+              <span className="transition-transform group-hover:-translate-x-1 duration-300">←</span> 
+              Вернуться назад
+            </Link>
+          </div>
 
-        <h1 className="text-3xl md:text-4xl font-black tracking-widest text-center text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-purple-400 uppercase mb-10">
-          Бортовой журнал отзывов
-        </h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-center text-white mb-10 sm:mb-14 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+            ОТЗЫВЫ
+          </h1>
 
-        <form onSubmit={handleSubmit} className="relative flex flex-col gap-5 mb-16 bg-zinc-950/60 p-6 md:p-8 rounded-xl border border-zinc-800/80 backdrop-blur-md shadow-2xl">
-          <input 
-            type="text"
-            placeholder="ИМЯ ПИЛОТА" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-            required 
-            disabled={isSubmitting}
-            className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg text-white font-medium placeholder-zinc-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition duration-300 disabled:opacity-50" 
-          />
-          <textarea 
-            placeholder="ВАШ ОТЗЫВ" 
-            value={message} 
-            onChange={(e) => setMessage(e.target.value)} 
-            required 
-            disabled={isSubmitting}
-            className="bg-zinc-900/80 border border-zinc-800 p-4 rounded-lg text-white font-medium placeholder-zinc-500 h-36 resize-none focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500/50 transition duration-300 disabled:opacity-50" 
-          />
-          <button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="bg-[#9900FF] hover:bg-[#8000de] text-white p-4 mt-2 rounded-lg font-black tracking-widest uppercase transition-all duration-300 active:scale-[0.99] disabled:opacity-50 shadow-[0_0_20px_rgba(153,0,255,0.3)] hover:shadow-[0_0_30px_rgba(153,0,255,0.7)]"
-          >
-            {isSubmitting ? "СИНХРОНИЗАЦИЯ..." : "ОПУБЛИКОВАТЬ ОТЗЫВ"}
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="relative flex flex-col gap-5 mb-16 bg-[#0b0518]/60 backdrop-blur-md p-6 sm:p-8 rounded-[24px] border border-white/5 shadow-xl">
+            <input 
+              type="text"
+              placeholder="Введите имя" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+              required 
+              disabled={isSubmitting}
+              className="bg-[#04000e]/60 border border-white/5 p-4 rounded-xl text-white font-medium placeholder-white/30 focus:outline-none focus:border-purple-500/40 transition duration-300 disabled:opacity-50" 
+            />
+            <textarea 
+              placeholder="ВАШ ОТЗЫВ О СИМУЛЯЦИИ..." 
+              value={message} 
+              onChange={(e) => setMessage(e.target.value)} 
+              required 
+              disabled={isSubmitting}
+              className="bg-[#04000e]/60 border border-white/5 p-4 rounded-xl text-white font-medium placeholder-white/30 h-36 resize-none focus:outline-none focus:border-purple-500/40 transition duration-300 disabled:opacity-50" 
+            />
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="bg-purple-600 hover:bg-purple-700 text-white p-4 mt-2 rounded-xl font-black tracking-widest uppercase transition-all duration-300 active:scale-[0.99] disabled:opacity-50 shadow-[0_0_20px_rgba(176,38,255,0.3)] hover:shadow-[0_0_30px_rgba(176,38,255,0.6)] cursor-pointer"
+            >
+              {isSubmitting ? "СИНХРОНИЗАЦИЯ..." : "ОПУБЛИКОВАТЬ ОТЗЫВ"}
+            </button>
+          </form>
 
-        <div className="flex flex-col gap-5">
-          <h2 className="text-xl font-bold tracking-wide text-zinc-400 uppercase mb-2 px-1">
-            Архив ({reviews.length})
-          </h2>
+          <div className="flex flex-col gap-5">
+            <h2 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white/40 mb-2 px-1">
+              НАШИ ОТЗЫВЫ ({reviews.length})
+            </h2>
 
-          {reviews.length === 0 ? (
-            <div className="text-center py-12 border border-dashed border-zinc-800 rounded-xl bg-zinc-900/20 backdrop-blur-sm">
-              <p className="text-zinc-500 font-medium">История пуста. Ваш отзыв будет первым!</p>
-            </div>
-          ) : (
-            reviews.map((r, i) => (
-              <div key={i} className="p-6 border border-zinc-800/80 bg-zinc-950/60 backdrop-blur-md rounded-xl hover:border-purple-900/50 transition duration-300 shadow-lg group">
-                <div className="flex justify-between items-start mb-3 gap-4">
-                  <h3 className="font-bold text-white group-hover:text-purple-400 transition-colors tracking-wide text-lg">
-                    {r.name}
-                  </h3>
-                  <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2.5 py-1 rounded border border-zinc-800 shrink-0">
-                    {r.date}
-                  </span>
-                </div>
-                <p className="text-zinc-400 leading-relaxed font-medium whitespace-pre-line break-words">
-                  {r.message}
-                </p>
+            {reviews.length === 0 ? (
+              <div className="text-center py-12 border border-dashed border-white/10 rounded-[24px] bg-[#0b0518]/20 backdrop-blur-sm">
+                <p className="text-white/40 text-sm font-medium"></p>
               </div>
-            ))
-          )}
+            ) : (
+              reviews.map((r, i) => (
+                <div key={i} className="p-6 border border-white/5 bg-[#0b0518]/40 backdrop-blur-sm rounded-[24px] hover:border-purple-500/20 transition duration-300 shadow-md group">
+                  <div className="flex justify-between items-start mb-3 gap-4">
+                    <h3 className="font-bold text-white group-hover:text-purple-400 transition-colors tracking-wide text-base sm:text-lg">
+                      {r.name}
+                    </h3>
+                    <span className="text-[10px] font-mono text-white/40 bg-[#04000e]/50 px-2.5 py-1 rounded-md border border-white/5 shrink-0">
+                      {r.date}
+                    </span>
+                  </div>
+                  <p className="text-white/70 text-sm sm:text-base leading-relaxed font-light whitespace-pre-line break-words">
+                    {r.message}
+                  </p>
+                </div>
+              ))
+            )}
+          </div>
+
         </div>
       </div>
-    </div>
+    </main>
   );
 }
