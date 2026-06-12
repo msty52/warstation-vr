@@ -7,6 +7,7 @@ import Link from "next/link";
 interface Review {
   name: string;
   message: string;
+  rating: number; 
   date: string;
 }
 
@@ -14,13 +15,15 @@ export default function ReviewsPage() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+  const [rating, setRating] = useState(5); 
+  const [hoverRating, setHoverRating] = useState(0); 
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function fetchReviews() {
     try {
       const res = await fetch('/api/reviews');
-      if (!res.ok) throw new Error("Ошибка сервера при получении");
+      if (!res.ok) throw new Error("Ошибка сервера");
       const data = await res.json();
       if (Array.isArray(data)) {
         setReviews(data);
@@ -43,21 +46,22 @@ export default function ReviewsPage() {
       const res = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, message }), 
+        body: JSON.stringify({ name, message, rating }), 
       });
 
       if (res.ok) {
         setName("");
         setMessage("");
+        setRating(5); 
         await fetchReviews(); 
         alert("Отзыв успешно отправлен!");
       } else {
         const errorData = await res.json().catch(() => ({}));
-        alert(`Ошибка при сохранении отзыва в Neon: ${errorData.error || 'Server Error 500'}`);
+        alert(`Ошибка сервера: ${errorData.error || '500'}`);
       }
     } catch (err) {
-      console.error("Не удалось отправить отзыв:", err);
-      alert("Критическая ошибка сети");
+      console.error(err);
+      alert("Ошибка сети");
     } finally {
       setIsSubmitting(false);
     }
@@ -105,6 +109,33 @@ export default function ReviewsPage() {
             </h1>
 
             <form onSubmit={handleSubmit} className="relative flex flex-col gap-5 mb-16 bg-[#0b0518]/60 backdrop-blur-md p-6 sm:p-8 rounded-[24px] border border-white/5 shadow-xl">
+
+              <div className="flex flex-col gap-1.5 px-1">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/40">Ваша оценка симуляции</label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      type="button"
+                      key={star}
+                      disabled={isSubmitting}
+                      onClick={() => setRating(star)}
+                      onMouseEnter={() => setHoverRating(star)}
+                      onMouseLeave={() => setHoverRating(0)}
+                      className="text-2xl sm:text-3xl transition-all duration-150 cursor-pointer focus:outline-none hover:scale-110 active:scale-95 disabled:opacity-50"
+                    >
+                      <span 
+                        style={{ 
+                          color: star <= (hoverRating || rating) ? '#eab308' : '#27272a',
+                          textShadow: star <= (hoverRating || rating) ? '0 0 10px rgba(234, 179, 8, 0.4)' : 'none'
+                        }}
+                      >
+                        ★
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <input 
                 type="text"
                 placeholder="Ведите ваше имя" 
@@ -115,7 +146,7 @@ export default function ReviewsPage() {
                 className="bg-[#04000e]/60 border border-white/5 p-4 rounded-xl text-white font-medium placeholder-white/30 focus:outline-none focus:border-purple-500/40 transition duration-300 disabled:opacity-50" 
               />
               <textarea 
-                placeholder="Оставьте ваш отзыв" 
+                placeholder="ВАШ ОТЗЫВ О СИМУЛЯЦИИ..." 
                 value={message} 
                 onChange={(e) => setMessage(e.target.value)} 
                 required 
@@ -133,25 +164,40 @@ export default function ReviewsPage() {
 
             <div className="flex flex-col gap-5">
               <h2 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white/40 mb-2 px-1">
-                АРХИВ ЗАПИСЕЙ ({reviews.length})
+                Отзывов ({reviews.length})
               </h2>
 
               {reviews.length === 0 ? (
                 <div className="text-center py-12 border border-dashed border-white/10 rounded-[24px] bg-[#0b0518]/20 backdrop-blur-sm">
-                  <p className="text-white/40 text-sm font-medium">Оставьте ваш отзыв</p>
+                  <p className="text-white/40 text-sm font-medium"></p>
                 </div>
               ) : (
                 reviews.map((r, i) => (
                   <div key={i} className="p-6 border border-white/5 bg-[#0b0518]/40 backdrop-blur-sm rounded-[24px] hover:border-purple-500/20 transition duration-300 shadow-md group">
-                    <div className="flex justify-between items-start mb-3 gap-4">
-                      <h3 className="font-bold text-white group-hover:text-purple-400 transition-colors tracking-wide text-base sm:text-lg">
-                        {r.name}
-                      </h3>
+                    <div className="flex justify-between items-start gap-4">
+                      <div>
+                        <h3 className="font-bold text-white group-hover:text-purple-400 transition-colors tracking-wide text-base sm:text-lg">
+                          {r.name}
+                        </h3>
+
+                        <div className="flex gap-0.5 mt-1 mb-3">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <span 
+                              key={star} 
+                              className="text-sm sm:text-base"
+                              style={{ color: star <= r.rating ? '#eab308' : '#27272a' }}
+                            >
+                              ★
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
                       <span className="text-[10px] font-mono text-white/40 bg-[#04000e]/50 px-2.5 py-1 rounded-md border border-white/5 shrink-0">
                         {r.date}
                       </span>
                     </div>
-                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-light whitespace-pre-line break-words">
+                    <p className="text-white/70 text-sm sm:text-base leading-relaxed font-light whitespace-pre-line break-words明确">
                       {r.message}
                     </p>
                   </div>
