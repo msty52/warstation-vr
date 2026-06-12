@@ -10,33 +10,24 @@ const pool = new Pool({
 
 export async function GET() {
   try {
-    if (!process.env.DATABASE_URL) {
-      return NextResponse.json({ error: "DATABASE_URL не настроена на Vercel" }, { status: 500 });
-    }
-
     const result = await pool.query(`
       SELECT name, message, COALESCE(rating, 5) as rating, to_char(created_at, 'DD.MM.YYYY') as date 
       FROM reviews 
       ORDER BY created_at DESC
     `);
-    
     return NextResponse.json(result.rows);
   } catch (error: any) {
-    console.error("Критическая ошибка GET в Neon:", error.message);
+    console.error("Ошибка Neon GET:", error.message);
     return NextResponse.json({ error: `Ошибка БД: ${error.message}` }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
-    if (!process.env.DATABASE_URL) {
-      return NextResponse.json({ error: "DATABASE_URL отсутствует в Environment Variables" }, { status: 500 });
-    }
-
     const { name, message, rating } = await request.json();
 
     if (!name?.trim() || !message?.trim()) {
-      return NextResponse.json({ error: "Имя и сообщение не могут быть пустыми" }, { status: 400 });
+      return NextResponse.json({ error: "Заполните все поля" }, { status: 400 });
     }
 
     const cleanRating = Math.max(1, Math.min(5, Number(rating) || 5));
@@ -48,7 +39,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error: any) {
-    console.error("Критическая ошибка POST в Neon:", error.message);
+    console.error("Ошибка Neon POST:", error.message);
     return NextResponse.json({ error: `Ошибка записи: ${error.message}` }, { status: 500 });
   }
 }
