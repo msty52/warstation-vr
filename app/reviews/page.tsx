@@ -23,20 +23,31 @@ export default function ReviewsPage() {
   }
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    try {
-      await fetch('/api/reviews', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, message, date: new Date().toLocaleDateString() }),
-      });
+  e.preventDefault();
+  
+  try {
+    const res = await fetch('/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        name, 
+        message, 
+        date: new Date().toLocaleDateString() 
+      }),
+    });
+
+    if (res.ok) {
       setName("");
       setMessage("");
-      fetchReviews();
-    } catch (err) {
-      console.error("Не удалось отправить отзыв:", err);
+      alert("Отзыв успешно отправлен!");
+    } else {
+      alert("Ошибка при отправке на сервер");
     }
+  } catch (err) {
+    console.error("Не удалось отправить отзыв:", err);
+    alert("Критическая ошибка отправки");
   }
+}
 
   return (
     <div className="p-8 max-w-2xl mx-auto">
@@ -49,7 +60,7 @@ export default function ReviewsPage() {
           className="border p-2 rounded text-black" 
         />
         <textarea 
-          placeholder="Ваш отзыв..." 
+          placeholder="Ваш отзыв" 
           value={message} 
           onChange={(e) => setMessage(e.target.value)} 
           required 
