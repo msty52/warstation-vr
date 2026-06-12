@@ -52,7 +52,7 @@ export default function ReviewsPage() {
       if (res.ok) {
         setName("");
         setMessage("");
-        setRating(5); 
+        setRating(0); 
         await fetchReviews(); 
         alert("Отзыв успешно отправлен!");
       } else {
@@ -146,7 +146,7 @@ export default function ReviewsPage() {
                 className="bg-[#04000e]/60 border border-white/5 p-4 rounded-xl text-white font-medium placeholder-white/30 focus:outline-none focus:border-purple-500/40 transition duration-300 disabled:opacity-50" 
               />
               <textarea 
-                placeholder="ВАШ ОТЗЫВ О СИМУЛЯЦИИ..." 
+                placeholder="" 
                 value={message} 
                 onChange={(e) => setMessage(e.target.value)} 
                 required 
