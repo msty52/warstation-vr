@@ -54,7 +54,6 @@ export default function ReviewsPage() {
         setMessage("");
         setRating(0); 
         await fetchReviews(); 
-        alert("Отзыв успешно отправлен!");
       } else {
         const errorData = await res.json().catch(() => ({}));
         alert(`Ошибка сервера: ${errorData.error || '500'}`);
