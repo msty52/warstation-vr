@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: "Warstation VR",
   description: "Арена виртуальной реальности",
 
+  verification: {
+    yandex: "e0f4a4eed24358ab",
+  },
+
   alternates: {
     canonical: "https://vr-warstation-rnd.ru",
   },
