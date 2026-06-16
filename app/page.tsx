@@ -17,6 +17,9 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  <head>
+  <meta name="yandex-verification" content="e0f4a4eed24358ab" />
+  </head>
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
