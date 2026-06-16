@@ -4,6 +4,8 @@ import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation";
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
+<meta name="yandex-verification" content="e0f4a4eed24358ab" />
+
 export default function Home() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
