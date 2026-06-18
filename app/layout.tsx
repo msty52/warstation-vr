@@ -8,10 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Warstation VR",
   description: "Арена виртуальной реальности",
-  verification: {
-    yandex: "9c074d6b9dc8ff07",
-  },
-};
+
   alternates: {
     canonical: "https://vr-warstation-rnd.ru",
   },
