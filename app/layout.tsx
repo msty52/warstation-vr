@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next"; 
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Warstation VR",
   description: "Арена виртуальной реальности",
-
-verification: {
+  verification: {
     yandex: "9c074d6b9dc8ff07",
   },
 };
-
   alternates: {
     canonical: "https://vr-warstation-rnd.ru",
   },
@@ -32,7 +30,7 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
         {children}
-        <SpeedInsights />
+        <SpeedInsights /> 
       </body>
     </html>
   );
