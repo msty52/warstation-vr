@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+
+  verification: {
+    yandex: "9c074d6b9dc8ff07",
+  },
 };
 
 export default function RootLayout({
