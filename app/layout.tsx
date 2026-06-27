@@ -11,9 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://vr-warstation-rnd.ru",
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+
   verification: {
     yandex: "9c074d6b9dc8ff07",
   },
@@ -24,6 +22,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EntertainmentBusiness",
@@ -45,7 +44,6 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
