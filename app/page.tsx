@@ -86,17 +86,22 @@ export default function Home() {
         {/* Главный экран / Персонажи */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 text-center">
 
-          {/* Левая карточка (Синий неон) */}
-          <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-2 lg:order-1 shrink-0">
-            <div className="absolute inset-0 border-2 border-[#00d2ff] rounded-2xl transform -skew-x-3 -translate-x-3 -translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(0,210,255,0.3)]" />
-            <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#00d2ff]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
-              <img
-                src="/characters-left.png"
-                alt=""
-                className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
+         {/* Левая карточка (Синий неон) */}
+<div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-2 lg:order-1 shrink-0">
+  <div className="absolute inset-0 border-2 border-[#00d2ff] rounded-2xl transform -skew-x-3 -translate-x-3 -translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(0,210,255,0.3)]" />
+  <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#00d2ff]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
+    <img
+      src="/characters-left.png"
+      alt=""
+      className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
+    />
+    
+    {/* Неоновый тег в верхнем углу */}
+    <div className="absolute top-3 left-3 bg-[#00d2ff]/10 border border-[#00d2ff]/40 backdrop-blur-md px-2.5 py-1 rounded-md text-[9px] sm:text-[10px] font-black uppercase tracking-[0.15em] text-[#00d2ff] drop-shadow-[0_0_5px_rgba(0,210,255,0.6)] z-20 select-none">
+      ШТУРМ
+    </div>
+  </div>
+</div>
 
           {/* Логотип и Название */}
           <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4">
@@ -116,17 +121,22 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Правая карточка (Красный неон) */}
-          <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-3 shrink-0">
-            <div className="absolute inset-0 border-2 border-[#ff004c] rounded-2xl transform skew-x-3 translate-x-3 translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(255,0,76,0.3)]" />
-            <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#ff004c]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
-              <img
-                src="/characters-right.png"
-                alt=""
-                className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
+         {/* Правая карточка (Красный неон) */}
+<div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-3 shrink-0">
+  <div className="absolute inset-0 border-2 border-[#ff004c] rounded-2xl transform skew-x-3 translate-x-3 translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(255,0,76,0.3)]" />
+  <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#ff004c]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
+    <img
+      src="/characters-right.png"
+      alt=""
+      className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
+    />
+    
+    {/* Неоновый тег в верхнем углу */}
+    <div className="absolute top-3 right-3 bg-[#ff004c]/10 border border-[#ff004c]/40 backdrop-blur-md px-2.5 py-1 rounded-md text-[9px] sm:text-[10px] font-black uppercase tracking-[0.15em] text-[#ff004c] drop-shadow-[0_0_5px_rgba(255,0,76,0.6)] z-20 select-none">
+      ОБОРОНА
+    </div>
+  </div>
+</div>
 
         </section>
 
