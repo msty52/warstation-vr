@@ -91,11 +91,6 @@ export default function Home() {
             />
           </div>
           
-          <p className="max-w-3xl text-base sm:text-lg md:text-xl font-bold italic leading-relaxed text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] px-2">
-            VR-арена - Это место, где оживают любые праздники и мероприятия. 
-            День рождения, корпоратив, выпускной или просто встреча с друзьями - 
-            мы превращаем это в игру, где каждый становится героем.
-          </p>
         </section>
 
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
