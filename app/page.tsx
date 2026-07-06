@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation";
+import Image from "next/image"; // ← Этот импорт был пропущен и ломал сборку TypeScript
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 export default function Home() {
@@ -86,20 +87,20 @@ export default function Home() {
         {/* Главный экран / Персонажи */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 text-center">
 
-        {/* Колонка 1 (Слева): WARSTATION VR LEFT PACK с синим контуром */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-          <div className="relative group p-6 rounded-sm bg-[#080914]/80 border border-blue-500/30 overflow-hidden shadow-[0_0_25px_rgba(59,130,246,0.15)]">
-            {/* Декоративный угловой синий неоновый контур (верхний левый) */}
-            <div className="absolute top-0 left-0 h-1/4 w-1/4 border-t-2 border-l-2 border-blue-500 rounded-tl-sm skew-x-12 translate-x-3 translate-y-3 shadow-[0_0_15px_#3b82f6]"></div>
-            <Image 
-              src="/characters-left.png" 
-              alt="Сражающиеся персонажи слева" 
-              width={400} 
-              height={500} 
-              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-            />
+          {/* Колонка 1 (Слева): Персонажи с синим контуром */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1">
+            <div className="relative group p-6 rounded-sm bg-[#080914]/80 border border-blue-500/30 overflow-hidden shadow-[0_0_25px_rgba(59,130,246,0.15)]">
+              {/* Декоративный угловой синий неоновый контур (верхний левый) */}
+              <div className="absolute top-0 left-0 h-1/4 w-1/4 border-t-2 border-l-2 border-blue-500 rounded-tl-sm skew-x-12 translate-x-3 translate-y-3 shadow-[0_0_15px_#3b82f6]"></div>
+              <Image 
+                src="/characters-left.png" 
+                alt="Сражающиеся персонажи команды синих" 
+                width={400} 
+                height={500} 
+                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
-        </div>
 
           {/* Логотип и Название */}
           <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4">
@@ -107,7 +108,7 @@ export default function Home() {
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
               <img 
                 src="/favicon.ico" 
-                alt="Logo" 
+                alt="Warstation VR Logo" 
                 className="relative h-28 sm:h-32 md:h-36 w-auto rounded-3xl shadow-[0_0_50px_rgba(176,38,255,0.25)] border border-purple-500/20" 
               />
             </div>
@@ -119,20 +120,20 @@ export default function Home() {
             </p>
           </div>
 
-         {/* Колонка 3 (Справа): WARSTATION VR RIGHT PACK с красным контуром */}
-        <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4">
-          <div className="relative group p-6 rounded-sm bg-[#1a0f05]/80 border border-red-600/30 overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)]">
-            {/* Декоративный угловой красный неоновый контур (верхний правый) */}
-            <div className="absolute top-0 right-0 h-1/4 w-1/4 border-t-2 border-r-2 border-red-600 rounded-tr-sm -skew-x-12 -translate-x-3 translate-y-3 shadow-[0_0_15px_#dc2626]"></div>
-            <Image 
-              src="/characters-right.png" 
-              alt="Сражающиеся персонажи справа" 
-              width={400} 
-              height={500} 
-              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-            />
+          {/* Колонка 3 (Справа): Персонажи с красным контуром */}
+          <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3">
+            <div className="relative group p-6 rounded-sm bg-[#1a0f05]/80 border border-red-600/30 overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)]">
+              {/* Декоративный угловой красный неоновый контур (верхний правый) */}
+              <div className="absolute top-0 right-0 h-1/4 w-1/4 border-t-2 border-r-2 border-red-600 rounded-tr-sm -skew-x-12 -translate-x-3 translate-y-3 shadow-[0_0_15px_#dc2626]"></div>
+              <Image 
+                src="/characters-right.png" 
+                alt="Сражающиеся персонажи команды красных" 
+                width={400} 
+                height={500} 
+                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
-        </div>
 
         </section>
 
