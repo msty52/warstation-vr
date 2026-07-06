@@ -48,6 +48,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
+      {/* Фоновые градиенты */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
@@ -57,6 +58,7 @@ export default function Home() {
 
       <div className="relative z-10">
 
+        {/* Навигация */}
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
@@ -81,21 +83,22 @@ export default function Home() {
           </div>
         </nav>
 
+        {/* Главный экран / Персонажи */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 text-center">
 
+          {/* Левая карточка (Синий неон) */}
           <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-2 lg:order-1 shrink-0">
-
             <div className="absolute inset-0 border-2 border-[#00d2ff] rounded-2xl transform -skew-x-3 -translate-x-3 -translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(0,210,255,0.3)]" />
-
             <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#00d2ff]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
               <img
                 src="/characters-left.png"
-                alt="Warstation VR Left Pack"
+                alt=""
                 className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
 
+          {/* Логотип и Название */}
           <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4">
             <div className="relative group mb-6">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
@@ -109,18 +112,17 @@ export default function Home() {
               WARSTATION VR
             </h1>
             <p className="mt-2 text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em]">
-              Арена виртуальной реальности • Ростов-на-Дону
+              Арена виртуальной реальности
             </p>
           </div>
 
+          {/* Правая карточка (Красный неон) */}
           <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-3 shrink-0">
-
             <div className="absolute inset-0 border-2 border-[#ff004c] rounded-2xl transform skew-x-3 translate-x-3 translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(255,0,76,0.3)]" />
-
             <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#ff004c]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
               <img
                 src="/characters-right.png"
-                alt="Warstation VR Right Pack"
+                alt=""
                 className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -128,6 +130,7 @@ export default function Home() {
 
         </section>
 
+        {/* Локация и геймплей */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Локация и геймплей
@@ -168,6 +171,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Наши Игры */}
         <section id="games-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white text-center mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Наши Игры
@@ -196,6 +200,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Тарифы */}
         <section id="pricing-section" className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white text-center mb-10 sm:mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             ТАРИФЫ
@@ -287,6 +292,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* О нас & Контакты */}
         <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-10 sm:mb-14">
             О НАC
@@ -374,12 +380,14 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Подвал */}
         <footer className="py-6 border-t border-white/5 text-center relative z-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION VR</p>
         </footer>
 
       </div>
 
+      {/* Модальное окно для видеоплеера */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
