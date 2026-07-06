@@ -84,26 +84,31 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Главный экран / Персонажи */}
-        <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 text-center">
+       {/* Главный экран / Персонажи */}
+        <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 text-center">
 
           {/* Колонка 1 (Слева): Персонажи с синим контуром */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1">
-            <div className="relative group p-6 rounded-sm bg-[#080914]/80 border border-blue-500/30 overflow-hidden shadow-[0_0_25px_rgba(59,130,246,0.15)]">
-              {/* Декоративный угловой синий неоновый контур (верхний левый) */}
-              <div className="absolute top-0 left-0 h-1/4 w-1/4 border-t-2 border-l-2 border-blue-500 rounded-tl-sm skew-x-12 translate-x-3 translate-y-3 shadow-[0_0_15px_#3b82f6]"></div>
-              <Image 
-                src="/characters-left.png" 
-                alt="Сражающиеся персонажи команды синих" 
-                width={400} 
-                height={500} 
-                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-              />
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1 w-full max-w-[340px] sm:max-w-[380px]">
+            <div className="relative group w-full p-2">
+              {/* Геометрическая неоновая рамка на заднем плане (стиль как на image_eb3065.jpg) */}
+              <div className="absolute inset-0 border-2 border-blue-500/30 -skew-x-12 translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
+              
+              {/* Контейнер с картинкой */}
+              <div className="relative z-10 p-4 rounded-xl bg-[#080914]/90 border border-blue-500/20 backdrop-blur-sm shadow-[0_0_30px_rgba(59,130,246,0.1)]">
+                <Image 
+                  src="/characters-left.jpg" 
+                  alt="Сражающиеся персонажи команды синих" 
+                  width={400} 
+                  height={500} 
+                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
           {/* Логотип и Название */}
-          <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4">
+          <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4 shrink-0">
             <div className="relative group mb-6">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
               <img 
@@ -121,22 +126,26 @@ export default function Home() {
           </div>
 
           {/* Колонка 3 (Справа): Персонажи с красным контуром */}
-          <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3">
-            <div className="relative group p-6 rounded-sm bg-[#1a0f05]/80 border border-red-600/30 overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)]">
-              {/* Декоративный угловой красный неоновый контур (верхний правый) */}
-              <div className="absolute top-0 right-0 h-1/4 w-1/4 border-t-2 border-r-2 border-red-600 rounded-tr-sm -skew-x-12 -translate-x-3 translate-y-3 shadow-[0_0_15px_#dc2626]"></div>
-              <Image 
-                src="/characters-right.png" 
-                alt="Сражающиеся персонажи команды красных" 
-                width={400} 
-                height={500} 
-                className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-              />
+          <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3 w-full max-w-[340px] sm:max-w-[380px]">
+            <div className="relative group w-full p-2">
+              {/* Геометрическая неоновая рамка на заднем плане (стиль как на image_eb3065.jpg) */}
+              <div className="absolute inset-0 border-2 border-red-500/30 skew-x-12 -translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
+              
+              {/* Контейнер с картинкой */}
+              <div className="relative z-10 p-4 rounded-xl bg-[#1a0f05]/90 border border-red-600/20 backdrop-blur-sm shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+                <Image 
+                  src="/characters-right.jpg" 
+                  alt="Сражающиеся персонажи команды красных" 
+                  width={400} 
+                  height={500} 
+                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                  priority
+                />
+              </div>
             </div>
           </div>
 
         </section>
-
         {/* Локация и геймплей */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
