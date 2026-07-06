@@ -81,16 +81,51 @@ export default function Home() {
           </div>
         </nav>
 
-        <section className="pt-32 sm:pt-44 pb-12 flex flex-col items-center px-4 sm:px-6 text-center">
-          <div className="relative group mb-8 sm:mb-12">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-            <img 
-              src="/logo.jpg" 
-              alt="Logo" 
-              className="relative h-28 sm:h-32 md:h-36 w-auto rounded-3xl shadow-[0_0_50px_rgba(176,38,255,0.25)] border border-purple-500/20" 
-            />
+        <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 text-center">
+
+          <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-2 lg:order-1 shrink-0">
+
+            <div className="absolute inset-0 border-2 border-[#00d2ff] rounded-2xl transform -skew-x-3 -translate-x-3 -translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(0,210,255,0.3)]" />
+
+            <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#00d2ff]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
+              <img
+                src="/characters-left.png"
+                alt="Warstation VR Left Pack"
+                className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </div>
-          
+
+          <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4">
+            <div className="relative group mb-6">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+              <img 
+                src="/favicon.ico" 
+                alt="Logo" 
+                className="relative h-28 sm:h-32 md:h-36 w-auto rounded-3xl shadow-[0_0_50px_rgba(176,38,255,0.25)] border border-purple-500/20" 
+              />
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 drop-shadow-[0_2px_10px_rgba(168,85,247,0.3)]">
+              WARSTATION VR
+            </h1>
+            <p className="mt-2 text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em]">
+              Арена виртуальной реальности • Ростов-на-Дону
+            </p>
+          </div>
+
+          <div className="relative w-full max-w-[260px] sm:max-w-[300px] aspect-[4/5] flex items-center justify-center group order-3 shrink-0">
+
+            <div className="absolute inset-0 border-2 border-[#ff004c] rounded-2xl transform skew-x-3 translate-x-3 translate-y-3 opacity-60 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 shadow-[0_0_20px_rgba(255,0,76,0.3)]" />
+
+            <div className="relative w-full h-full bg-[#0b0518]/70 border border-[#ff004c]/20 rounded-2xl overflow-hidden backdrop-blur-sm">
+              <img
+                src="/characters-right.png"
+                alt="Warstation VR Right Pack"
+                className="w-full h-full object-cover transform scale-102 group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+
         </section>
 
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
