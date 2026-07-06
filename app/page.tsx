@@ -88,7 +88,6 @@ export default function Home() {
 
         {/* Колонка 1 (Слева): WARSTATION VR LEFT PACK с синим контуром */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
-          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-white/40 drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">WARSTATION VR LEFT PACK</h2>
           <div className="relative group p-6 rounded-sm bg-[#080914]/80 border border-blue-500/30 overflow-hidden shadow-[0_0_25px_rgba(59,130,246,0.15)]">
             {/* Декоративный угловой синий неоновый контур (верхний левый) */}
             <div className="absolute top-0 left-0 h-1/4 w-1/4 border-t-2 border-l-2 border-blue-500 rounded-tl-sm skew-x-12 translate-x-3 translate-y-3 shadow-[0_0_15px_#3b82f6]"></div>
@@ -122,7 +121,6 @@ export default function Home() {
 
          {/* Колонка 3 (Справа): WARSTATION VR RIGHT PACK с красным контуром */}
         <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4">
-          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-white/40 drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">WARSTATION VR RIGHT PACK</h2>
           <div className="relative group p-6 rounded-sm bg-[#1a0f05]/80 border border-red-600/30 overflow-hidden shadow-[0_0_25px_rgba(239,68,68,0.15)]">
             {/* Декоративный угловой красный неоновый контур (верхний правый) */}
             <div className="absolute top-0 right-0 h-1/4 w-1/4 border-t-2 border-r-2 border-red-600 rounded-tr-sm -skew-x-12 -translate-x-3 translate-y-3 shadow-[0_0_15px_#dc2626]"></div>
