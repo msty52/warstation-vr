@@ -294,7 +294,7 @@ export default function Home() {
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 group hover:bg-[#ff004c]/5 hover:border-[#ff004c]/20 transition-all duration-300 gap-2 sm:gap-0">
                   <div className="flex items-center gap-4 sm:gap-6">
-                    <span className="text-[#ff004c] font-black italic text-lg sm:text-xl">ПТ-ВС</span>
+                    <span className="text-[#ff004c] font-black italic text-lg sm:text-xl">ПН-ВС</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-xl sm:text-2xl font-black italic text-[#ff004c]">1.000</span>
