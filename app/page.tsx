@@ -314,23 +314,24 @@ export default function Home() {
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
-          {/* БЛОК ОТЗЫВОВ С ЯНДЕКС КАРТ (КАРУСЕЛЬ КАК НА image_11a63c.png) */}
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-2 sm:p-4 shadow-[0_0_40px_rgba(176,38,255,0.1)]">
-              
-              {/* Контейнер с точными размерами для правильного переключения виджета в режим слайдера */}
-              <div className="w-full h-[460px] overflow-hidden relative rounded-xl">
-                <iframe 
-                  src="https://yandex.ru/maps-reviews-widget/67834229080?theme=dark" 
-                  className="absolute top-0 left-0 w-full h-full border-0 rounded-xl"
-                  allowFullScreen
-                  title="Yandex Reviews Carousel"
-                />
-              </div>
-
+         {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ С ЯНДЕКС КАРТ */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
+          <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-2 sm:p-4 shadow-[0_0_40px_rgba(176,38,255,0.1)]">
+            
+            {/* Контейнер с фиксированной высотой. Яндекс требует минимум 450-460px для карусели */}
+            <div className="w-full h-[460px] overflow-hidden relative rounded-xl bg-[#111115]">
+              <iframe 
+                src="https://yandex.ru/maps-reviews-widget/67834229080?theme=dark" 
+                className="absolute top-0 left-0 w-full h-full border-0 rounded-xl"
+                allowFullScreen
+                loading="lazy"
+                title="Yandex Reviews Carousel"
+              />
             </div>
+
           </div>
-          {/* КОНЕЦ БЛОКА ОТЗЫВОВ */}
+        </div>
+        {/* КОНЕЦ БЛОКА ОТЗЫВОВ */}
 
           {/* Контакты и Карта */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
