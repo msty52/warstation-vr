@@ -334,27 +334,29 @@ export default function Home() {
           </h2>
 
           {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS (ГОРИЗОНТАЛЬНАЯ КАРУСЕЛЬ) */}
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
-              
-              <div className="w-full min-h-[480px] flex justify-center items-center rounded-2xl bg-[#111115] overflow-hidden">
-                <iframe 
-                  title="Виджет с отзывами «Карусель» от MyReviews" 
-                  className="w-full h-full min-h-[480px] max-w-[1170px] border-0 outline-none p-0 m-0" 
-                  id="myReviews__block-widget"
-                />
-              </div>
+<div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
+  <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
+    
+    {/* Контейнер-маска: фиксируем высоту на 435px и скрываем всё, что выходит за рамки */}
+    <div className="w-full h-[435px] rounded-2xl bg-[#111115] overflow-hidden relative">
+      <iframe 
+        title="Виджет с отзывами «Карусель» от MyReviews" 
+        {/* Сам iframe делаем стандартной высоты 480px, уводя водяной знак вниз под маску */}
+        className="w-full h-[480px] max-w-[1170px] border-0 outline-none p-0 m-0 absolute top-0 left-1/2 -translate-x-1/2" 
+        id="myReviews__block-widget"
+      />
+    </div>
 
-            </div>
+  </div>
 
-            {/* Загружаем внешний скрипт и триггерим инициализацию */}
-            <Script 
-              src="https://myreviews.dev/widget/dist/blockWidget.js"
-              strategy="afterInteractive"
-              onReady={initMyReviewsWidget}
-            />
-          </div>
-          {/* KONEC БЛОКА ОТЗЫВОВ */}
+  {/* Загружаем внешний скрипт и триггерим инициализацию */}
+  <Script 
+    src="https://myreviews.dev/widget/dist/blockWidget.js"
+    strategy="afterInteractive"
+    onReady={initMyReviewsWidget}
+  />
+</div>
+{/* KONEC БЛОКА ОТЗЫВОВ */}
 
           {/* Контакты и Карта */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
