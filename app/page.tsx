@@ -308,12 +308,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* О нас & Контакты */}
+      {/* О нас & Контакты */}
         <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-10 sm:mb-14">
-            О НАC
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-6 sm:mb-8">
+            свежие фото с игр!
           </h2>
 
+          {/* БЛОК ОТЗЫВОВ С ЯНДЕКС КАРТ */}
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-14 sm:mb-20 relative z-10">
+            <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#0b0518]/60 backdrop-blur-md p-4 sm:p-6 shadow-[0_0_30px_rgba(176,38,255,0.05)]">
+              
+              {/* Контейнер для адаптивного iframe */}
+              <div className="w-full h-[500px] sm:h-[600px] overflow-hidden relative rounded-xl">
+                <iframe 
+                  src="https://yandex.ru/maps-reviews-widget/67834229080?theme=dark" 
+                  className="absolute top-0 left-0 w-full h-full border-0 rounded-xl"
+                  allowFullScreen
+                  title="Yandex Reviews"
+                />
+              </div>
+
+            </div>
+          </div>
+          {/* КОНЕЦ БЛОКА ОТЗЫВОВ */}
+
+          {/* Контакты и Карта */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
               
