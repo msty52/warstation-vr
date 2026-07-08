@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation";
-import Image from "next/image"; // ← Этот импорт был пропущен и ломал сборку TypeScript
+import Image from "next/image"; 
+import Script from "next/script"; // ← Импортируем встроенный компонент скриптов Next.js
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 export default function Home() {
@@ -12,9 +13,30 @@ export default function Home() {
 
   const mapCenter = [47.310535, 39.803793]; 
 
+  // Функция для безопасной инициализации виджета карусели отзывов
+  const initMyReviewsWidget = () => {
+    if (typeof window !== "undefined" && (window as any).myReviews?.BlockWidget) {
+      try {
+        new (window as any).myReviews.BlockWidget({
+          uuid: "3ac6368e-7900-4257-bf31-ce6a0577057f",
+          name: "g2107361",
+          additionalFrame: "none",
+          lang: "ru",
+          widgetId: "1"
+        }).init();
+      } catch (error) {
+        console.error("Ошибка инициализации виджета отзывов:", error);
+      }
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
+    
+    // Инициализируем отзывы при монтировании компонента
+    initMyReviewsWidget();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -84,16 +106,14 @@ export default function Home() {
           </div>
         </nav>
 
-       {/* Главный экран / Персонажи */}
+        {/* Главный экран / Персонажи */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 text-center">
 
           {/* Колонка 1 (Слева): Персонажи с синим контуром */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
-              {/* Геометрическая неоновая рамка на заднем плане (стиль как на image_eb3065.jpg) */}
               <div className="absolute inset-0 border-2 border-blue-500/30 -skew-x-12 translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
               
-              {/* Контейнер с картинкой */}
               <div className="relative z-10 p-4 rounded-xl bg-[#080914]/90 border border-blue-500/20 backdrop-blur-sm shadow-[0_0_30px_rgba(59,130,246,0.1)]">
                 <Image 
                   src="/characters-left.jpg" 
@@ -128,10 +148,8 @@ export default function Home() {
           {/* Колонка 3 (Справа): Персонажи с красным контуром */}
           <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
-              {/* Геометрическая неоновая рамка на заднем плане (стиль как на image_eb3065.jpg) */}
               <div className="absolute inset-0 border-2 border-red-500/30 skew-x-12 -translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
               
-              {/* Контейнер с картинкой */}
               <div className="relative z-10 p-4 rounded-xl bg-[#1a0f05]/90 border border-red-600/20 backdrop-blur-sm shadow-[0_0_30px_rgba(239,68,68,0.1)]">
                 <Image 
                   src="/characters-right.jpg" 
@@ -146,6 +164,7 @@ export default function Home() {
           </div>
 
         </section>
+
         {/* Локация и геймплей */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
@@ -308,36 +327,34 @@ export default function Home() {
           </div>
         </section>
 
-{/* О нас & Контакты */}
+        {/* О нас & Контакты */}
         <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-8">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
-       {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ С ЯНДЕКС КАРТ */}
-        {/* Изменили max-w-6xl на max-w-xl (около 576px), чтобы убрать пустую черноту справа */}
-        <div className="max-w-xl mx-auto px-4 mb-16 relative z-10">
-          
-          <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
-            
-            {/* Увеличили высоту до 650px. Теперь внутри фрейма поместится 2-3 отзыва и появится вертикальный скролл */}
-            <div className="w-full h-[650px] overflow-hidden relative rounded-2xl bg-[#111115]">
-              <iframe 
-                src="https://yandex.ru/maps-reviews-widget/67834229080?comments" 
-                className="absolute top-0 left-0 w-full h-full border-0 rounded-2xl"
-                style={{ 
-                  filter: 'invert(0.89) hue-rotate(180deg)', 
-                  background: '#ffffff' 
-                }}
-                allowFullScreen
-                loading="lazy"
-                title="Yandex Reviews Automated"
-              />
+          {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS (ГОРИЗОНТАЛЬНАЯ КАРУСЕЛЬ) */}
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
+            <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
+              
+              <div className="w-full min-h-[480px] flex justify-center items-center rounded-2xl bg-[#111115] overflow-hidden">
+                <iframe 
+                  title="Виджет с отзывами «Карусель» от MyReviews" 
+                  className="w-full h-full min-h-[480px] max-w-[1170px] border-0 outline-none p-0 m-0" 
+                  id="myReviews__block-widget"
+                />
+              </div>
+
             </div>
 
+            {/* Загружаем внешний скрипт и триггерим инициализацию */}
+            <Script 
+              src="https://myreviews.dev/widget/dist/blockWidget.js"
+              strategy="afterInteractive"
+              onReady={initMyReviewsWidget}
+            />
           </div>
-        </div>
-        {/* КОНЕЦ БЛОКА ОТЗЫВОВ */}
+          {/* KONEC БЛОКА ОТЗЫВОВ */}
 
           {/* Контакты и Карта */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
