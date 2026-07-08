@@ -314,18 +314,25 @@ export default function Home() {
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
-         {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ С ЯНДЕКС КАРТ */}
+        {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ С ЯНДЕКС КАРТ */}
         <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-          <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-2 sm:p-4 shadow-[0_0_40px_rgba(176,38,255,0.1)]">
+          
+          <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
             
-            {/* Контейнер с фиксированной высотой. Яндекс требует минимум 450-460px для карусели */}
-            <div className="w-full h-[460px] overflow-hidden relative rounded-xl bg-[#111115]">
+            {/* Контейнер с четко заданной высотой */}
+            <div className="w-full h-[520px] overflow-hidden relative rounded-2xl bg-[#111115]">
               <iframe 
-                src="https://yandex.ru/maps-reviews-widget/67834229080?theme=dark" 
-                className="absolute top-0 left-0 w-full h-full border-0 rounded-xl"
+                // КРИТИЧЕСКИ ВАЖНО: Добавили ?comments в конец URL
+                src="https://yandex.ru/maps-reviews-widget/67834229080?comments" 
+                className="absolute top-0 left-0 w-full h-full border-0 rounded-2xl"
+                style={{ 
+                  // Эта строчка делает чудо: инвертирует белый цвет Яндекса в стильный темный
+                  filter: 'invert(0.89) hue-rotate(180deg)', 
+                  background: '#ffffff' 
+                }}
                 allowFullScreen
                 loading="lazy"
-                title="Yandex Reviews Carousel"
+                title="Yandex Reviews Automated"
               />
             </div>
 
