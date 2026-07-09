@@ -92,7 +92,7 @@ export default function Home() {
               className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-purple-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
               <img 
-                src="/logo.png" 
+                src="/logo1.png" 
                 alt="Warstation" 
                 className="h-5 w-auto sm:h-6 object-contain transition-transform duration-300 group-hover:scale-105"
               />
