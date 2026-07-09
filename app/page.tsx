@@ -86,16 +86,28 @@ export default function Home() {
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            {/* Кнопка бренда с новым логотипом и без VR */}
+            {/* Кнопка бренда с новым SVG-логотипом и без VR */}
             <button 
               onClick={() => scrollToSection('top')} 
               className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-purple-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
-              <img 
-                src="/logo1.png" 
-                alt="Warstation" 
-                className="h-5 w-auto sm:h-6 object-contain transition-transform duration-300 group-hover:scale-105"
-              />
+              <svg 
+                viewBox="0 0 644 556" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-auto sm:h-6 transition-transform duration-300 group-hover:scale-105"
+              >
+                <path d="M322.016 0V194.154L271.274 223.354L219.403 253.207V177.158L322.016 0Z" fill="currentColor"/>
+                <path opacity="0.95" d="M424.638 177.194V253.207L372.731 223.354L322.025 194.154V0L424.638 177.194Z" fill="currentColor"/>
+                <path opacity="0.8" d="M271.266 517.97L219.395 547.86L205.225 555.995H0V555.958L168.653 458.918L219.395 488.117L271.266 517.97Z" fill="currentColor"/>
+                <path d="M168.653 340.854V458.959L0 556L102.612 378.842L116.782 370.707L168.653 340.854Z" fill="currentColor"/>
+                <path opacity="0.8" d="M643.959 555.958V555.995H438.734L424.601 547.86L372.693 517.97L424.601 488.117L475.306 458.918L643.959 555.958Z" fill="currentColor"/>
+                <path opacity="0.95" d="M644 556L475.347 458.959V340.854L527.218 370.707L541.387 378.842L644 556Z" fill="currentColor"/>
+                <path d="M219.579 429.391L322.017 370.82V253.723L219.579 312.294V429.391Z" fill="currentColor"/>
+                <path opacity="0.8" d="M403.376 418.29L321.964 371.404L219.388 430.493L322 489.545L424.613 430.493L403.376 418.29Z" fill="currentColor"/>
+                <path opacity="0.95" d="M321.999 253.298L321.963 371.403L424.612 430.492V312.35L321.999 253.298Z" fill="currentColor"/>
+              </svg>
+              <span>Warstation</span>
             </button>
             
             <div className="flex flex-wrap justify-end gap-x-2.5 gap-y-1 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
