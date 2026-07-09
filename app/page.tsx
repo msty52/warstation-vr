@@ -93,10 +93,9 @@ export default function Home() {
             >
               <img 
                 src="/logo.png" 
-                alt="Warstation Logo" 
+                alt="Warstation" 
                 className="h-5 w-auto sm:h-6 object-contain transition-transform duration-300 group-hover:scale-105"
               />
-              <span>Warstation</span>
             </button>
             
             <div className="flex flex-wrap justify-end gap-x-2.5 gap-y-1 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
