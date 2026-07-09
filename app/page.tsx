@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation";
-import Image from "next/image"; 
-import Script from "next/script"; // ← Импортируем встроенный компонент скриптов Next.js
+import Image from "image"; 
+import Script from "next/script"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 export default function Home() {
@@ -86,11 +86,17 @@ export default function Home() {
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            {/* Кнопка бренда с новым логотипом и без VR */}
             <button 
               onClick={() => scrollToSection('top')} 
-              className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-purple-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-pointer"
+              className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-purple-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-pointer group"
             >
-              Warstation VR
+              <img 
+                src="/logo.png" 
+                alt="Warstation Logo" 
+                className="h-5 w-auto sm:h-6 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+              <span>Warstation</span>
             </button>
             
             <div className="flex flex-wrap justify-end gap-x-2.5 gap-y-1 sm:gap-8 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.2em]">
@@ -100,7 +106,7 @@ export default function Home() {
               </button>
               <button onClick={() => scrollToSection('games-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Игры</button>
               <button onClick={() => scrollToSection('pricing-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Тарифы</button>
-              <button onClick={() => router.push('/reviews')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Отзывы</button>
+              <button onClick={() => scrollToSection('reviews-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">Отзывы</button>
               <button onClick={() => scrollToSection('about-heading-section')} className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer">О нас</button>
             </div>
           </div>
@@ -328,33 +334,31 @@ export default function Home() {
         </section>
 
         {/* О нас & Контакты */}
-        <section id="about-heading-section" className="pt-12 pb-16 scroll-mt-24">
+        <section id="reviews-section" className="pt-12 pb-16 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-8">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
-          {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS (ГОРИЗОНТАЛЬНАЯ КАРУСЕЛЬ) */}
+          {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
             <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
               
-              <div className="w-full min-h-[480px] flex justify-center items-center rounded-2xl bg-[#111115] overflow-hidden">
+              <div className="w-full h-[435px] rounded-2xl bg-[#111115] overflow-hidden relative">
                 <iframe 
                   title="Виджет с отзывами «Карусель» от MyReviews" 
-                  className="w-full h-full min-h-[480px] max-w-[1170px] border-0 outline-none p-0 m-0" 
+                  className="w-full h-[480px] max-w-[1170px] border-0 outline-none p-0 m-0 absolute top-0 left-1/2 -translate-x-1/2" 
                   id="myReviews__block-widget"
                 />
               </div>
 
             </div>
 
-            {/* Загружаем внешний скрипт и триггерим инициализацию */}
             <Script 
               src="https://myreviews.dev/widget/dist/blockWidget.js"
               strategy="afterInteractive"
               onReady={initMyReviewsWidget}
             />
           </div>
-          {/* KONEC БЛОКА ОТЗЫВОВ */}
 
           {/* Контакты и Карта */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
@@ -373,47 +377,22 @@ export default function Home() {
                 </p>
 
                 <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start w-full sm:w-auto">
-                  <a 
-                    href="https://t.me/warstationrnd" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00d2ff]/30 rounded-xl transition-all duration-300 group flex items-center gap-2"
-                  >
+                  <a href="https://t.me/warstationrnd" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00d2ff]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00d2ff]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">TELEGRAM</span>
                   </a>
 
-                  <a 
-                    href="https://www.instagram.com/warstation.rnd" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#ff004c]/30 rounded-xl transition-all duration-300 group flex items-center gap-2"
-                  >
+                  <a href="https://www.instagram.com/warstation.rnd" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#ff004c]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff004c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">INSTAGRAM</span>
                   </a>
 
-                  <a 
-                    href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2"
-                  >
+                  <a href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                     </svg>
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
                   </a>
-                </div>
-
-                <div className="mt-5 w-full sm:w-auto flex justify-center sm:justify-start">
-                  <button 
-                    onClick={() => router.push('/reviews')}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-purple-600/15 hover:bg-purple-600/30 border border-purple-500/40 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(176,38,255,0.15)] hover:shadow-[0_0_25px_rgba(176,38,255,0.4)] group cursor-pointer"
-                  >
-                    <span className="text-white font-black text-xs uppercase tracking-[0.15em]">Отзывы о нас</span>
-                    <span className="text-purple-400 text-sm transition-transform group-hover:translate-x-1">→</span>
-                  </button>
                 </div>
               </div>
               
@@ -441,7 +420,7 @@ export default function Home() {
 
         {/* Подвал */}
         <footer className="py-6 border-t border-white/5 text-center relative z-10">
-          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION VR</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION</p>
         </footer>
 
       </div>
