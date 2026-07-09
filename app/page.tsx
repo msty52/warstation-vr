@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation";
-import Image from "image"; 
+import Image from "next/image"; 
 import Script from "next/script"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
