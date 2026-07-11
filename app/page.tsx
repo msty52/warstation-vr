@@ -363,7 +363,7 @@ export default function Home() {
   <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-[#00d2ff]/40 via-[#b026ff]/30 to-[#ff004c]/40 shadow-[0_0_30px_rgba(176,38,255,0.1)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,210,255,0.2)]">
     <div className="bg-[#0b0518]/70 backdrop-blur-xl rounded-[23px] py-8 px-6 sm:px-10 text-center border border-white/5">
       <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white/90 leading-relaxed">
-        При подписке на все наши соцсети и написании отзыва - <br className="hidden sm:inline" />
+        При подписке на все наши соцсети - <br className="hidden sm:inline" />
         <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] via-[#b026ff] to-[#ff004c] text-2xl sm:text-3xl md:text-4xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] ml-1 italic tracking-wide inline-block mt-3 uppercase">
           скидка 500 руб
         </span>
