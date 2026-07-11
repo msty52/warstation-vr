@@ -352,7 +352,6 @@ export default function Home() {
 
           {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            {/* Обертка теперь без overflow-hidden, чтобы карточки могли растягиваться вниз */}
             <div className="relative rounded-[24px] border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)] overflow-visible">
               
               <div className="w-full min-h-[450px] h-auto rounded-2xl bg-[#111115] overflow-visible relative flex justify-center items-start">
@@ -373,21 +372,15 @@ export default function Home() {
           </div>
         </section>
 
-<div className="max-w-3xl mx-auto mb-16 px-4 relative z-20">
-  <div className="relative group p-[2px] rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300">
-    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-
-    <div className="relative bg-transparent rounded-[14px] p-6 text-center backdrop-blur-sm">
-
-      <p className="text-base sm:text-lg md:text-xl font-medium text-white/95 mt-3 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
-        При подписке на все наши соцсети и написании отзыва — <br className="hidden sm:inline" />
-        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#b026ff] text-xl sm:text-2xl md:text-3xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] ml-1 italic tracking-wide">
-          скидка 500 руб
-        </span>
-      </p>
-    </div>
-  </div>
-</div>
+        {/* ИСПРАВЛЕННАЯ МАРКЕТИНГОВАЯ ПЛАШКА (ПРОСТО ПАРИТ НА ОСНОВНОМ ФОНЕ САЙТА) */}
+        <div className="max-w-4xl mx-auto mb-20 px-4 relative z-20 text-center">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] leading-relaxed">
+            При подписке на все наши соцсети и написании отзыва — <br className="hidden sm:inline" />
+            <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#b026ff] text-2xl sm:text-3xl md:text-4xl drop-shadow-[0_0_25px_rgba(176,38,255,0.8)] ml-1 italic tracking-wide inline-block mt-3">
+              скидка 500 руб
+            </span>
+          </p>
+        </div>
 
         {/* Контакты и Карта */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16">
