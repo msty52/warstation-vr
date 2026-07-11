@@ -373,21 +373,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* МАРКЕТИНГОВАЯ ПЛАШКА С АКЦИЕЙ */}
-        <div className="max-w-3xl mx-auto mb-16 px-4 relative z-20">
-          <div className="relative group p-0.5 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 shadow-[0_0_30px_rgba(236,72,153,0.15)] transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative bg-[#0b0518] rounded-[14px] p-6 text-center backdrop-blur-xl border border-white/5">
- 
-              <p className="text-base sm:text-lg md:text-xl font-medium text-white/90 mt-3 leading-relaxed">
-                При подписке на все наши соцсети и написании отзыва - <br className="hidden sm:inline" />
-                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#b026ff] text-xl sm:text-2xl md:text-3xl drop-shadow-[0_0_15px_rgba(176,38,255,0.4)] ml-1 italic tracking-wide">
-                  скидка 500 руб
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
+<div className="max-w-3xl mx-auto mb-16 px-4 relative z-20">
+  <div className="relative group p-[2px] rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300">
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
+
+    <div className="relative bg-transparent rounded-[14px] p-6 text-center backdrop-blur-sm">
+
+      <p className="text-base sm:text-lg md:text-xl font-medium text-white/95 mt-3 leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+        При подписке на все наши соцсети и написании отзыва — <br className="hidden sm:inline" />
+        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#b026ff] text-xl sm:text-2xl md:text-3xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] ml-1 italic tracking-wide">
+          скидка 500 руб
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
 
         {/* Контакты и Карта */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16">
