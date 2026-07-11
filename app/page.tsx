@@ -13,7 +13,6 @@ export default function Home() {
 
   const mapCenter = [47.310535, 39.803793]; 
 
-  // Функция для безопасной инициализации виджета карусели отзывов
   const initMyReviewsWidget = () => {
     if (typeof window !== "undefined" && (window as any).myReviews?.BlockWidget) {
       try {
@@ -33,8 +32,7 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    
-    // Инициализируем отзывы при монтировании компонента
+
     initMyReviewsWidget();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -71,7 +69,6 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
-      {/* Фоновые градиенты */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
@@ -81,12 +78,11 @@ export default function Home() {
 
       <div className="relative z-10">
 
-        {/* Навигация */}
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-            {/* Кнопка бренда с новым SVG-логотипом и без VR */}
+
             <button 
               onClick={() => scrollToSection('top')} 
               className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-purple-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-pointer group"
@@ -123,10 +119,8 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Главный экран / Персонажи */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 text-center">
 
-          {/* Колонка 1 (Слева): Персонажи с синим контуром */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
               <div className="absolute inset-0 border-2 border-blue-500/30 -skew-x-12 translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
@@ -144,7 +138,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Логотип и Название */}
           <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4 shrink-0">
             <div className="relative group mb-6">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
@@ -162,7 +155,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Колонка 3 (Справа): Персонажи с красным контуром */}
           <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
               <div className="absolute inset-0 border-2 border-red-500/30 skew-x-12 -translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
@@ -182,7 +174,6 @@ export default function Home() {
 
         </section>
 
-        {/* Локация и геймплей */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Локация и геймплей
@@ -223,7 +214,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Наши Игры */}
         <section id="games-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white text-center mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Наши Игры
@@ -252,7 +242,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Тарифы */}
         <section id="pricing-section" className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white text-center mb-10 sm:mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             ТАРИФЫ
@@ -344,13 +333,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* О нас & Отзывы */}
         <section id="reviews-section" className="pt-12 pb-8 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-8">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
-          {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
             <div className="relative rounded-[24px] border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)] overflow-visible">
               
@@ -372,13 +359,11 @@ export default function Home() {
           </div>
         </section>
 
-      {/* МАРКЕТИНГОВАЯ ПЛАШКА В СТИЛЕ САЙТА */}
 <div className="max-w-4xl mx-auto mb-20 px-4 relative z-20">
   <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-[#00d2ff]/40 via-[#b026ff]/30 to-[#ff004c]/40 shadow-[0_0_30px_rgba(176,38,255,0.1)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,210,255,0.2)]">
-    {/* Внутренний полупрозрачный фон с размытием */}
     <div className="bg-[#0b0518]/70 backdrop-blur-xl rounded-[23px] py-8 px-6 sm:px-10 text-center border border-white/5">
       <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white/90 leading-relaxed">
-        При подписке на все наши соцсети и написании отзыва — <br className="hidden sm:inline" />
+        При подписке на все наши соцсети и написании отзыва - <br className="hidden sm:inline" />
         <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] via-[#b026ff] to-[#ff004c] text-2xl sm:text-3xl md:text-4xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] ml-1 italic tracking-wide inline-block mt-3 uppercase">
           скидка 500 руб
         </span>
@@ -387,7 +372,6 @@ export default function Home() {
   </div>
 </div>
 
-        {/* Контакты и Карта */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
             
@@ -444,14 +428,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Подвал */}
         <footer className="py-6 border-t border-white/5 text-center relative z-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION</p>
         </footer>
 
       </div>
 
-      {/* Модальное окно для видеоплеера */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
