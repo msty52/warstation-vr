@@ -344,20 +344,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* О нас & Контакты */}
-        <section id="reviews-section" className="pt-12 pb-16 scroll-mt-24">
+        {/* О нас & Отзывы */}
+        <section id="reviews-section" className="pt-12 pb-8 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-8">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
           {/* БЛОК АВТОМАТИЧЕСКИХ ОТЗЫВОВ MYREVIEWS */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div className="relative rounded-[24px] overflow-hidden border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)]">
+            {/* Обертка теперь без overflow-hidden, чтобы карточки могли растягиваться вниз */}
+            <div className="relative rounded-[24px] border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)] overflow-visible">
               
-              <div className="w-full h-[435px] rounded-2xl bg-[#111115] overflow-hidden relative">
+              <div className="w-full min-h-[450px] h-auto rounded-2xl bg-[#111115] overflow-visible relative flex justify-center items-start">
                 <iframe 
                   title="Виджет с отзывами «Карусель» от MyReviews" 
-                  className="w-full h-[480px] max-w-[1170px] border-0 outline-none p-0 m-0 absolute top-0 left-1/2 -translate-x-1/2" 
+                  className="w-full min-h-[480px] h-auto max-w-[1170px] border-0 outline-none p-0 m-0" 
                   id="myReviews__block-widget"
                 />
               </div>
@@ -370,62 +371,80 @@ export default function Home() {
               onReady={initMyReviewsWidget}
             />
           </div>
+        </section>
 
-          {/* Контакты и Карта */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
-              
-              <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">Наши контакты</h2>
-                <p className="text-lg sm:text-xl md:text-2xl font-bold italic text-white/90 mb-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] w-full sm:w-auto">г.Ростов-на-Дону, ул. Версальская 4</p>
-                <p className="mb-8 sm:mb-10 w-full sm:w-auto">
-                  <a 
-                    href="tel:+79286255020" 
-                    className="text-2xl sm:text-3xl md:text-4xl font-black italic text-[#b026ff] drop-shadow-[0_0_8px_rgba(176,38,255,0.4)] hover:text-[#ff00ea] hover:drop-shadow-[0_0_12px_rgba(255,0,234,0.6)] transition-all inline-block duration-300 cursor-pointer"
-                  >
-                    +7 (928) 625-50-20
-                  </a>
-                </p>
-
-                <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start w-full sm:w-auto">
-                  <a href="https://t.me/warstationrnd" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00d2ff]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00d2ff]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">TELEGRAM</span>
-                  </a>
-
-                  <a href="https://www.instagram.com/warstation.rnd" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#ff004c]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff004c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">INSTAGRAM</span>
-                  </a>
-
-                  <a href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
-                    </svg>
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex flex-col items-center lg:items-end w-full mt-8 lg:mt-0">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
-                <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
-                  <YMaps query={{ lang: 'ru_RU' }}>
-                    <Map defaultState={{ center: mapCenter, zoom: 16 }} width="100%" height="100%">
-                      <Placemark 
-                        geometry={mapCenter} 
-                        options={{ 
-                          preset: 'islands#yellowDotIconWithCaption', 
-                          iconColor: '#eab308' 
-                        }} 
-                      />
-                      <ZoomControl options={{ position: { right: 12, top: 12 } }} />
-                    </Map>
-                  </YMaps>
-                </div>
-              </div>
-
+        {/* МАРКЕТИНГОВАЯ ПЛАШКА С АКЦИЕЙ */}
+        <div className="max-w-3xl mx-auto mb-16 px-4 relative z-20">
+          <div className="relative group p-0.5 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 shadow-[0_0_30px_rgba(236,72,153,0.15)] transition-all duration-300">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
+            <div className="relative bg-[#0b0518] rounded-[14px] p-6 text-center backdrop-blur-xl border border-white/5">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-pink-500 to-purple-600 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(236,72,153,0.5)] text-white">
+                🔥 Лимитированное предложение
+              </span>
+              <p className="text-base sm:text-lg md:text-xl font-medium text-white/90 mt-3 leading-relaxed">
+                При подписке на все наши соцсети и написании отзыва — <br className="hidden sm:inline" />
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#b026ff] text-xl sm:text-2xl md:text-3xl drop-shadow-[0_0_15px_rgba(176,38,255,0.4)] ml-1 italic tracking-wide">
+                  скидка 500 руб
+                </span>
+              </p>
             </div>
+          </div>
+        </div>
+
+        {/* Контакты и Карта */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
+            
+            <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">Наши контакты</h2>
+              <p className="text-lg sm:text-xl md:text-2xl font-bold italic text-white/90 mb-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] w-full sm:w-auto">г.Ростов-на-Дону, ул. Версальская 4</p>
+              <p className="mb-8 sm:mb-10 w-full sm:w-auto">
+                <a 
+                  href="tel:+79286255020" 
+                  className="text-2xl sm:text-3xl md:text-4xl font-black italic text-[#b026ff] drop-shadow-[0_0_8px_rgba(176,38,255,0.4)] hover:text-[#ff00ea] hover:drop-shadow-[0_0_12px_rgba(255,0,234,0.6)] transition-all inline-block duration-300 cursor-pointer"
+                >
+                  +7 (928) 625-50-20
+                </a>
+              </p>
+
+              <div className="flex gap-3 sm:gap-4 flex-wrap justify-center sm:justify-start w-full sm:w-auto">
+                <a href="https://t.me/warstationrnd" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00d2ff]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00d2ff]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">TELEGRAM</span>
+                </a>
+
+                <a href="https://www.instagram.com/warstation.rnd" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#ff004c]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff004c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">INSTAGRAM</span>
+                </a>
+
+                <a href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
+                  </svg>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
+                </a>
+              </div>
+            </div>
+            
+            <div className="flex flex-col items-center lg:items-end w-full mt-8 lg:mt-0">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
+              <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
+                <YMaps query={{ lang: 'ru_RU' }}>
+                  <Map defaultState={{ center: mapCenter, zoom: 16 }} width="100%" height="100%">
+                    <Placemark 
+                      geometry={mapCenter} 
+                      options={{ 
+                        preset: 'islands#yellowDotIconWithCaption', 
+                        iconColor: '#eab308' 
+                      }} 
+                    />
+                    <ZoomControl options={{ position: { right: 12, top: 12 } }} />
+                  </Map>
+                </YMaps>
+              </div>
+            </div>
+
           </div>
         </section>
 
