@@ -378,11 +378,9 @@ export default function Home() {
           <div className="relative group p-0.5 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 shadow-[0_0_30px_rgba(236,72,153,0.15)] transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative bg-[#0b0518] rounded-[14px] p-6 text-center backdrop-blur-xl border border-white/5">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-pink-500 to-purple-600 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(236,72,153,0.5)] text-white">
-                🔥 Лимитированное предложение
               </span>
               <p className="text-base sm:text-lg md:text-xl font-medium text-white/90 mt-3 leading-relaxed">
-                При подписке на все наши соцсети и написании отзыва — <br className="hidden sm:inline" />
+                При подписке на все наши соцсети и написании отзыва - <br className="hidden sm:inline" />
                 <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] to-[#b026ff] text-xl sm:text-2xl md:text-3xl drop-shadow-[0_0_15px_rgba(176,38,255,0.4)] ml-1 italic tracking-wide">
                   скидка 500 руб
                 </span>
