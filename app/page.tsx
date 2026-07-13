@@ -5,6 +5,21 @@ import { useRouter } from "next/navigation";
 import Image from "next/image"; 
 import Script from "next/script"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
+import { notFound } from 'next/navigation';
+
+export default function Page() {
+  // Если переменная ВЕЗДЕ_404 равна "true", Next.js мгновенно отдаст чистую 404 ошибку
+  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
+    notFound();
+  }
+
+  return (
+    <main>
+      {/* Твой текущий код сайта, который остается в целости и сохранности */}
+      <h1>Добро пожаловать на Warstation VR!</h1>
+    </main>
+  );
+}
 
 export default function Home() {
   const router = useRouter();
