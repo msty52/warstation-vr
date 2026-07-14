@@ -8,9 +8,6 @@ import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { notFound } from 'next/navigation';
 
 export default function Home() {
-  // РУБИЛЬНИК БЛОКИРОВКИ:
-  // Если в Vercel включена переменная NEXT_PUBLIC_MAINTENANCE_MODE="true", 
-  // сайт сразу выдаст ошибку 404, не загружая остальной код.
   if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
     notFound();
   }
