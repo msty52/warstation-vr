@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation";
 import Image from "next/image"; 
-import Script from "next/script"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { notFound } from 'next/navigation';
 
@@ -18,29 +17,54 @@ export default function Home() {
 
   const mapCenter = [47.310535, 39.803793]; 
 
-  const initMyReviewsWidget = () => {
-    if (typeof window !== "undefined" && (window as any).myReviews?.BlockWidget) {
-      try {
-        new (window as any).myReviews.BlockWidget({
-          uuid: "3ac6368e-7900-4257-bf31-ce6a0577057f",
-          name: "g2107361",
-          additionalFrame: "none",
-          lang: "ru",
-          widgetId: "1"
-        }).init();
-      } catch (error) {
-        console.error("Ошибка инициализации виджета отзывов:", error);
-      }
-    }
-  };
-
+  // Скролл-эффект для навигации
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-
-    initMyReviewsWidget();
-
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Динамическая инициализация нового виджета MyReviews
+  useEffect(() => {
+    const initWidget = () => {
+      const anyWindow = window as any;
+      if (anyWindow.myReviews?.BlockWidget) {
+        try {
+          new anyWindow.myReviews.BlockWidget({
+            uuid: "73e15af3-5ae9-4295-8b05-a896aa4426b4",
+            name: "g3113383",
+            additionalFrame: "none",
+            lang: "ru",
+            widgetId: "1"
+          }).init();
+        } catch (e) {
+          console.error("Ошибка инициализации MyReviews:", e);
+        }
+      }
+    };
+
+    // Проверяем, загружен ли уже скрипт на странице
+    let script = document.querySelector('script[src="https://myreviews.dev/widget/dist/blockWidget.js"]') as HTMLScriptElement;
+
+    if (!script) {
+      script = document.createElement("script");
+      script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
+      script.defer = true;
+      script.onload = initWidget;
+      document.body.appendChild(script);
+    } else {
+      if ((window as any).myReviews) {
+        initWidget();
+      } else {
+        script.addEventListener('load', initWidget);
+      }
+    }
+
+    return () => {
+      if (script) {
+        script.removeEventListener('load', initWidget);
+      }
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -74,6 +98,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
+      {/* Фоновые градиенты */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
@@ -83,6 +108,7 @@ export default function Home() {
 
       <div className="relative z-10">
 
+        {/* Шапка */}
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
@@ -124,12 +150,11 @@ export default function Home() {
           </div>
         </nav>
 
+        {/* Главный экран */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 text-center">
-
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
               <div className="absolute inset-0 border-2 border-blue-500/30 -skew-x-12 translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
-              
               <div className="relative z-10 p-4 rounded-xl bg-[#080914]/90 border border-blue-500/20 backdrop-blur-sm shadow-[0_0_30px_rgba(59,130,246,0.1)]">
                 <Image 
                   src="/characters-left.jpg" 
@@ -163,7 +188,6 @@ export default function Home() {
           <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
               <div className="absolute inset-0 border-2 border-red-500/30 skew-x-12 -translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
-              
               <div className="relative z-10 p-4 rounded-xl bg-[#1a0f05]/90 border border-red-600/20 backdrop-blur-sm shadow-[0_0_30px_rgba(239,68,68,0.1)]">
                 <Image 
                   src="/characters-right.jpg" 
@@ -176,9 +200,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </section>
 
+        {/* Локация и геймплей */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Локация и геймплей
@@ -193,7 +217,6 @@ export default function Home() {
                 <div className="relative aspect-video lg:aspect-[9/16] w-full bg-purple-950/20 overflow-hidden">
                   <video 
                     src={`${video.src}#t=0.001`}
-                    poster={video.poster ? video.poster : undefined}
                     muted 
                     loop 
                     playsInline
@@ -201,13 +224,11 @@ export default function Home() {
                     onLoadedMetadata={(e) => { e.currentTarget.currentTime = 0; }}
                     className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                   />
-
                   <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/30 md:bg-black/40 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-10">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_#b026ff] group-hover:scale-105 transition-transform">
                       <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent sm:border-t-[8px] sm:border-l-[14px] sm:border-b-[8px] ml-1"></div>
                     </div>
                   </div>
-
                   <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#04000e] via-[#04000e]/70 to-transparent pointer-events-none z-20">
                     <h3 className="text-[11px] sm:text-[13px] md:text-sm font-black uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] text-center">
                       {video.title}
@@ -219,6 +240,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Игры */}
         <section id="games-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white text-center mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Наши Игры
@@ -247,6 +269,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Тарифы */}
         <section id="pricing-section" className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white text-center mb-10 sm:mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             ТАРИФЫ
@@ -338,49 +361,61 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ОТЗЫВЫ */}
         <section id="reviews-section" className="pt-12 pb-8 scroll-mt-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-8">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-6">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
+          {/* Официальный темный бейдж Яндекса */}
+          <div className="flex justify-center mb-10">
+            <div className="p-[1.5px] bg-gradient-to-r from-yellow-500/50 via-purple-500/50 to-pink-500/50 rounded-xl shadow-[0_0_20px_rgba(176,38,255,0.15)]">
+              <iframe 
+                src="https://yandex.ru/sprav/widget/rating-badge/67834229080?type=rating&theme=dark" 
+                width="150" 
+                height="50" 
+                frameBorder="0"
+                className="rounded-lg block"
+                title="Yandex Rating Badge"
+              ></iframe>
+            </div>
+          </div>
+
+          {/* Виджет MyReviews с отзывами */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div className="relative rounded-[24px] border border-purple-500/20 bg-[#111115] p-1 shadow-[0_0_40px_rgba(176,38,255,0.15)] overflow-visible">
-              
-              <div className="w-full min-h-[450px] h-auto rounded-2xl bg-[#111115] overflow-visible relative flex justify-center items-start">
+            <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/20 via-pink-500/10 to-blue-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+              <div 
+                className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md"
+                style={{ display: 'flex', justifyContent: 'center', borderRadius: '24px' }}
+              >
                 <iframe 
                   title="Виджет с отзывами «Карусель» от MyReviews" 
-                  className="w-full min-h-[480px] h-auto max-w-[1170px] border-0 outline-none p-0 m-0" 
+                  style={{ width: '100%', height: '100%', minHeight: '400px', maxWidth: '1170px', border: 'none', outline: 'none', padding: 0, margin: 0 }} 
                   id="myReviews__block-widget"
-                />
+                ></iframe>
               </div>
-
             </div>
-
-            <Script 
-              src="https://myreviews.dev/widget/dist/blockWidget.js"
-              strategy="afterInteractive"
-              onReady={initMyReviewsWidget}
-            />
           </div>
         </section>
 
-<div className="max-w-5xl mx-auto mb-20 px-4 relative z-20">
-  <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-[#00d2ff]/40 via-[#b026ff]/30 to-[#ff004c]/40 shadow-[0_0_30px_rgba(176,38,255,0.1)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,210,255,0.2)]">
+        {/* Промо-блок (Скидка) */}
+        <div className="max-w-5xl mx-auto mb-20 px-4 relative z-20">
+          <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-[#00d2ff]/40 via-[#b026ff]/30 to-[#ff004c]/40 shadow-[0_0_30px_rgba(176,38,255,0.1)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,210,255,0.2)]">
+            <div className="bg-[#0b0518]/70 backdrop-blur-xl rounded-[23px] py-6 px-6 sm:px-10 border border-white/5">
+              <div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
+                <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white/90">
+                  При подписке на все наши соцсети -
+                </span>
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] via-[#b026ff] to-[#ff004c] text-2xl sm:text-3xl md:text-4xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] italic tracking-wide uppercase py-1">
+                  скидка 500 руб
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <div className="bg-[#0b0518]/70 backdrop-blur-xl rounded-[23px] py-6 px-6 sm:px-10 border border-white/5">
-      <div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
-        <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white/90">
-          При подписке на все наши соцсети -
-        </span>
-        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] via-[#b026ff] to-[#ff004c] text-2xl sm:text-3xl md:text-4xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] italic tracking-wide uppercase py-1">
-          скидка 500 руб
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16">
+        {/* Контакты и Карта */}
+        <section id="about-heading-section" className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
             
             <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full">
@@ -442,6 +477,7 @@ export default function Home() {
 
       </div>
 
+      {/* Модалка для Видео */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
