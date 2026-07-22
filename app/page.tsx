@@ -1,6 +1,3 @@
-Вот полный рабочий код файла `app/page.tsx` с интегрированным `useEffect` для корректной загрузки и инициализации виджета MyReviews:
-
-```tsx
 "use client";
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
@@ -495,5 +492,3 @@ export default function Home() {
     </main>
   );
 }
-
-```
