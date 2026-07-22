@@ -1,3 +1,6 @@
+Вот полный рабочий код файла `app/page.tsx` с интегрированным `useEffect` для корректной загрузки и инициализации виджета MyReviews:
+
+```tsx
 "use client";
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games";
@@ -5,7 +8,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { notFound } from 'next/navigation';
-import Script from "next/script";
 
 export default function Home() {
   if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
@@ -23,6 +25,39 @@ export default function Home() {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Инициализация виджета отзывов MyReviews
+  useEffect(() => {
+    const initMyReviews = () => {
+      const anyWin = window as any;
+      if (anyWin.myReviews?.BlockWidget) {
+        try {
+          new anyWin.myReviews.BlockWidget({
+            uuid: "4474a6f0-686d-4fd5-8bfb-fa2cb3c7d680",
+            name: "g18658962",
+            additionalFrame: "none",
+            lang: "ru",
+            widgetId: "1"
+          }).init();
+        } catch (e) {
+          console.error("Ошибка инициализации MyReviews:", e);
+        }
+      }
+    };
+
+    if ((window as any).myReviews) {
+      initMyReviews();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
+    script.async = true;
+    script.onload = () => {
+      setTimeout(initMyReviews, 150);
+    };
+    document.body.appendChild(script);
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -351,30 +386,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Подключение и надежная инициализация скрипта MyReviews */}
-          <Script 
-            src="https://myreviews.dev/widget/dist/blockWidget.js"
-            strategy="afterInteractive"
-            onReady={() => {
-              setTimeout(() => {
-                const anyWindow = window as any;
-                if (anyWindow.myReviews?.BlockWidget) {
-                  try {
-                    new anyWindow.myReviews.BlockWidget({
-                      uuid: "4474a6f0-686d-4fd5-8bfb-fa2cb3c7d680",
-                      name: "g18658962",
-                      additionalFrame: "none",
-                      lang: "ru",
-                      widgetId: "1"
-                    }).init();
-                  } catch (e) {
-                    console.error("Ошибка инициализации MyReviews:", e);
-                  }
-                }
-              }, 150);
-            }}
-          />
         </section>
 
         {/* Промо-блок (Скидка) */}
@@ -484,3 +495,5 @@ export default function Home() {
     </main>
   );
 }
+
+```
