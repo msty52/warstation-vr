@@ -383,10 +383,9 @@ export default function Home() {
           {/* Виджет MyReviews с отзывами */}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
             <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/20 via-pink-500/10 to-blue-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div 
-                className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md"
-                style={{ display: 'flex', justifyCenter: 'center', borderRadius: '24px' }}
-              >
+             <div 
+                  className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md flex justify-center rounded-[24px]"
+>
                 <iframe 
                   title="Виджет с отзывами «Карусель» от MyReviews" 
                   style={{ width: '100%', height: '100%', minHeight: '400px', maxWidth: '1170px', border: 'none', outline: 'none', padding: 0, margin: 0 }} 
