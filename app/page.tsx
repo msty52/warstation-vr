@@ -24,15 +24,15 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Динамическая инициализация нового виджета MyReviews
+  // Динамическая инициализация обновившегося виджета MyReviews
   useEffect(() => {
     const initWidget = () => {
       const anyWindow = window as any;
       if (anyWindow.myReviews?.BlockWidget) {
         try {
           new anyWindow.myReviews.BlockWidget({
-            uuid: "73e15af3-5ae9-4295-8b05-a896aa4426b4",
-            name: "g3113383",
+            uuid: "4474a6f0-686d-4fd5-8bfb-fa2cb3c7d680",
+            name: "g18658962",
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -43,7 +43,6 @@ export default function Home() {
       }
     };
 
-    // Проверяем, загружен ли уже скрипт на странице
     let script = document.querySelector('script[src="https://myreviews.dev/widget/dist/blockWidget.js"]') as HTMLScriptElement;
 
     if (!script) {
@@ -386,7 +385,7 @@ export default function Home() {
             <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/20 via-pink-500/10 to-blue-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
               <div 
                 className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md"
-                style={{ display: 'flex', justifyContent: 'center', borderRadius: '24px' }}
+                style={{ display: 'flex', justifyCenter: 'center', borderRadius: '24px' }}
               >
                 <iframe 
                   title="Виджет с отзывами «Карусель» от MyReviews" 
