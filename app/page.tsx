@@ -32,7 +32,7 @@ export default function Home() {
         try {
           new anyWin.myReviews.BlockWidget({
             uuid: "4474a6f0-686d-4fd5-8bfb-fa2cb3c7d680",
-            name: "g18658962",
+            name: "g38234878", // Обновленный ID из вашего кода
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -43,15 +43,18 @@ export default function Home() {
       }
     };
 
+    // Если скрипт уже загружен
     if ((window as any).myReviews) {
       initMyReviews();
       return;
     }
 
+    // Если нет, создаем и загружаем его
     const script = document.createElement("script");
     script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
-    script.async = true;
+    script.async = true; // Используем async/defer как в оригинальном скрипте
     script.onload = () => {
+      // Небольшая задержка гарантирует, что объект myReviews полностью доступен
       setTimeout(initMyReviews, 150);
     };
     document.body.appendChild(script);
