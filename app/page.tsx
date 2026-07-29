@@ -31,8 +31,8 @@ export default function Home() {
       if (anyWin.myReviews?.BlockWidget) {
         try {
           new anyWin.myReviews.BlockWidget({
-            uuid: "4474a6f0-686d-4fd5-8bfb-fa2cb3c7d680",
-            name: "g38234878", // Обновленный ID из вашего кода
+            uuid: "81da1d4a-4ae4-403e-93cd-4eb0c33b7f8b", // Обновленный UUID
+            name: "g49017127", // Обновленный ID
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -52,9 +52,8 @@ export default function Home() {
     // Если нет, создаем и загружаем его
     const script = document.createElement("script");
     script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
-    script.async = true; // Используем async/defer как в оригинальном скрипте
+    script.async = true; 
     script.onload = () => {
-      // Небольшая задержка гарантирует, что объект myReviews полностью доступен
       setTimeout(initMyReviews, 150);
     };
     document.body.appendChild(script);
@@ -91,7 +90,7 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
-      {/* Фоновые градиенты */}
+      {/* Фоновые градиенты (Киберпанк-стиль) */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
