@@ -31,8 +31,8 @@ export default function Home() {
       if (anyWin.myReviews?.BlockWidget) {
         try {
           new anyWin.myReviews.BlockWidget({
-            uuid: "81da1d4a-4ae4-403e-93cd-4eb0c33b7f8b", // Обновленный UUID
-            name: "g49017127", // Обновленный ID
+            uuid: "2a9bf3e3-cc68-4923-9f93-145f53a93c0a", // НОВЫЙ UUID
+            name: "g90657159", // НОВЫЙ ID
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
