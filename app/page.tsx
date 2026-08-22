@@ -17,22 +17,20 @@ export default function Home() {
 
   const mapCenter = [47.310535, 39.803793]; 
 
-  // Скролл-эффект для навигации
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Инициализация виджета отзывов MyReviews
   useEffect(() => {
     const initMyReviews = () => {
       const anyWin = window as any;
       if (anyWin.myReviews?.BlockWidget) {
         try {
           new anyWin.myReviews.BlockWidget({
-            uuid: "63daaa71-c641-4f69-b70d-e912e1778f9e", // ОБНОВЛЕННЫЙ UUID
-            name: "g30548468", // ОБНОВЛЕННЫЙ ID
+            uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d", // ОБНОВЛЕННЫЙ UUID
+            name: "g23351149", // ОБНОВЛЕННЫЙ ID
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -49,7 +47,6 @@ export default function Home() {
       return;
     }
 
-    // Если нет, создаем и загружаем его
     const script = document.createElement("script");
     script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
     script.async = true; 
@@ -90,7 +87,6 @@ export default function Home() {
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
 
-      {/* Фоновые градиенты (Киберпанк-стиль) */}
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
@@ -100,7 +96,6 @@ export default function Home() {
 
       <div className="relative z-10">
 
-        {/* Шапка */}
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
@@ -142,7 +137,6 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Главный экран */}
         <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 text-center">
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1 w-full max-w-[340px] sm:max-w-[380px]">
             <div className="relative group w-full p-2">
@@ -194,7 +188,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Локация и геймплей */}
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Локация и геймплей
@@ -232,7 +225,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Игры */}
         <section id="games-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white text-center mb-8 sm:mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             Наши Игры
@@ -261,7 +253,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Тарифы */}
         <section id="pricing-section" className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-white text-center mb-10 sm:mb-16 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             ТАРИФЫ
@@ -353,13 +344,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ОТЗЫВЫ */}
         <section id="reviews-section" className="pt-12 pb-8 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-6">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
           </h2>
 
-          {/* Официальный темный бейдж Яндекса */}
           <div className="flex justify-center mb-10">
             <div className="p-[1.5px] bg-gradient-to-r from-yellow-500/50 via-purple-500/50 to-pink-500/50 rounded-xl shadow-[0_0_20px_rgba(176,38,255,0.15)]">
               <iframe 
@@ -373,10 +362,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Виджет MyReviews с отзывами */}
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/20 via-pink-500/10 to-blue-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md flex justify-center rounded-[24px] min-h-[400px]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10 mt-5">
+            <div className="relative group p-[1px] rounded-[20px] bg-gradient-to-r from-purple-500/20 via-pink-500/10 to-blue-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+              <div className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md flex justify-center rounded-[20px] min-h-[400px]">
                 <iframe 
                   title="Виджет с отзывами «Карусель» от MyReviews" 
                   style={{ width: '100%', height: '100%', minHeight: '400px', maxWidth: '1170px', border: 'none', outline: 'none', padding: 0, margin: 0 }} 
@@ -387,7 +375,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Промо-блок (Скидка) */}
         <div className="max-w-5xl mx-auto mb-20 px-4 relative z-20">
           <div className="relative group p-[1px] rounded-3xl bg-gradient-to-r from-[#00d2ff]/40 via-[#b026ff]/30 to-[#ff004c]/40 shadow-[0_0_30px_rgba(176,38,255,0.1)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,210,255,0.2)]">
             <div className="bg-[#0b0518]/70 backdrop-blur-xl rounded-[23px] py-6 px-6 sm:px-10 border border-white/5">
@@ -403,7 +390,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Контакты и Карта */}
         <section id="about-heading-section" className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
             
@@ -466,12 +452,22 @@ export default function Home() {
 
       </div>
 
-      {/* Модалка для Видео */}
       {activeVideo && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" onClick={() => setActiveVideo(null)}></div>
+          <div 
+            className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" 
+            onClick={() => setActiveVideo(null)}
+          ></div>
           
           <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(176,38,255,0.25)] bg-black/90">
+            <button
+              onClick={() => setActiveVideo(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all cursor-pointer border border-white/10"
+              aria-label="Закрыть видео"
+            >
+              ✕
+            </button>
+
             {activeVideo.includes('vk.com') || activeVideo.includes('vkvideo.ru') || activeVideo.includes('video_ext.php') ? (
               <iframe 
                 src={formatVideoUrl(activeVideo)} 
