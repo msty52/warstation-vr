@@ -29,8 +29,8 @@ export default function Home() {
       if (anyWin.myReviews?.BlockWidget) {
         try {
           new anyWin.myReviews.BlockWidget({
-            uuid: "c9a390d0-cc42-482f-a99c-aa4b8774caa9", 
-            name: "g44532597", 
+            uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d", // ОБНОВЛЕННЫЙ UUID
+            name: "g23351149", // ОБНОВЛЕННЫЙ ID
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -41,6 +41,7 @@ export default function Home() {
       }
     };
 
+    // Если скрипт уже загружен
     if ((window as any).myReviews) {
       initMyReviews();
       return;
