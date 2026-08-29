@@ -28,9 +28,14 @@ export default function Home() {
       const anyWin = window as any;
       if (anyWin.myReviews?.BlockWidget) {
         try {
+          const container = document.getElementById("myReviews__block-widget");
+          if (container) {
+            container.innerHTML = "";
+          }
+
           new anyWin.myReviews.BlockWidget({
-            uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d", // ОБНОВЛЕННЫЙ UUID
-            name: "g23351149", // ОБНОВЛЕННЫЙ ID
+            uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d",
+            name: "g23351149",
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -41,7 +46,6 @@ export default function Home() {
       }
     };
 
-    // Если скрипт уже загружен
     if ((window as any).myReviews) {
       initMyReviews();
       return;
