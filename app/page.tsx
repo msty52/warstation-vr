@@ -29,8 +29,8 @@ export default function Home() {
       if (anyWin.myReviews?.BlockWidget) {
         try {
           new anyWin.myReviews.BlockWidget({
-            uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d", // ОБНОВЛЕННЫЙ UUID
-            name: "g23351149", // ОБНОВЛЕННЫЙ ID
+            uuid: "c9a390d0-cc42-482f-a99c-aa4b8774caa9", 
+            name: "g44532597", 
             additionalFrame: "none",
             lang: "ru",
             widgetId: "1"
@@ -41,7 +41,6 @@ export default function Home() {
       }
     };
 
-    // Если скрипт уже загружен
     if ((window as any).myReviews) {
       initMyReviews();
       return;
@@ -471,19 +470,19 @@ export default function Home() {
             {activeVideo.includes('vk.com') || activeVideo.includes('vkvideo.ru') || activeVideo.includes('video_ext.php') ? (
               <iframe 
                 src={formatVideoUrl(activeVideo)} 
-                className="w-full h-full border-0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                className="w-full h-full border-0"
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                 allowFullScreen
+                title="VK Video Player"
               ></iframe>
             ) : (
-              <video src={activeVideo} controls autoPlay playsInline className="w-full h-full object-contain" />
+              <video
+                src={activeVideo}
+                controls
+                autoPlay
+                className="w-full h-full object-contain"
+              />
             )}
-            <button 
-              onClick={() => setActiveVideo(null)}
-              className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/10 hover:bg-white/20 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center backdrop-blur-sm transition-colors font-bold cursor-pointer z-10"
-            >
-              ✕
-            </button>
           </div>
         </div>
       )}
