@@ -23,32 +23,6 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const initMyReviews = () => {
-      const anyWin = window as any;
-      if (anyWin.myReviews?.BlockWidget) {
-        new anyWin.myReviews.BlockWidget({
-          uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d",
-          name: "g23351149",
-          additionalFrame: "none",
-          lang: "ru",
-          widgetId: "1"
-        }).init();
-      }
-    };
-
-    if ((window as any).myReviews) {
-      initMyReviews();
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
-    script.async = true; 
-    script.onload = () => setTimeout(initMyReviews, 100);
-    document.body.appendChild(script);
-  }, []);
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -355,8 +329,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div id="myReviews__block-widget" className="min-h-[400px]"></div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
+            <iframe
+              src="https://yandex.ru/maps-reviews-widget/67834229080?comments"
+              className="w-full h-[800px] border-0 rounded-2xl bg-transparent shadow-[0_0_40px_rgba(176,38,255,0.1)]"
+              title="Отзывы Яндекс Карты"
+            />
           </div>
         </section>
 
