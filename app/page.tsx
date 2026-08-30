@@ -329,10 +329,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10 overflow-hidden rounded-2xl">
             <iframe
               src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark"
-              className="w-full h-[700px] border-0 rounded-2xl bg-transparent"
+              className="w-[calc(100%+17px)] h-[700px] border-0 bg-transparent"
               title="Отзывы Яндекс Карты"
             />
           </div>
