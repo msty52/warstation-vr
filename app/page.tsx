@@ -332,8 +332,8 @@ export default function Home() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10 overflow-hidden rounded-2xl">
             <iframe
               src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark"
-              className="w-[calc(100%+90px)] h-[700px] border-0 bg-transparent"
-              style={{ clipPath: 'inset(0 90px 0 0)' }}
+              className="w-[calc(100%+180px)] h-[700px] border-0 bg-transparent -ml-[90px]"
+              style={{ clipPath: 'inset(0 180px 0 90px)' }}
               title="Отзывы Яндекс Карты"
             />
           </div>
