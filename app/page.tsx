@@ -329,11 +329,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10 overflow-hidden rounded-2xl">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
             <iframe
-              src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark"
-              className="w-[calc(100%+180px)] h-[700px] border-0 bg-transparent -ml-[90px]"
-              style={{ clipPath: 'inset(0 180px 0 90px)' }}
+              src="https://yandex.ru/maps-reviews-widget/67834229080?comments"
+              className="w-full h-[800px] border-0 rounded-2xl bg-transparent shadow-[0_0_40px_rgba(176,38,255,0.1)]"
               title="Отзывы Яндекс Карты"
             />
           </div>
@@ -381,7 +380,7 @@ export default function Home() {
                 </a>
 
                 <a href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
-                  <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                   </svg>
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
