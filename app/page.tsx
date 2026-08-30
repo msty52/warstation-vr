@@ -27,22 +27,13 @@ export default function Home() {
     const initMyReviews = () => {
       const anyWin = window as any;
       if (anyWin.myReviews?.BlockWidget) {
-        try {
-          const container = document.getElementById("myReviews__block-widget");
-          if (container) {
-            container.innerHTML = "";
-          }
-
-          new anyWin.myReviews.BlockWidget({
-            uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d",
-            name: "g23351149",
-            additionalFrame: "none",
-            lang: "ru",
-            widgetId: "1"
-          }).init();
-        } catch (e) {
-          console.error("Ошибка инициализации MyReviews:", e);
-        }
+        new anyWin.myReviews.BlockWidget({
+          uuid: "8811edcb-8ec7-49a1-9f28-8089f6b81e3d",
+          name: "g23351149",
+          additionalFrame: "none",
+          lang: "ru",
+          widgetId: "1"
+        }).init();
       }
     };
 
@@ -54,9 +45,7 @@ export default function Home() {
     const script = document.createElement("script");
     script.src = "https://myreviews.dev/widget/dist/blockWidget.js";
     script.async = true; 
-    script.onload = () => {
-      setTimeout(initMyReviews, 150);
-    };
+    script.onload = () => setTimeout(initMyReviews, 100);
     document.body.appendChild(script);
   }, []);
 
@@ -366,16 +355,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10 mt-5">
-            <div className="relative group p-[1px] rounded-[20px] bg-gradient-to-r from-purple-500/20 via-pink-500/10 to-blue-500/20 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <div className="overflow-hidden bg-[#0c061c]/80 backdrop-blur-md flex justify-center rounded-[20px] min-h-[400px]">
-                <iframe 
-                  title="Виджет с отзывами «Карусель» от MyReviews" 
-                  style={{ width: '100%', height: '100%', minHeight: '400px', maxWidth: '1170px', border: 'none', outline: 'none', padding: 0, margin: 0 }} 
-                  id="myReviews__block-widget"
-                ></iframe>
-              </div>
-            </div>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
+            <div id="myReviews__block-widget" className="min-h-[400px]"></div>
           </div>
         </section>
 
@@ -398,7 +379,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
             
             <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">Наши контакты</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-[#ffffff] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">Наши контакты</h2>
               <p className="text-lg sm:text-xl md:text-2xl font-bold italic text-white/90 mb-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] w-full sm:w-auto">г.Ростов-на-Дону, ул. Версальская 4</p>
               <p className="mb-8 sm:mb-10 w-full sm:w-auto">
                 <a 
@@ -462,32 +443,19 @@ export default function Home() {
             className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" 
             onClick={() => setActiveVideo(null)}
           ></div>
-          
           <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(176,38,255,0.25)] bg-black/90">
             <button
               onClick={() => setActiveVideo(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all cursor-pointer border border-white/10"
-              aria-label="Закрыть видео"
+              className="absolute top-4 right-4 z-10 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-all cursor-pointer"
             >
               ✕
             </button>
-
-            {activeVideo.includes('vk.com') || activeVideo.includes('vkvideo.ru') || activeVideo.includes('video_ext.php') ? (
-              <iframe 
-                src={formatVideoUrl(activeVideo)} 
-                className="w-full h-full border-0"
-                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                allowFullScreen
-                title="VK Video Player"
-              ></iframe>
-            ) : (
-              <video
-                src={activeVideo}
-                controls
-                autoPlay
-                className="w-full h-full object-contain"
-              />
-            )}
+            <iframe
+              src={formatVideoUrl(activeVideo)}
+              className="w-full h-full border-0"
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       )}
