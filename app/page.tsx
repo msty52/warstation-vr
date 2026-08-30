@@ -330,15 +330,11 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-16 relative z-10">
-            <div className="w-full overflow-x-auto pb-4 rounded-2xl border border-purple-500/20 shadow-[0_0_40px_rgba(176,38,255,0.15)] bg-[#0b0518]/80 backdrop-blur-md">
-              <div className="min-w-[600px] w-full">
-                <iframe
-                  src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark"
-                  className="w-full h-[700px] border-0 rounded-2xl bg-transparent"
-                  title="Отзывы Яндекс Карты"
-                />
-              </div>
-            </div>
+            <iframe
+              src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark"
+              className="w-full h-[700px] border-0 rounded-2xl bg-transparent"
+              title="Отзывы Яндекс Карты"
+            />
           </div>
         </section>
 
