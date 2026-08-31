@@ -104,11 +104,12 @@ export default function Home() {
           </div>
         </nav>
 
-        <section className="pt-32 sm:pt-40 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 text-center">
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 order-2 lg:order-1 w-full max-w-[340px] sm:max-w-[380px]">
-            <div className="relative group w-full p-2">
-              <div className="absolute inset-0 border-2 border-blue-500/30 -skew-x-12 translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
-              <div className="relative z-10 p-4 rounded-xl bg-[#080914]/90 border border-blue-500/20 backdrop-blur-sm shadow-[0_0_30px_rgba(59,130,246,0.1)]">
+        <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 w-full max-w-7xl mx-auto px-2 sm:px-6 flex flex-row items-center justify-between sm:justify-center gap-1.5 sm:gap-8 lg:gap-16 text-center overflow-x-hidden">
+
+          <div className="flex-1 max-w-[110px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
+            <div className="relative group w-full p-0.5 sm:p-2">
+              <div className="absolute inset-0 border sm:border-2 border-blue-500/30 -skew-x-12 translate-x-1 sm:translate-x-4 -translate-y-1 sm:-translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
+              <div className="relative z-10 p-1 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-[#080914]/90 border border-blue-500/20 backdrop-blur-sm shadow-[0_0_30px_rgba(59,130,246,0.1)]">
                 <Image 
                   src="/characters-left.jpg" 
                   alt="Сражающиеся персонажи команды синих" 
@@ -121,27 +122,27 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center order-1 lg:order-2 z-10 px-4 shrink-0">
-            <div className="relative group mb-6">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+          <div className="flex flex-col items-center justify-center z-10 shrink-0 px-1 sm:px-4">
+            <div className="relative group mb-2 sm:mb-6">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-xl sm:rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
               <img 
                 src="/favicon.ico" 
                 alt="Warstation VR Logo" 
-                className="relative h-28 sm:h-32 md:h-36 w-auto rounded-3xl shadow-[0_0_50px_rgba(176,38,255,0.25)] border border-purple-500/20" 
+                className="relative h-12 sm:h-28 md:h-32 lg:h-36 w-auto rounded-xl sm:rounded-3xl shadow-[0_0_50px_rgba(176,38,255,0.25)] border border-purple-500/20" 
               />
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 drop-shadow-[0_2px_10px_rgba(168,85,247,0.3)]">
+            <h1 className="text-xs sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 drop-shadow-[0_2px_10px_rgba(168,85,247,0.3)] whitespace-nowrap">
               WARSTATION VR
             </h1>
-            <p className="mt-2 text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em]">
+            <p className="mt-1 sm:mt-2 text-white/40 text-[6px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.25em] whitespace-nowrap">
               Арена виртуальной реальности
             </p>
           </div>
 
-          <div className="flex flex-col items-center md:items-end text-center md:text-right gap-4 order-3 w-full max-w-[340px] sm:max-w-[380px]">
-            <div className="relative group w-full p-2">
-              <div className="absolute inset-0 border-2 border-red-500/30 skew-x-12 -translate-x-4 -translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
-              <div className="relative z-10 p-4 rounded-xl bg-[#1a0f05]/90 border border-red-600/20 backdrop-blur-sm shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+          <div className="flex-1 max-w-[110px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
+            <div className="relative group w-full p-0.5 sm:p-2">
+              <div className="absolute inset-0 border sm:border-2 border-red-500/30 skew-x-12 -translate-x-1 sm:-translate-x-4 -translate-y-1 sm:-translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
+              <div className="relative z-10 p-1 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-[#1a0f05]/90 border border-red-600/20 backdrop-blur-sm shadow-[0_0_30px_rgba(239,68,68,0.1)]">
                 <Image 
                   src="/characters-right.jpg" 
                   alt="Сражающиеся персонажи команды красных" 
@@ -153,6 +154,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
         </section>
 
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
