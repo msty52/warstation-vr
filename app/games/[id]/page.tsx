@@ -15,7 +15,7 @@ export default function GameDetail() {
 
   if (!game) return (
     <div className="min-h-screen bg-[#04000e] flex items-center justify-center font-bold italic text-white/201">
-      Загрузка...
+      Загрузка
     </div>
   );
 
