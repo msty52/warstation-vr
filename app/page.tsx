@@ -105,7 +105,7 @@ export default function Home() {
         </nav>
 
         <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 w-full max-w-7xl mx-auto px-2 sm:px-6 flex flex-row items-center justify-between sm:justify-center gap-1.5 sm:gap-8 lg:gap-16 text-center overflow-x-hidden">
-
+          
           <div className="flex-1 max-w-[110px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
             <div className="relative group w-full p-0.5 sm:p-2">
               <div className="absolute inset-0 border sm:border-2 border-blue-500/30 -skew-x-12 translate-x-1 sm:translate-x-4 -translate-y-1 sm:-translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
@@ -357,8 +357,8 @@ export default function Home() {
 
         <section id="about-heading-section" className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
-            
-            <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full">
+
+            <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-[#ffffff] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">Наши контакты</h2>
               <p className="text-lg sm:text-xl md:text-2xl font-bold italic text-white/90 mb-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] w-full sm:w-auto">г.Ростов-на-Дону, ул. Версальская 4</p>
               <p className="mb-8 sm:mb-10 w-full sm:w-auto">
@@ -389,8 +389,8 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            
-            <div className="flex flex-col items-center lg:items-end w-full mt-8 lg:mt-0">
+
+            <div className="flex flex-col items-center lg:items-end w-full order-1 lg:order-2">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
               <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
                 <YMaps query={{ lang: 'ru_RU' }}>
