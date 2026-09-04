@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games"; 
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; 
 import Image from "next/image"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { notFound } from 'next/navigation';
