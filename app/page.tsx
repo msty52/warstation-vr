@@ -6,6 +6,14 @@ import Image from "next/image";
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 import { notFound } from 'next/navigation';
 
+interface Game {
+  id: string | number;
+  title: string;
+  description: string;
+  image: string;
+  videoUrl: string;
+}
+
 export default function Home() {
   if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
     notFound();
@@ -199,7 +207,7 @@ export default function Home() {
             Наши Игры
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
-            {gamesData.map((game: any) => (
+            {gamesData.map((game: Game) => (
               <div key={game.id} className="group flex flex-col bg-[#0b0518]/60 backdrop-blur-md rounded-[24px] border border-white/5 overflow-hidden transition-all duration-300 hover:border-white/20 shadow-lg">
                 <div className="relative aspect-video overflow-hidden bg-purple-950/10">
                   <img src={game.image} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt={game.title}/>
@@ -385,7 +393,7 @@ export default function Home() {
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                   </svg>
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">INSTAGRAM/MAX</span>
                 </a>
               </div>
             </div>
