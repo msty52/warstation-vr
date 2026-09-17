@@ -9,9 +9,8 @@ export const metadata: Metadata = {
   title: "Warstation VR",
   description: "Арена виртуальной реальности",
   alternates: {
-    canonical: "https://vr-warstation-rnd.ru",
+    canonical: "https://www.vr-warstation-rnd.ru",
   },
-
   verification: {
     yandex: "9c074d6b9dc8ff07",
   },
@@ -27,7 +26,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "EntertainmentBusiness",
     "name": "Warstation VR",
-    "url": "https://vr-warstation-rnd.ru",
+    "url": "https://www.vr-warstation-rnd.ru",
     "telephone": "+79286255020",
     "openingHoursSpecification": [
       {
