@@ -4,7 +4,7 @@ import { gamesData } from "@/data/games";
 import { useRouter } from "next/navigation"; 
 import Image from "next/image"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
-import { notFound } from 'next/navigation'; 
+import { notFound } from 'next/navigation';
 
 interface Game {
   id: string | number;
