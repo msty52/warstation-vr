@@ -301,7 +301,7 @@ export default function Home() {
                     <span className="text-white/30 text-[10px] sm:text-xs font-bold tracking-widest uppercase"> пн-чт 10:00-22:00  </span>
                   <div className="space-y-4 sm:space-y-6">
                 {[
-                  { day: "ПН-ЧТ", time: "10-13", type:"ТАРИФ РАННИЙ БУДНИЙ", price: "15.990", color: "#00d2ff" },
+                  { day: "ПН-ЧТ", time: "10-22", type:"ТАРИФ  БУДНИЙ", price: "15.990", color: "#00d2ff" },
                   <div className="flex items-center gap-2"> 
                   
                 
