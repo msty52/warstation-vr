@@ -285,8 +285,6 @@ export default function Home() {
                 <span className="text-[10px] sm:text-xs font-bold uppercase text-[#eab308] opacity-60">РУБ</span>
               </div>
             </div>
-              
-            </div>
           </div>
         </section>
 
