@@ -285,14 +285,6 @@ export default function Home() {
                 <span className="text-[10px] sm:text-xs font-bold uppercase text-[#eab308] opacity-60">РУБ</span>
               </div>
             </div>
-
-            <div className="relative bg-transparent backdrop-blur-xl rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-10 border border-[#ff004c]/30 shadow-[0_0_40px_rgba(255,0,76,0.05)]">
-              <h3 className="text-xl sm:text-2xl font-black uppercase italic text-white mb-6 sm:mb-8 flex items-center gap-3 sm:gap-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#ff004c]/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#ff004c]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                </div>
-              
-              </h3>
               
             </div>
           </div>
