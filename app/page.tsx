@@ -294,18 +294,6 @@ export default function Home() {
               
               </h3>
               
-              <div className="grid gap-3 sm:gap-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 group hover:bg-[#00d2ff]/5 hover:border-[#00d2ff]/20 transition-all duration-300 gap-2 sm:gap-0">
-                  <div className="flex items-center gap-4 sm:gap-6">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/5 border border-white/5 group hover:bg-[#ff004c]/5 hover:border-[#ff004c]/20 transition-all duration-300 gap-2 sm:gap-0">
-                  <div className="flex items-center gap-4 sm:gap-6">
-                  
-                  </div>
-                  <div className="flex items-center gap-2">
-                    
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -330,10 +318,9 @@ export default function Home() {
 
           <div className="max-w-[760px] mx-auto px-4 sm:px-6 mb-16 relative z-10 overflow-hidden">
             <iframe
-              src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark&ranking=by_time"
-              className="w-full h-[650px] sm:h-[750px] border-0 rounded-2xl bg-black shadow-[0_0_40px_rgba(176,38,255,0.1)] block"
+              src="https://yandex.ru/maps-reviews-widget/67834229080?comments&theme=dark"
+              className="w-full h-[800px] border-0 rounded-2xl bg-black shadow-[0_0_40px_rgba(176,38,255,0.1)] block"
               title="Отзывы Яндекс Карты"
-              loading="lazy"
             />
           </div>
         </section>
@@ -383,7 +370,7 @@ export default function Home() {
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                   </svg>
-                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">INSTAGRAM/MAX</span>
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
                 </a>
               </div>
             </div>
