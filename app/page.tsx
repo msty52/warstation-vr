@@ -377,8 +377,6 @@ export default function Home() {
                       }} 
                     />
                     <ZoomControl options={{ position: { right: 12, top: 12 } }} />
-                  </Map>
-                </YMaps>
               </div>
             </div>
 
