@@ -52,7 +52,6 @@ export default function Home() {
     return url; 
   };
 
-  // Прямые ссылки на видео с Яндекс Диска взамен тяжелых локальных файлов
   const arenaVideos = [
     { id: 1, title: "Игровой процесс VR", src: "https://downloader.disk.yandex.ru/disk/93c6f272a2a0ff9fcd428078c187bc647c0e86b450630b912a7bf3042454a32a/6727d8f3/QqLG5PJHjNu0ug?filename=IMG_5712.MP4&uid=0&filename_encoded=0", poster: "" },
     { id: 2, title: "Презентация Арены", src: "https://downloader.disk.yandex.ru/disk/a11470fa728c67990141639f7a77d70c4bc8b15d0d86241b162bc6348ef1131a/6727d8f3/4H-vtC3-KNjTkA?filename=IMG_5856.mp4&uid=0&filename_encoded=0", poster: "" },
@@ -297,13 +296,13 @@ export default function Home() {
           <div className="flex justify-center mb-10">
             <div className="p-[1.5px] bg-gradient-to-r from-yellow-500/50 via-purple-500/50 to-pink-500/50 rounded-xl shadow-[0_0_20px_rgba(176,38,255,0.15)]">
               <iframe 
-                src="https://yandex.ru/sprav/widget/rating-badge/67834229080?type=rating&theme=dark"
+                src="https://yandex.ru/sprav/widget/rating-badge/67834229080?type=rating&theme=dark" 
                 width="150" 
                 height="50" 
                 frameBorder="0"
                 className="rounded-lg block"
                 title="Yandex Rating Badge"
-              ></iframe >
+              ></iframe>
             </div>
           </div>
 
@@ -367,21 +366,21 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center lg:items-end w-full order-1 lg:order-2">
-  <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
-  <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
-    <YMaps query={{ lang: 'ru_RU' }}>
-        <Placemark 
-          geometry={mapCenter} 
-          options={{ 
-            preset: 'islands#yellowDotIconWithCaption', 
-            iconColor: '#eab308' 
-          }} 
-        />
-        <ZoomControl options={{ position: { right: 12, top: 12 } }} />
-      </Map>
-    </YMaps>
-  </div>
-</div>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
+              <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
+                <YMaps query={{ lang: 'ru_RU' }}>
+                    <Placemark 
+                      geometry={mapCenter} 
+                      options={{ 
+                        preset: 'islands#yellowDotIconWithCaption', 
+                        iconColor: '#eab308' 
+                      }} 
+                    />
+                    <ZoomControl options={{ position: { right: 12, top: 12 } }} />
+                  </Map>
+                </YMaps>
+              </div>
+            </div>
 
           </div>
         </section>
@@ -405,7 +404,6 @@ export default function Home() {
             >
               ✕
             </button>
-            {/* Если это прямая ссылка на видео — выводим тег video, иначе iframe для ВК/игр */}
             {activeVideo.startsWith("http") && (activeVideo.includes("downloader.disk.yandex.ru") || activeVideo.endsWith(".mp4") || activeVideo.endsWith(".MP4")) ? (
               <video
                 src={activeVideo}
@@ -413,7 +411,7 @@ export default function Home() {
                 autoPlay
                 playsInline
                 className="w-full h-full object-contain"
-            />
+              />
             ) : (
               <iframe
                 src={formatVideoUrl(activeVideo)}
@@ -421,7 +419,7 @@ export default function Home() {
                 allow="autoplay; encrypted-media; fullscreen"
                 allowFullScreen
               ></iframe>
-          )}
+            )}
           </div>
         </div>
       )}
