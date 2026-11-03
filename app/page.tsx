@@ -367,21 +367,21 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center lg:items-end w-full order-1 lg:order-2">
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
-              <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
-                <YMaps query={{ lang: 'ru_RU' }}>
-                                     <Placemark 
-                      geometry={mapCenter} 
-                      options={{ 
-                        preset: 'islands#yellowDotIconWithCaption', 
-                        iconColor: '#eab308' 
-                      }} 
-                    />
-                    <ZoomControl options={{ position: { right: 12, top: 12 } }} />
-                  </Map>
-                </YMaps>
-              </div>
-            </div>
+  <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
+  <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
+    <YMaps query={{ lang: 'ru_RU' }}>
+        <Placemark 
+          geometry={mapCenter} 
+          options={{ 
+            preset: 'islands#yellowDotIconWithCaption', 
+            iconColor: '#eab308' 
+          }} 
+        />
+        <ZoomControl options={{ position: { right: 12, top: 12 } }} />
+      </Map>
+    </YMaps>
+  </div>
+</div>
 
           </div>
         </section>
