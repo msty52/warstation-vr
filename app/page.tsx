@@ -52,11 +52,12 @@ export default function Home() {
     return url; 
   };
 
+  // Прямые ссылки на видео с Яндекс Диска взамен тяжелых локальных файлов
   const arenaVideos = [
-    { id: 1, title: "Игровой процесс VR", src: "/IMG_5712.MP4", poster: "" },
-    { id: 2, title: "Презентация Арены", src: "/IMG_5856.mp4", poster: "" },
-    { id: 3, title: "Динамичные Сражения", src: "/IMG_6206.mp4", poster: "" },
-    { id: 4, title: "Обзор Локации", src: "/IMG_6207.MP4", poster: "" },
+    { id: 1, title: "Игровой процесс VR", src: "https://downloader.disk.yandex.ru/disk/93c6f272a2a0ff9fcd428078c187bc647c0e86b450630b912a7bf3042454a32a/6727d8f3/QqLG5PJHjNu0ug?filename=IMG_5712.MP4&uid=0&filename_encoded=0", poster: "" },
+    { id: 2, title: "Презентация Арены", src: "https://downloader.disk.yandex.ru/disk/a11470fa728c67990141639f7a77d70c4bc8b15d0d86241b162bc6348ef1131a/6727d8f3/4H-vtC3-KNjTkA?filename=IMG_5856.mp4&uid=0&filename_encoded=0", poster: "" },
+    { id: 3, title: "Динамичные Сражения", src: "https://downloader.disk.yandex.ru/disk/e97d84b25ca081dcf7149021e102e3b2e55ef9c81bcf7991b1063a562ef2a034/6727d8f3/KZUQh4NYhMAxiA?filename=IMG_6206.mp4&uid=0&filename_encoded=0", poster: "" },
+    { id: 4, title: "Обзор Локации", src: "https://downloader.disk.yandex.ru/disk/2a0dc6793a38da062f84cb71c4c9359e1c988a8519e4860b86a073f1d43a6d90/6727d8f3/xcr6akmALmHkXg?filename=IMG_6207.MP4&uid=0&filename_encoded=0", poster: "" },
   ];
 
   return (
@@ -296,13 +297,13 @@ export default function Home() {
           <div className="flex justify-center mb-10">
             <div className="p-[1.5px] bg-gradient-to-r from-yellow-500/50 via-purple-500/50 to-pink-500/50 rounded-xl shadow-[0_0_20px_rgba(176,38,255,0.15)]">
               <iframe 
-                src="https://yandex.ru/sprav/widget/rating-badge/67834229080?type=rating&theme=dark" 
+                src="https://yandex.ru/sprav/widget/rating-badge/67834229080?type=rating&theme=dark"
                 width="150" 
                 height="50" 
                 frameBorder="0"
                 className="rounded-lg block"
                 title="Yandex Rating Badge"
-              ></iframe>
+              ></iframe >
             </div>
           </div>
 
@@ -369,8 +370,7 @@ export default function Home() {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
               <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
                 <YMaps query={{ lang: 'ru_RU' }}>
-                  <Map defaultState={{ center: mapCenter, zoom: 16 }} width="100%" height="100%">
-                    <Placemark 
+                                     <Placemark 
                       geometry={mapCenter} 
                       options={{ 
                         preset: 'islands#yellowDotIconWithCaption', 
@@ -398,19 +398,30 @@ export default function Home() {
             className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500" 
             onClick={() => setActiveVideo(null)}
           ></div>
-          <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(176,38,255,0.25)] bg-black/90">
+          <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(176,38,255,0.25)] bg-black/90 flex items-center justify-center">
             <button
               onClick={() => setActiveVideo(null)}
               className="absolute top-4 right-4 z-10 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-all cursor-pointer"
             >
               ✕
             </button>
-            <iframe
-              src={formatVideoUrl(activeVideo)}
-              className="w-full h-full border-0"
-              allow="autoplay; encrypted-media; fullscreen"
-              allowFullScreen
-            ></iframe>
+            {/* Если это прямая ссылка на видео — выводим тег video, иначе iframe для ВК/игр */}
+            {activeVideo.startsWith("http") && (activeVideo.includes("downloader.disk.yandex.ru") || activeVideo.endsWith(".mp4") || activeVideo.endsWith(".MP4")) ? (
+              <video
+                src={activeVideo}
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+            />
+            ) : (
+              <iframe
+                src={formatVideoUrl(activeVideo)}
+                className="w-full h-full border-0"
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+              ></iframe>
+          )}
           </div>
         </div>
       )}
