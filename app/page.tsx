@@ -14,12 +14,10 @@ export default function Home() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   const mapCenter = [47.310535, 39.803793]; 
 
   useEffect(() => {
-    setIsMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -395,23 +393,18 @@ export default function Home() {
             <div className="flex flex-col items-center lg:items-end w-full order-1 lg:order-2">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
               <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
-                {isMounted ? (
-                  <YMaps query={{ lang: 'ru_RU' }}>
-                      <Placemark 
-                        geometry={mapCenter} 
-                        options={{ 
-                          preset: 'islands#yellowDotIconWithCaption', 
-                          iconColor: '#eab308' 
-                        }} 
-                      />
-                      <ZoomControl options={{ position: { right: 12, top: 12 } }} />
-                    </Map>
-                  </YMaps>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-white/40 text-sm">
-                    Загрузка карты...
-                  </div>
-                )}
+                <YMaps query={{ lang: 'ru_RU' }}>
+                  <Map defaultState={{ center: mapCenter, zoom: 16 }} width="100%" height="100%">
+                    <Placemark 
+                      geometry={mapCenter} 
+                      options={{ 
+                        preset: 'islands#yellowDotIconWithCaption', 
+                        iconColor: '#eab308' 
+                      }} 
+                    />
+                    <ZoomControl options={{ position: { right: 12, top: 12 } }} />
+                  </Map>
+                </YMaps>
               </div>
             </div>
 
