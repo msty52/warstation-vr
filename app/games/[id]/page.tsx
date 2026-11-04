@@ -1,3 +1,10 @@
+
+
+"use client";
+import { useParams, useRouter } from "next/navigation";
+import { gamesData } from "@/data/games";
+import { useEffect, useState } from "react";
+
 // Добавь эту функцию в файл app/games/[id]/page.tsx
 export async function generateStaticParams() {
   // Пример: если у тебя есть список игр с конкретными ID
@@ -6,11 +13,6 @@ export async function generateStaticParams() {
   // Или пустой массив для начала, чтобы сборка прошла:
   return [];
 }
-
-"use client";
-import { useParams, useRouter } from "next/navigation";
-import { gamesData } from "@/data/games";
-import { useEffect, useState } from "react";
 
 export default function GameDetail() {
   const params = useParams();
