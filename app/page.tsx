@@ -98,11 +98,8 @@ export default function Home() {
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
-
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
-
         <div className="absolute bottom-[-20%] left-[10%] w-[100vw] sm:w-[80vw] h-[70vh] bg-pink-600/30 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
-
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay"></div>
       </div>
 
@@ -126,24 +123,15 @@ export default function Home() {
                 className="h-5 w-auto sm:h-6 transition-transform duration-300 group-hover:scale-105"
               >
                 <path d="M322.016 0V194.154L271.274 223.354L219.403 253.207V177.158L322.016 0Z" fill="currentColor" />
-
                 <path opacity="0.95" d="M424.638 177.194V253.207L372.731 223.354L322.025 194.154V0L424.638 177.194Z" fill="currentColor" />
-
                 <path opacity="0.8" d="M271.266 517.97L219.395 547.86L205.225 555.995H0V555.958L168.653 458.918L219.395 488.117L271.266 517.97Z" fill="currentColor" />
-
                 <path d="M168.653 340.854V458.959L0 556L102.612 378.842L116.782 370.707L168.653 340.854Z" fill="currentColor" />
-
                 <path opacity="0.8" d="M643.959 555.958V555.995H438.734L424.601 547.86L372.693 517.97L424.601 488.117L475.306 458.918L643.959 555.958Z" fill="currentColor" />
-
                 <path opacity="0.95" d="M644 556L475.347 458.959V340.854L527.218 370.707L541.387 378.842L644 556Z" fill="currentColor" />
-
                 <path d="M219.579 429.391L322.017 370.82V253.723L219.579 312.294V429.391Z" fill="currentColor" />
-
                 <path opacity="0.8" d="M403.376 418.29L321.964 371.404L219.388 430.493L322 489.545L424.613 430.493L403.376 418.29Z" fill="currentColor" />
-
                 <path opacity="0.95" d="M321.999 253.298L321.963 371.403L424.612 430.492V312.35L321.999 253.298Z" fill="currentColor" />
               </svg>
-
               <span>Warstation</span>
             </button>
 
@@ -153,32 +141,26 @@ export default function Home() {
                 className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer"
               >
                 <span className="md:hidden">Локация</span>
-                <span className="hidden md:inline">
-                  Локация и геймплей
-                </span>
+                <span className="hidden md:inline">Локация и геймплей</span>
               </button>
-
               <button
                 onClick={() => scrollToSection("games-section")}
                 className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer"
               >
                 Игры
               </button>
-
               <button
                 onClick={() => scrollToSection("pricing-section")}
                 className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer"
               >
                 Тарифы
               </button>
-
               <button
                 onClick={() => scrollToSection("reviews-section")}
                 className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer"
               >
                 Отзывы
               </button>
-
               <button
                 onClick={() => scrollToSection("about-heading-section")}
                 className="hover:text-purple-400 hover:drop-shadow-[0_0_6px_#b026ff] transition-all cursor-pointer"
@@ -193,7 +175,6 @@ export default function Home() {
           <div className="flex-1 max-w-[110px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
             <div className="relative group w-full p-0.5 sm:p-2">
               <div className="absolute inset-0 border sm:border-2 border-blue-500/30 -skew-x-12 translate-x-1 sm:translate-x-4 -translate-y-1 sm:-translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
-
               <div className="relative z-10 p-1 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-[#080914]/90 border border-blue-500/20 backdrop-blur-sm shadow-[0_0_30px_rgba(59,130,246,0.1)]">
                 <Image
                   src="/characters-left.jpg"
@@ -210,18 +191,15 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center z-10 shrink-0 px-1 sm:px-4">
             <div className="relative group mb-2 sm:mb-6">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-xl sm:rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-
               <img
                 src="/favicon.ico"
                 alt="Warstation VR Logo"
                 className="relative h-12 sm:h-28 md:h-32 lg:h-36 w-auto rounded-xl sm:rounded-3xl shadow-[0_0_50px_rgba(176,38,255,0.25)] border border-purple-500/20"
               />
             </div>
-
             <h1 className="text-xs sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 drop-shadow-[0_2px_10px_rgba(168,85,247,0.3)] whitespace-nowrap">
               WARSTATION VR
             </h1>
-
             <p className="mt-1 sm:mt-2 text-white/40 text-[6px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.25em] whitespace-nowrap">
               Арена виртуальной реальности
             </p>
@@ -230,7 +208,6 @@ export default function Home() {
           <div className="flex-1 max-w-[110px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
             <div className="relative group w-full p-0.5 sm:p-2">
               <div className="absolute inset-0 border sm:border-2 border-red-500/30 skew-x-12 -translate-x-1 sm:-translate-x-4 -translate-y-1 sm:-translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)] group-hover:-translate-x-2" />
-
               <div className="relative z-10 p-1 sm:p-3 md:p-4 rounded-lg sm:rounded-xl bg-[#1a0f05]/90 border border-red-600/20 backdrop-blur-sm shadow-[0_0_30px_rgba(239,68,68,0.1)]">
                 <Image
                   src="/characters-right.jpg"
@@ -272,13 +249,11 @@ export default function Home() {
                     }}
                     className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                   />
-
                   <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/30 md:bg-black/40 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-10">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-purple-600/90 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_#b026ff] group-hover:scale-105 transition-transform">
                       <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent sm:border-t-[8px] sm:border-l-[14px] sm:border-b-[8px] ml-1"></div>
                     </div>
                   </div>
-
                   <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 bg-gradient-to-t from-[#04000e] via-[#04000e]/70 to-transparent pointer-events-none z-20">
                     <h3 className="text-[11px] sm:text-[13px] md:text-sm font-black uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,1)] text-center">
                       {video.title}
@@ -310,7 +285,6 @@ export default function Home() {
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     alt={game.title}
                   />
-
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
                       onClick={() => setActiveVideo(game.videoUrl)}
@@ -325,11 +299,9 @@ export default function Home() {
                   <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wide mb-2 sm:mb-3 text-white">
                     {game.title}
                   </h3>
-
                   <p className="text-white/50 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3 font-light">
                     {game.description}
                   </p>
-
                   <button
                     onClick={() => router.push(`/games/${game.id}`)}
                     className="mt-auto inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-2 sm:py-3 bg-purple-500/5 hover:bg-purple-500/10 rounded-xl transition-all border border-purple-500/20 group/btn cursor-pointer"
@@ -337,7 +309,6 @@ export default function Home() {
                     <span className="text-purple-400 font-bold text-xs sm:text-[14px] uppercase tracking-wider">
                       Подробнее
                     </span>
-
                     <span className="text-purple-400 text-lg sm:text-xl transition-transform group-hover/btn:translate-x-1">
                       →
                     </span>
@@ -374,7 +345,6 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-
                 <span>Программа - 3 ч </span>
               </h3>
 
@@ -420,18 +390,14 @@ export default function Home() {
                       >
                         {item.day}
                       </span>
-
                       <span className="text-white font-black text-lg sm:text-xl italic">
                         {item.time}
                       </span>
                     </div>
-
                     <div className="hidden lg:block h-6 w-[2px] bg-white/10 mx-4"></div>
-
                     <div className="flex-grow text-white/40 text-[10px] sm:text-sm font-bold tracking-widest uppercase">
                       {item.type}
                     </div>
-
                     <div className="flex items-center gap-1 sm:gap-2">
                       <span
                         className="text-xl sm:text-2xl font-black italic"
@@ -439,7 +405,6 @@ export default function Home() {
                       >
                         {item.price}
                       </span>
-
                       <span className="text-[9px] sm:text-[10px] font-bold uppercase mt-1 opacity-50">
                         РУБ
                       </span>
@@ -460,17 +425,14 @@ export default function Home() {
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 </div>
-
                 <div>
                   <h3 className="text-xl sm:text-2xl font-black uppercase italic text-[#eab308]">
                     ТАРИФ СТАНДАРТ +
                   </h3>
-
                   <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 sm:items-center mt-1">
                     <span className="text-white font-bold italic text-sm sm:text-base">
                       3 Ч 45 МИН
                     </span>
-
                     <span className="text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
                       В ЛЮБОЙ ДЕНЬ НЕДЕЛИ
                     </span>
@@ -482,7 +444,6 @@ export default function Home() {
                 <span className="text-2xl sm:text-3xl font-black italic text-[#eab308]">
                   + 5.000
                 </span>
-
                 <span className="text-[10px] sm:text-xs font-bold uppercase text-[#eab308] opacity-60">
                   РУБ
                 </span>
@@ -528,7 +489,6 @@ export default function Home() {
                 <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-white/90">
                   При подписке на все наши соцсети -
                 </span>
-
                 <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#00d2ff] via-[#b026ff] to-[#ff004c] text-2xl sm:text-3xl md:text-4xl drop-shadow-[0_0_20px_rgba(176,38,255,0.6)] italic tracking-wide uppercase py-1">
                   скидка 500 руб
                 </span>
@@ -546,11 +506,9 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-[#ffffff] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">
                 Наши контакты
               </h2>
-
               <p className="text-lg sm:text-xl md:text-2xl font-bold italic text-white/90 mb-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] w-full sm:w-auto">
                 г.Ростов-на-Дону, ул. Версальская 4
               </p>
-
               <p className="mb-8 sm:mb-10 w-full sm:w-auto">
                 <a
                   href="tel:+79286255020"
@@ -577,7 +535,6 @@ export default function Home() {
                     <line x1="22" y1="2" x2="11" y2="13"></line>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                   </svg>
-
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">
                     TELEGRAM
                   </span>
@@ -596,18 +553,10 @@ export default function Home() {
                     stroke="currentColor"
                     strokeWidth="2"
                   >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="20"
-                      height="20"
-                      rx="5"
-                      ry="5"
-                    ></rect>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
-
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">
                     INSTAGRAM
                   </span>
@@ -630,7 +579,6 @@ export default function Home() {
                   >
                     <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                   </svg>
-
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">
                     MAX
                   </span>
@@ -642,7 +590,6 @@ export default function Home() {
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">
                 МЫ НАХОДИМСЯ ЗДЕСЬ
               </h3>
-
               <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
                 {isMounted ? (
                   <YMaps query={{ lang: "ru_RU" }}>
@@ -653,7 +600,6 @@ export default function Home() {
                           iconColor: "#eab308",
                         }}
                       />
-
                       <ZoomControl
                         options={{
                           position: {
@@ -687,7 +633,6 @@ export default function Home() {
             className="absolute inset-0 bg-[#03000a]/60 backdrop-blur-2xl transition-all duration-500"
             onClick={() => setActiveVideo(null)}
           ></div>
-
           <div className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_60px_rgba(176,38,255,0.25)] bg-black/90">
             <button
               onClick={() => setActiveVideo(null)}
@@ -695,7 +640,6 @@ export default function Home() {
             >
               ✕
             </button>
-
             <iframe
               src={formatVideoUrl(activeVideo)}
               className="w-full h-full border-0"
