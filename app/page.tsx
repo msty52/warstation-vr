@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games"; 
-import { useRouter } from "next/navigation"; 
+import { useRouter, notFound } from "next/navigation"; 
 import Image from "next/image"; 
 import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
-import { notFound } from 'next/navigation';
 
 export default function Home() {
   if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
@@ -55,7 +54,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-white font-sans relative selection:bg-purple-500/30 overflow-x-hidden bg-[#04000e]">
-
       <div className="fixed inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
@@ -64,12 +62,10 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-
         <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#03000a]/85 backdrop-blur-md border-b border-purple-500/10 py-3 sm:py-4 shadow-[0_4px_30px_rgba(176,38,255,0.03)]" : "bg-transparent py-4 sm:py-6"
         }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
-
             <button 
               onClick={() => scrollToSection('top')} 
               className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:text-purple-400 transition-colors drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] cursor-pointer group"
@@ -107,7 +103,6 @@ export default function Home() {
         </nav>
 
         <section className="pt-24 sm:pt-40 pb-8 sm:pb-12 w-full max-w-7xl mx-auto px-2 sm:px-6 flex flex-row items-center justify-between sm:justify-center gap-1.5 sm:gap-8 lg:gap-16 text-center overflow-x-hidden">
-          
           <div className="flex-1 max-w-[110px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
             <div className="relative group w-full p-0.5 sm:p-2">
               <div className="absolute inset-0 border sm:border-2 border-blue-500/30 -skew-x-12 translate-x-1 sm:translate-x-4 -translate-y-1 sm:-translate-y-3 pointer-events-none transition-all duration-500 group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:translate-x-2" />
@@ -156,7 +151,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </section>
 
         <section id="gallery-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center scroll-mt-24">
@@ -359,7 +353,6 @@ export default function Home() {
 
         <section id="about-heading-section" className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10 pb-16 scroll-mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center w-full">
-
             <div className="flex flex-col justify-center items-start lg:pl-8 text-center sm:text-left w-full order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight mb-3 sm:mb-4 text-[#ffffff] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] w-full sm:w-auto">Наши контакты</h2>
               <p className="text-lg sm:text-xl md:text-2xl font-bold italic text-white/90 mb-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] w-full sm:w-auto">г.Ростов-на-Дону, ул. Версальская 4</p>
@@ -384,8 +377,8 @@ export default function Home() {
                 </a>
 
                 <a href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
+                  <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                   </svg>
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
                 </a>
@@ -414,14 +407,12 @@ export default function Home() {
                 )}
               </div>
             </div>
-
           </div>
         </section>
 
         <footer className="py-6 border-t border-white/5 text-center relative z-10">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">© 2026 WARSTATION</p>
         </footer>
-
       </div>
 
       {activeVideo && (
