@@ -610,7 +610,7 @@ export default function Home() {
                       />
                     </Map>
                   </YMaps>
-                ) : (
+                
                   <div className="w-full h-full flex items-center justify-center text-white/40 text-sm">
                     Загрузка карты...
                   </div>
