@@ -591,25 +591,26 @@ export default function Home() {
                 МЫ НАХОДИМСЯ ЗДЕСЬ
               </h3>
               <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
-                {isMounted ? (
-                  <YMaps query={{ lang: "ru_RU" }}>
-                      <Placemark
-                        geometry={mapCenter}
-                        options={{
-                          preset: "islands#yellowDotIconWithCaption",
-                          iconColor: "#eab308",
-                        }}
-                      />
-                      <ZoomControl
-                        options={{
-                          position: {
-                            right: 12,
-                            top: 12,
-                          },
-                        }}
-                      />
-                    </Map>
-                  </YMaps>
+                <YMaps query={{ lang: "ru_RU" }}>
+                    <Placemark
+                      geometry={mapCenter}
+                      options={{
+                        preset: "islands#yellowDotIconWithCaption",
+                        iconColor: "#eab308",
+                      }}
+                    />
+                    <ZoomControl
+                      options={{
+                        position: {
+                          right: 12,
+                          top: 12,
+                        },
+                      }}
+                    />
+                  </Map>
+                </YMaps>
+              </div>
+            </div>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-white/40 text-sm">
                     Загрузка карты...
