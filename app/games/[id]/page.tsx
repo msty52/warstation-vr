@@ -1,3 +1,12 @@
+// Добавь эту функцию в файл app/games/[id]/page.tsx
+export async function generateStaticParams() {
+  // Пример: если у тебя есть список игр с конкретными ID
+  // return [{ id: 'game-1' }, { id: 'game-2' }];
+  
+  // Или пустой массив для начала, чтобы сборка прошла:
+  return [];
+}
+
 "use client";
 import { useParams, useRouter } from "next/navigation";
 import { gamesData } from "@/data/games";
