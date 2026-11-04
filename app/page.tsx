@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { gamesData } from "@/data/games"; 
 import { useRouter, notFound } from "next/navigation"; 
 import Image from "next/image"; 
-import { YMaps, Map, Placemark, ZoomControl } from "@pbe/react-yandex-maps";
 
 export default function Home() {
   if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true') {
@@ -13,12 +12,8 @@ export default function Home() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  const mapCenter = [47.310535, 39.803793]; 
 
   useEffect(() => {
-    setIsMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -377,7 +372,7 @@ export default function Home() {
                 </a>
 
                 <a href="https://max.ru/join/1qVPVBcfyyEzcwxLXVyNWDeDrVGxEWWdEJJ-fhjBiWs" target="_blank" rel="noopener noreferrer" className="px-4 sm:px-6 py-2 sm:py-3 bg-[#0b0518]/80 hover:bg-white/5 border border-[#00ff88]/30 rounded-xl transition-all duration-300 group flex items-center gap-2">
-                  <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#00ff88]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2L2 22h4l2-4h8l2 4h4L12 2zM12 6L9 14h6L12 6z" />
                   </svg>
                   <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-white/70">MAX</span>
@@ -388,23 +383,15 @@ export default function Home() {
             <div className="flex flex-col items-center lg:items-end w-full order-1 lg:order-2">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase italic mb-4 sm:mb-6 text-white text-center w-full">МЫ НАХОДИМСЯ ЗДЕСЬ</h3>
               <div className="h-[250px] sm:h-[350px] lg:h-[400px] w-full rounded-[24px] overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] bg-[#0b0518]">
-                {isMounted ? (
-                  <YMaps query={{ lang: 'ru_RU' }}>
-                      <Placemark 
-                        geometry={mapCenter} 
-                        options={{ 
-                          preset: 'islands#yellowDotIconWithCaption', 
-                          iconColor: '#eab308' 
-                        }} 
-                      />
-                      <ZoomControl options={{ position: { right: 12, top: 12 } }} />
-                    </Map>
-                  </YMaps>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-white/40 text-sm">
-                    Загрузка карты...
-                  </div>
-                )}
+                <iframe
+                  src="https://yandex.ru/map-widget/v1/?ll=39.803793%2C47.310535&z=16&pt=39.803793%2C47.310535%2Cpm2rdl"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allowFullScreen={true}
+                  className="w-full h-full border-0"
+                  title="Warstation на карте"
+                />
               </div>
             </div>
           </div>
