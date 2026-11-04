@@ -1,14 +1,7 @@
-
-
 "use client";
 import { useParams, useRouter } from "next/navigation";
 import { gamesData } from "@/data/games";
 import { useEffect, useState } from "react";
-
-export async function generateStaticParams() {
-
-  return [];
-}
 
 export default function GameDetail() {
   const params = useParams();
