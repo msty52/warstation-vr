@@ -269,9 +269,6 @@ export default function Home() {
               </div>
             </div>
 
-            
-        </section>
-
         <section id="reviews-section" className="pt-12 pb-8 scroll-mt-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase italic tracking-tight text-white text-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-6">
             ОТЗЫВЫ С ЯНДЕКС КАРТ
