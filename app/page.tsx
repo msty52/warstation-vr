@@ -53,7 +53,8 @@ export default function Home() {
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute bottom-[-20%] left-[10%] w-[100vw] sm:w-[80vw] h-[70vh] bg-pink-600/30 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay"></div>
+        {/* Заменено во избежание 404/редиректа на несуществующий файл noise.png */}
+        <div className="absolute inset-0 bg-[radial-gradient(#1a0b2e_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
       </div>
 
       <div className="relative z-10">
