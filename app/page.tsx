@@ -53,7 +53,6 @@ export default function Home() {
         <div className="absolute top-[-20%] left-[-10%] w-[100vw] sm:w-[70vw] h-[70vh] bg-blue-700/40 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute top-[10%] right-[-10%] w-[100vw] sm:w-[60vw] h-[60vh] bg-yellow-500/20 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
         <div className="absolute bottom-[-20%] left-[10%] w-[100vw] sm:w-[80vw] h-[70vh] bg-pink-600/30 rounded-full blur-[100px] md:blur-[120px] mix-blend-screen" />
-        {/* Заменено во избежание 404/редиректа на несуществующий файл noise.png */}
         <div className="absolute inset-0 bg-[radial-gradient(#1a0b2e_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
       </div>
 
@@ -220,20 +219,46 @@ export default function Home() {
           </h2>
 
           <div className="space-y-6 sm:space-y-8">
+            {/* ПРОГРАММА - 2 ЧАСА */}
             <div className="relative bg-transparent backdrop-blur-xl rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-12 border border-[#00d2ff]/30 shadow-[0_0_40px_rgba(0,210,255,0.1)]">
               <h3 className="text-xl sm:text-2xl font-black uppercase italic text-white mb-6 sm:mb-10 flex items-center gap-3 sm:gap-4">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#00d2ff]/10 flex items-center justify-center shrink-0">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#00d2ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <span>Программа - 3 ч </span>
+                <span>Программа - 2 часа</span>
+              </h3>
+              
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 sm:gap-4 border-b border-white/5 pb-4 last:border-0 group">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <span className="text-lg sm:text-xl font-black italic min-w-[70px] sm:min-w-[100px]" style={{ color: "#00d2ff" }}>ПН-ЧТ</span>
+                    <span className="text-white font-black text-lg sm:text-xl italic">10:00 - 22:00</span>
+                  </div>
+                  <div className="hidden lg:block h-6 w-[2px] bg-white/10 mx-4"></div>
+                  <div className="flex-grow text-white/40 text-[10px] sm:text-sm font-bold tracking-widest uppercase">ТАРИФ БУДНИЙ СТАНДАРТ</div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <span className="text-xl sm:text-2xl font-black italic" style={{ color: "#00d2ff" }}>14.990</span>
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase mt-1 opacity-50">РУБЛЕЙ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ПРОГРАММА - 3 ЧАСА */}
+            <div className="relative bg-transparent backdrop-blur-xl rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 md:p-12 border border-[#b026ff]/30 shadow-[0_0_40px_rgba(176,38,255,0.1)]">
+              <h3 className="text-xl sm:text-2xl font-black uppercase italic text-white mb-6 sm:mb-10 flex items-center gap-3 sm:gap-4">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#b026ff]/10 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#b026ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <span>Программа - 3 часа</span>
               </h3>
               
               <div className="space-y-4 sm:space-y-6">
                 {[
-                  { day: "ПН-ЧТ", time: "10-13", type:"ТАРИФ РАННИЙ БУДНИЙ", price: "15.990", color: "#00d2ff" },
-                  { day: "ПН-ЧТ", time: "13-22", type:"ТАРИФ СТАНДАРТ БУДНИЙ", price: "20.990", color: "#00d2ff" },
-                  { day: "ПТ-ВС", time: "10-13", type:"ТАРИФ РАННИЙ ВЫХОДНЫЕ", price: "20.990", color: "#ff004c" },
-                  { day: "ПТ-ВС", time: "13-22", type:"ТАРИФ СТАНДАРТ ВЫХОДНЫЕ", price: "25.990", color: "#ff004c" },
+                  { day: "ПН-ЧТ", time: "10:00 - 13:00", type: "ТАРИФ РАННИЙ БУДНИЙ", price: "15.990", color: "#00d2ff" },
+                  { day: "ПН-ЧТ", time: "13:00 - 22:00", type: "ТАРИФ БУДНИЙ СТАНДАРТ", price: "20.990", color: "#00d2ff" },
+                  { day: "ПТ-ВС", time: "10:00 - 13:00", type: "ТАРИФ РАННИЙ ВЫХОДНОЙ", price: "20.990", color: "#ff004c" },
+                  { day: "ПТ-ВС", time: "13:00 - 22:00", type: "ТАРИФ ВЫХОДНОЙ СТАНДАРТ", price: "25.990", color: "#ff004c" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 sm:gap-4 border-b border-white/5 pb-4 last:border-0 group">
                     <div className="flex items-center gap-3 sm:gap-4">
@@ -244,29 +269,29 @@ export default function Home() {
                     <div className="flex-grow text-white/40 text-[10px] sm:text-sm font-bold tracking-widest uppercase">{item.type}</div>
                     <div className="flex items-center gap-1 sm:gap-2">
                       <span className="text-xl sm:text-2xl font-black italic" style={{ color: item.color }}>{item.price}</span>
-                      <span className="text-[9px] sm:text-[10px] font-bold uppercase mt-1 opacity-50">РУБ</span>
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase mt-1 opacity-50">РУБЛЕЙ</span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
+            {/* РАСШИРЕНИЕ К ТАРИФУ 3 ЧАСА */}
             <div className="relative bg-[#eab308]/5 backdrop-blur-xl rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 border-2 border-[#eab308]/40 shadow-[0_0_30px_rgba(234,179,8,0.15)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 group hover:scale-[1.01] transition-transform duration-300">
               <div className="flex items-start sm:items-center gap-4 sm:gap-6 flex-col sm:flex-row w-full md:w-auto">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#eab308]/20 flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.3)] shrink-0">
                   <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#eab308]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-black uppercase italic text-[#eab308]">ТАРИФ СТАНДАРТ +</h3>
+                  <h3 className="text-xl sm:text-2xl font-black uppercase italic text-[#eab308]">РАСШИРЕНИЕ К ТАРИФУ 3 ЧАСА</h3>
                   <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 sm:items-center mt-1">
-                    <span className="text-white font-bold italic text-sm sm:text-base">3 Ч 45 МИН</span>
-                    <span className="text-white/40 text-[10px] sm:text-xs font-bold uppercase tracking-widest"> В ЛЮБОЙ ДЕНЬ НЕДЕЛИ</span>
+                    <span className="text-white font-bold italic text-sm sm:text-base">+ 1 ЧАС</span>
                   </div>
                 </div>
               </div>
               <div className="flex items-center gap-2 sm:gap-3 mt-2 md:mt-0">
-                <span className="text-2xl sm:text-3xl font-black italic text-[#eab308]">+ 5.000</span>
-                <span className="text-[10px] sm:text-xs font-bold uppercase text-[#eab308] opacity-60">РУБ</span>
+                <span className="text-2xl sm:text-3xl font-black italic text-[#eab308]">5.000</span>
+                <span className="text-[10px] sm:text-xs font-bold uppercase text-[#eab308] opacity-60">РУБЛЕЙ</span>
               </div>
             </div>
           </div>
