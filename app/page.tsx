@@ -225,15 +225,15 @@ export default function Home() {
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#00d2ff]/10 flex items-center justify-center shrink-0">
                   <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[#00d2ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <span>Программа - 2 ч 45 мин</span>
+                <span>Программа - 3 ч </span>
               </h3>
               
               <div className="space-y-4 sm:space-y-6">
                 {[
-                  { day: "ПН-ЧТ", time: "10-13", type:"ТАРИФ РАННИЙ БУДНИЙ", price: "14.990", color: "#00d2ff" },
-                  { day: "ПН-ЧТ", time: "13-22", type:"ТАРИФ СТАНДАРТ БУДНИЙ", price: "19.990", color: "#00d2ff" },
-                  { day: "ПТ-ВС", time: "10-13", type:"ТАРИФ РАННИЙ ВЫХОДНЫЕ", price: "19.990", color: "#ff004c" },
-                  { day: "ПТ-ВС", time: "13-22", type:"ТАРИФ СТАНДАРТ ВЫХОДНЫЕ", price: "24.990", color: "#ff004c" },
+                  { day: "ПН-ЧТ", time: "10-13", type:"ТАРИФ РАННИЙ БУДНИЙ", price: "15.990", color: "#00d2ff" },
+                  { day: "ПН-ЧТ", time: "13-22", type:"ТАРИФ СТАНДАРТ БУДНИЙ", price: "20.990", color: "#00d2ff" },
+                  { day: "ПТ-ВС", time: "10-13", type:"ТАРИФ РАННИЙ ВЫХОДНЫЕ", price: "20.990", color: "#ff004c" },
+                  { day: "ПТ-ВС", time: "13-22", type:"ТАРИФ СТАНДАРТ ВЫХОДНЫЕ", price: "25.990", color: "#ff004c" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 sm:gap-4 border-b border-white/5 pb-4 last:border-0 group">
                     <div className="flex items-center gap-3 sm:gap-4">
